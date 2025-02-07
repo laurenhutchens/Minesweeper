@@ -1,9 +1,10 @@
 ﻿using System;
-using MineSweeper.BusinessLogicLayer; // Important!
-using MineSweeper.Entities; // Important!
+using MineSweeper.BusinessLogicLayer;
+using MineSweeper.Entities;
 
 class Program
 {
+    //main
     static void Main(string[] args)
     {
         Console.WriteLine("Welcome to Minesweeper!");
@@ -11,30 +12,45 @@ class Program
         int size = MinesweeperGameLogic.GetValidBoardSize();
         int difficulty = MinesweeperGameLogic.GetValidDifficulty();
 
-        Board board = new Board(size, difficulty); // Create Board instance here!
+        Board board = new Board(size, difficulty);
 
         while (board.DetermineGameStatus() == Board.GameStatus.InProgress)
         {
             PrintBoard(board);
+           
             Console.WriteLine("Enter row and column (e.g., 1,2): ");
-            string[] input = Console.ReadLine().Split(","); // Input handling
+            string[] input = Console.ReadLine().Split(',');
 
-            // Declare row and col HERE!
-            if (input.Length != 2 || !int.TryParse(input[0], out int row) || !int.TryParse(input[1], out int col))
+            if (input.Length != 2 || !int.TryParse(input[0], out int row) || !int.TryParse(input[1], out int col) || row < 0 || row >= size || col < 0 || col >= size) // Added bounds check
             {
-                Console.WriteLine("Invalid Input. Please try again");
+                Console.WriteLine("Invalid Input. Please try again (Valid range: 0-" + (size - 1) + ")"); // More informative message
                 continue;
             }
 
             Console.WriteLine("Enter action 1.) Flag / 2.) Visit / 3.) UseReward");
             string actionInput = Console.ReadLine();
 
-            // Declare action HERE!
             if (!int.TryParse(actionInput, out int action) || action < 1 || action > 3)
             {
                 Console.WriteLine("Invalid Action. Please try again.");
                 continue;
             }
+
+            // Example: Handling the "Hint" reward
+            if (action == 3) // Assuming action 3 is "Use Reward"
+            {
+                Console.WriteLine("Choose a reward: Hint"); // Add more options as needed
+                string chosenReward = Console.ReadLine();
+
+                if (board.UseSpecialBonus(chosenReward))
+                {
+                    Console.WriteLine($"{chosenReward} used successfully!");
+                }
+            }
+
+            // Adjust row and col for 0-based indexing
+            row--;
+            col--;
 
             switch (action)
             {
@@ -42,31 +58,45 @@ class Program
                     board.Cells[row, col].IsFlagged = !board.Cells[row, col].IsFlagged;
                     break;
                 case 2: // Visit
+                    if (board.Cells[row, col].IsVisited) // Prevent re-visiting
+                    {
+                        Console.WriteLine("Cell already visited.");
+                        break;
+                    }
+
                     board.Cells[row, col].IsVisited = true;
                     if (board.Cells[row, col].IsBomb)
                     {
                         Console.WriteLine("Game Over!! You hit a Bomb.");
-                        board.PrintAnswers();
-                        board.Cells[row, col].IsVisited = true;
+                        board.PrintAnswers(); // Reveal all bombs
                         return; // End the game
                     }
                     break;
                 case 3: // Reward
-                    Console.WriteLine("Rewards not implemented yet.");
+                 
                     break;
                 default:
                     Console.WriteLine("Issue with the input");
                     break;
             }
         }
+
         if (board.DetermineGameStatus() == Board.GameStatus.Won)
         {
             Console.WriteLine("Congratulations! You won!");
             PrintBoard(board); // Show the final board state
         }
-    }
+    }//end main method
 
-    //3. Create the PrintBoard method:
+
+
+
+
+
+
+
+
+    //displays the board during the game play
     static void PrintBoard(Board board)
     {
         // Print column numbers

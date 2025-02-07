@@ -18,6 +18,8 @@ namespace MineSweeper.Entities
 
         private readonly Random _random = new Random();
 
+        public Dictionary<string, int> AvailableRewards { get; private set; }
+
 
         private int _difficulty; // Store the difficulty
         public Board(int size, int difficulty)
@@ -72,6 +74,59 @@ namespace MineSweeper.Entities
         }
 
         //TODO: UseSpecialBonus method
+            public bool UseSpecialBonus(string rewardType) // No row/col needed for Hint
+            {
+                if (!AvailableRewards.ContainsKey(rewardType) || AvailableRewards[rewardType] <= 0)
+                {
+                    Console.WriteLine($"No {rewardType} rewards available.");
+                    return false; // Reward not available
+                }
+
+                switch (rewardType)
+                {
+                    case "Hint":
+                        ShowHint();
+                        break;
+                    // Add other cases here as you implement more rewards
+                    // case "TimeFreeze": ...
+                    // case "BombDefuseKit": ...
+                    // case "Undo": ...
+                    default:
+                        Console.WriteLine("Invalid reward type.");
+                        return false;
+                }
+
+                AvailableRewards[rewardType]--;  // Decrement reward count
+                return true; // Reward used successfully
+            }
+
+        private void ShowHint()
+        {
+            List<Tuple<int, int>> bombLocations = new List<Tuple<int, int>>();
+            for (int r = 0; r < Size; r++)
+            {
+                for (int c = 0; c < Size; c++)
+                {
+                    if (Cells[r, c].IsBomb)
+                    {
+                        bombLocations.Add(new Tuple<int, int>(r, c));
+                    }
+                }
+            }
+
+            if (bombLocations.Count == 0)
+            {
+                Console.WriteLine("No bombs to reveal!");
+                return;
+            }
+
+            Random random = new Random();
+            int randomIndex = random.Next(bombLocations.Count);
+            Tuple<int, int> hintLocation = bombLocations[randomIndex];
+
+            Console.WriteLine($"Hint: Bomb is at ({hintLocation.Item1 + 1}, {hintLocation.Item2 + 1})"); // User-friendly coordinates
+        }
+
 
         //TODO: DetermineFinalScore method
 
@@ -150,27 +205,46 @@ namespace MineSweeper.Entities
         //use during setup to place rewards on the board
         private void SetupRewards()
         {
-            // Future implementation
+            // Now you can initialize the dictionary correctly:
+            AvailableRewards = new Dictionary<string, int>();
+
+            AvailableRewards.Add("Hint", 2); // Example: 2 hints
+                                             // Add other rewards as needed
         }
 
         //use every turn to determine the current game state
+        //This method will inspectthe contents of the Board and return one of three values: won, lost, stillPlaying
         public Board.GameStatus DetermineGameStatus()
         {
-            bool allCellsVisited = true;
+            bool allNonBombCellsRevealed = true;
 
             for (int row = 0; row < Size; row++)
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    if (Cells[row, col].IsBomb && Cells[row, col].IsVisited)
-                        return Board.GameStatus.Lost;
+                    Cell currentCell = Cells[row, col]; // Store cell for easier access
 
-                    if (!Cells[row, col].IsBomb && !Cells[row, col].IsVisited)
-                        allCellsVisited = false;
+                    if (currentCell.IsBomb && currentCell.IsVisited)
+                    {
+                        return Board.GameStatus.Lost; // Bomb visited - game lost
+                    }
 
+                    if (!currentCell.IsBomb && !currentCell.IsVisited)
+                    {
+                        allNonBombCellsRevealed = false; // Unvisited non-bomb cell found
+                    }
                 }
             }
-            return allCellsVisited ? Board.GameStatus.Won : Board.GameStatus.InProgress;
+
+            // Check if ALL non-bomb cells are either visited OR correctly flagged
+            if (allNonBombCellsRevealed)
+            {
+                return Board.GameStatus.Won; // All safe cells revealed - game won
+            }
+            else
+            {
+                return Board.GameStatus.InProgress; // Still cells to reveal
+            }
         }
     }
 }
