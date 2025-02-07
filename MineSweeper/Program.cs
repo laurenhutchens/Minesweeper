@@ -1,0 +1,129 @@
+﻿using System;
+using MineSweeper.BusinessLogicLayer; // Important!
+using MineSweeper.Entities; // Important!
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Welcome to Minesweeper!");
+
+        int size = MinesweeperGameLogic.GetValidBoardSize();
+        int difficulty = MinesweeperGameLogic.GetValidDifficulty();
+
+        Board board = new Board(size, difficulty); // Create Board instance here!
+
+        while (board.DetermineGameStatus() == Board.GameStatus.InProgress)
+        {
+            PrintBoard(board);
+            Console.WriteLine("Enter row and column (e.g., 1,2): ");
+            string[] input = Console.ReadLine().Split(","); // Input handling
+
+            // Declare row and col HERE!
+            if (input.Length != 2 || !int.TryParse(input[0], out int row) || !int.TryParse(input[1], out int col))
+            {
+                Console.WriteLine("Invalid Input. Please try again");
+                continue;
+            }
+
+            Console.WriteLine("Enter action 1.) Flag / 2.) Visit / 3.) UseReward");
+            string actionInput = Console.ReadLine();
+
+            // Declare action HERE!
+            if (!int.TryParse(actionInput, out int action) || action < 1 || action > 3)
+            {
+                Console.WriteLine("Invalid Action. Please try again.");
+                continue;
+            }
+
+            switch (action)
+            {
+                case 1: // Flag
+                    board.Cells[row, col].IsFlagged = !board.Cells[row, col].IsFlagged;
+                    break;
+                case 2: // Visit
+                    board.Cells[row, col].IsVisited = true;
+                    if (board.Cells[row, col].IsBomb)
+                    {
+                        Console.WriteLine("Game Over!! You hit a Bomb.");
+                        board.PrintAnswers();
+                        board.Cells[row, col].IsVisited = true;
+                        return; // End the game
+                    }
+                    break;
+                case 3: // Reward
+                    Console.WriteLine("Rewards not implemented yet.");
+                    break;
+                default:
+                    Console.WriteLine("Issue with the input");
+                    break;
+            }
+        }
+        if (board.DetermineGameStatus() == Board.GameStatus.Won)
+        {
+            Console.WriteLine("Congratulations! You won!");
+            PrintBoard(board); // Show the final board state
+        }
+    }
+
+    //3. Create the PrintBoard method:
+    static void PrintBoard(Board board)
+    {
+        // Print column numbers
+        Console.Write("  "); // Adjust spacing as needed
+        for (int i = 0; i < board.Size; i++)
+        {
+            Console.Write($"{i,2} "); // Format column numbers
+        }
+        Console.WriteLine();
+
+        // Print divider line above the board
+        Console.WriteLine("  " + new string('-', board.Size * 3 + 1));
+
+
+        for (int row = 0; row < board.Size; row++)
+        {
+            // Print row number
+            Console.Write($"{row,2}|");
+
+            for (int col = 0; col < board.Size; col++)
+            {
+                Console.Write(" "); // Space before cell content
+
+                if (board.Cells[row, col].IsFlagged)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow; // Example
+                    Console.Write("F");
+                }
+                else if (board.Cells[row, col].IsVisited && board.Cells[row, col].IsBomb)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write("B");
+                }
+                else if (board.Cells[row, col].IsVisited)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    if (board.Cells[row, col].NumberOfBombNeighbors > 0)
+                    {
+                        Console.Write(board.Cells[row, col].NumberOfBombNeighbors);
+                    }
+                    else
+                    {
+                        Console.Write(".");
+                    }
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Gray;
+                    Console.Write("?"); // Or some other hidden representation
+                }
+
+                Console.ForegroundColor = ConsoleColor.White; // Reset color
+                Console.Write(" |"); // Divider line between cells
+            }
+            Console.WriteLine();
+            // Print divider line below the row
+            Console.WriteLine("  " + new string('-', board.Size * 3 + 1));
+        }
+    }
+}

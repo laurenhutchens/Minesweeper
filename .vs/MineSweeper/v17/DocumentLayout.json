@@ -1,0 +1,97 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9C0848F8-916D-4C97-9099-F56E8F65FA92}|MineSweeperClasses\\MineSweeperClasses.csproj|c:\\users\\laurenhutchens\\onedrive\\academics\\current uni classes\\cst-250\\milestone\\new folder\\minesweeper\\minesweeperclasses\\buisnesslogiclayer\\minesweepergamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C0848F8-916D-4C97-9099-F56E8F65FA92}|MineSweeperClasses\\MineSweeperClasses.csproj|solutionrelative:minesweeperclasses\\buisnesslogiclayer\\minesweepergamelogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C0848F8-916D-4C97-9099-F56E8F65FA92}|MineSweeperClasses\\MineSweeperClasses.csproj|c:\\users\\laurenhutchens\\onedrive\\academics\\current uni classes\\cst-250\\milestone\\new folder\\minesweeper\\minesweeperclasses\\buisnesslogiclayer\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C0848F8-916D-4C97-9099-F56E8F65FA92}|MineSweeperClasses\\MineSweeperClasses.csproj|solutionrelative:minesweeperclasses\\buisnesslogiclayer\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9C0848F8-916D-4C97-9099-F56E8F65FA92}|MineSweeperClasses\\MineSweeperClasses.csproj|c:\\users\\laurenhutchens\\onedrive\\academics\\current uni classes\\cst-250\\milestone\\new folder\\minesweeper\\minesweeperclasses\\buisnesslogiclayer\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9C0848F8-916D-4C97-9099-F56E8F65FA92}|MineSweeperClasses\\MineSweeperClasses.csproj|solutionrelative:minesweeperclasses\\buisnesslogiclayer\\cell.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cell.cs",
+              "DocumentMoniker": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeperClasses\\BuisnessLogicLayer\\Cell.cs",
+              "RelativeDocumentMoniker": "MineSweeperClasses\\BuisnessLogicLayer\\Cell.cs",
+              "ToolTip": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeperClasses\\BuisnessLogicLayer\\Cell.cs",
+              "RelativeToolTip": "MineSweeperClasses\\BuisnessLogicLayer\\Cell.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T23:59:15.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Board.cs",
+              "DocumentMoniker": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeperClasses\\BuisnessLogicLayer\\Board.cs",
+              "RelativeDocumentMoniker": "MineSweeperClasses\\BuisnessLogicLayer\\Board.cs",
+              "ToolTip": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeperClasses\\BuisnessLogicLayer\\Board.cs",
+              "RelativeToolTip": "MineSweeperClasses\\BuisnessLogicLayer\\Board.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAmwDgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T23:59:14.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MinesweeperGameLogic.cs",
+              "DocumentMoniker": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeperClasses\\BuisnessLogicLayer\\MinesweeperGameLogic.cs",
+              "RelativeDocumentMoniker": "MineSweeperClasses\\BuisnessLogicLayer\\MinesweeperGameLogic.cs",
+              "ToolTip": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeperClasses\\BuisnessLogicLayer\\MinesweeperGameLogic.cs",
+              "RelativeToolTip": "MineSweeperClasses\\BuisnessLogicLayer\\MinesweeperGameLogic.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-06T19:59:37.879Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 1473,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
