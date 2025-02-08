@@ -8,7 +8,7 @@
 
 using System;
 using System.Diagnostics;
-using MineSweeper.Entities;
+using MineSweeperClasses.BuisnessLogicLayer.Models;
 
 namespace MineSweeper.BusinessLogicLayer
 {

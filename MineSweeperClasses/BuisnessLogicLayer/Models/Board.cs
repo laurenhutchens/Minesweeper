@@ -1,16 +1,15 @@
 ﻿/*
- * Milestone 2: Interactive Playable Version
- * Lauren Hutchens and Arie Gerard
- * Professor Hughes
- * CST-250
- * 2/9/2005
- */
+* Milestone 2: Interactive Playable Version
+* Lauren Hutchens and Arie Gerard
+* Professor Hughes
+* CST-250
+* 2/9/2005
+*/
 
 using System;
-using MineSweeper.Entities;
-using MineSweeperClasses.BuisnessLayer;
+using System.Collections.Generic;
 
-namespace MineSweeper.Entities
+namespace MineSweeperClasses.BuisnessLogicLayer.Models
 {
     public class Board
     {
@@ -26,7 +25,7 @@ namespace MineSweeper.Entities
 
         private readonly Random _random = new Random();
 
-        
+
         public Dictionary<string, int> AvailableRewards { get; private set; }
 
 
@@ -100,27 +99,27 @@ namespace MineSweeper.Entities
         /// </summary>
         /// <param name="rewardType"></param>
         /// <returns>hint</returns>
-            public bool UseSpecialBonus(string rewardType)
+        public bool UseSpecialBonus(string rewardType)
+        {
+            if (!AvailableRewards.ContainsKey(rewardType) || AvailableRewards[rewardType] <= 0)
             {
-                if (!AvailableRewards.ContainsKey(rewardType) || AvailableRewards[rewardType] <= 0)
-                {
-                    Console.WriteLine($"No {rewardType} rewards available.");
-                    return false;
-                }
-
-                switch (rewardType)
-                {
-                    case "Hint":
-                        ShowHint();
-                        break;
-                    //if the user does not input "Hint" it will be invalid
-                    default:
-                        Console.WriteLine("Invalid reward type.");
-                        return false;
-                }
-                AvailableRewards[rewardType]--;  //decrement reward count
-                return true; //reward used successfully!
+                Console.WriteLine($"No {rewardType} rewards available.");
+                return false;
             }
+
+            switch (rewardType)
+            {
+                case "Hint":
+                    ShowHint();
+                    break;
+                //if the user does not input "Hint" it will be invalid
+                default:
+                    Console.WriteLine("Invalid reward type.");
+                    return false;
+            }
+            AvailableRewards[rewardType]--;  //decrement reward count
+            return true; //reward used successfully!
+        }
 
         /// <summary>
         /// method to make the ShowHint to be displayed on the board cell
@@ -207,7 +206,7 @@ namespace MineSweeper.Entities
         /// <param name="difficulty"></param>
         private void SetupBombs(int difficulty)
         {
-            int numBombs = (int)(Size * Size * Difficulty);
+            int numBombs = Size * Size * Difficulty;
 
             switch (difficulty)
             {
@@ -254,7 +253,7 @@ namespace MineSweeper.Entities
         /// this method will inspect the contents of the Board and return one of three values: won, lost, stillPlaying
         /// </summary>
         /// <returns></returns>
-        public Board.GameStatus DetermineGameStatus()
+        public GameStatus DetermineGameStatus()
         {
             bool allNonBombCellsRevealed = true;
 
@@ -266,7 +265,7 @@ namespace MineSweeper.Entities
 
                     if (currentCell.IsBomb && currentCell.IsVisited)
                     {
-                        return Board.GameStatus.Lost; //bomb visited - game lost
+                        return GameStatus.Lost; //bomb visited - game lost
                     }
 
                     if (!currentCell.IsBomb && !currentCell.IsVisited)
@@ -279,11 +278,11 @@ namespace MineSweeper.Entities
             //check if ALL non-bomb cells are either visited OR correctly flagged
             if (allNonBombCellsRevealed)
             {
-                return Board.GameStatus.Won; //all safe cells revealed - game won
+                return GameStatus.Won; //all safe cells revealed - game won
             }
             else
             {
-                return Board.GameStatus.InProgress; //still cells to reveal
+                return GameStatus.InProgress; //still cells to reveal
             }
         }
     }

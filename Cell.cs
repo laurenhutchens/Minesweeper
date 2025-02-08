@@ -1,10 +1,10 @@
 ﻿/*
- *Milestone 2: Interactive Playable Version
- *Lauren Hutchens and Arie Gerard
- *2/9/2025
- *Professor Hughes
- *CST-250
- */
+*Milestone 2: Interactive Playable Version
+*Lauren Hutchens and Arie Gerard
+*2/9/2025
+*Professor Hughes
+*CST-250
+*/
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MineSweeperClasses.BuisnessLayer
+namespace MineSweeperClasses.Models
 {
     //it stores information about the cell, such as its row and column,
     //whether it's been visited, whether it contains a bomb, whether it's flagged

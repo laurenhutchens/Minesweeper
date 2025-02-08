@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35222.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineSweeperConsole", "MineSweeper\MineSweeperConsole.csproj", "{E468EAC4-A0A9-47FB-AA88-4F67735EB7CC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MineSweeperConsole", "MineSweeper\MineSweeperConsole.csproj", "{E468EAC4-A0A9-47FB-AA88-4F67735EB7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MineSweeperClasses", "MineSweeperClasses\MineSweeperClasses.csproj", "{9C0848F8-916D-4C97-9099-F56E8F65FA92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MineSweeperClasses", "MineSweeperClasses\MineSweeperClasses.csproj", "{9C0848F8-916D-4C97-9099-F56E8F65FA92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,7 +8,7 @@
 
 using System;
 using MineSweeper.BusinessLogicLayer;
-using MineSweeper.Entities;
+using MineSweeperClasses.BuisnessLogicLayer.Models;
 
 class Program
 {

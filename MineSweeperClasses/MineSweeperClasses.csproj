@@ -8,8 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models Layer\" />
-    <Folder Include="UI Layer\" />
+    <Compile Remove="Models Layer\**" />
+    <Compile Remove="UI Layer\**" />
+    <EmbeddedResource Remove="Models Layer\**" />
+    <EmbeddedResource Remove="UI Layer\**" />
+    <None Remove="Models Layer\**" />
+    <None Remove="UI Layer\**" />
   </ItemGroup>
 
 </Project>
