@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Milestone 2: Interactive Playable Version
+ * Lauren Hutchens and Arie Gerard
+ * Professor Hughes
+ * CST-250
+ * 2/9/2005
+ */
+
+using System;
 using System.Diagnostics;
 using MineSweeper.Entities;
 
@@ -17,9 +25,14 @@ namespace MineSweeper.BusinessLogicLayer
 
         public MinesweeperGameLogic(int size, int difficulty)
         {
+            //Instantiate a new board 
             board = new Board(size, difficulty);
         }
 
+        /// <summary>
+        /// Method to ask/check if the user input is valid. In this case it is for the BoardSize. 
+        /// </summary>
+        /// <returns></returns>
         public static int GetValidBoardSize()
         {
             int size;
@@ -33,7 +46,10 @@ namespace MineSweeper.BusinessLogicLayer
                 Console.WriteLine("Invalid Input. Please enter a number between 5 and 20.");
             }
         }
-
+        /// <summary>
+        /// Method to ask/check if the user input is valid. In this case it is for the Difficulty. 
+        /// </summary>
+        /// <returns></returns>
         public static int GetValidDifficulty()
         {
             int difficulty;
@@ -44,7 +60,7 @@ namespace MineSweeper.BusinessLogicLayer
                 Console.WriteLine("2 - Medium");
                 Console.WriteLine("3 - Hard");
                 Console.Write("Enter difficulty (1, 2, or 3): ");
-
+                //Checks to see if the user input is acceptable or not. 
                 if (int.TryParse(Console.ReadLine(), out difficulty) && difficulty >= 1 && difficulty <= 3)
                 {
                     return difficulty;

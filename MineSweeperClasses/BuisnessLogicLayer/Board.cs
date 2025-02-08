@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Milestone 2: Interactive Playable Version
+ * Lauren Hutchens and Arie Gerard
+ * Professor Hughes
+ * CST-250
+ * 2/9/2005
+ */
+
+using System;
 using MineSweeper.Entities;
 using MineSweeperClasses.BuisnessLayer;
 
@@ -8,7 +16,7 @@ namespace MineSweeper.Entities
     {
         //getters and setters
         public int Size { get; }
-        //TODO:
+        //dificulty getter and setter
         public int Difficulty { get; }
         public Cell[,] Cells { get; private set; }
         public int RewardsRemaining { get; set; }
@@ -18,10 +26,18 @@ namespace MineSweeper.Entities
 
         private readonly Random _random = new Random();
 
+        
         public Dictionary<string, int> AvailableRewards { get; private set; }
 
 
         private int _difficulty; // Store the difficulty
+
+        /// <summary>
+        /// parameterized constructor for the board, with the parameters 
+        /// of size and difficulty based on user input
+        /// </summary>
+        /// <param name="size"></param>
+        /// <param name="difficulty"></param>
         public Board(int size, int difficulty)
         {
             _difficulty = difficulty; // Store it!
@@ -34,7 +50,9 @@ namespace MineSweeper.Entities
             InitializeBoard();
         }
 
-        //initialize cells
+        /// <summary>
+        /// method to initialize the cells
+        /// </summary>
         private void InitializeCells()
         {
             for (int row = 0; row < Size; row++)
@@ -46,7 +64,9 @@ namespace MineSweeper.Entities
             }
         }
 
-        //initialize board
+        /// <summary>
+        /// method to set up the baord
+        /// </summary>
         private void InitializeBoard()
         {
             SetupBombs(_difficulty);
@@ -55,7 +75,9 @@ namespace MineSweeper.Entities
             StartTime = DateTime.Now;
         }
 
-        //PrintAnswers method
+        /// <summary>
+        /// method to print the answers ex: f(Flagged)
+        /// </summary>
         public void PrintAnswers()
         {
             for (int row = 0; row < Size; row++)
@@ -73,13 +95,17 @@ namespace MineSweeper.Entities
             }
         }
 
-        //TODO: UseSpecialBonus method
-            public bool UseSpecialBonus(string rewardType) // No row/col needed for Hint
+        /// <summary>
+        /// method for the user to choose reward
+        /// </summary>
+        /// <param name="rewardType"></param>
+        /// <returns>hint</returns>
+            public bool UseSpecialBonus(string rewardType)
             {
                 if (!AvailableRewards.ContainsKey(rewardType) || AvailableRewards[rewardType] <= 0)
                 {
                     Console.WriteLine($"No {rewardType} rewards available.");
-                    return false; // Reward not available
+                    return false;
                 }
 
                 switch (rewardType)
@@ -87,19 +113,18 @@ namespace MineSweeper.Entities
                     case "Hint":
                         ShowHint();
                         break;
-                    // Add other cases here as you implement more rewards
-                    // case "TimeFreeze": ...
-                    // case "BombDefuseKit": ...
-                    // case "Undo": ...
+                    //if the user does not input "Hint" it will be invalid
                     default:
                         Console.WriteLine("Invalid reward type.");
                         return false;
                 }
-
-                AvailableRewards[rewardType]--;  // Decrement reward count
-                return true; // Reward used successfully
+                AvailableRewards[rewardType]--;  //decrement reward count
+                return true; //reward used successfully!
             }
 
+        /// <summary>
+        /// method to make the ShowHint to be displayed on the board cell
+        /// </summary>
         private void ShowHint()
         {
             List<Tuple<int, int>> bombLocations = new List<Tuple<int, int>>();
@@ -124,19 +149,22 @@ namespace MineSweeper.Entities
             int randomIndex = random.Next(bombLocations.Count);
             Tuple<int, int> hintLocation = bombLocations[randomIndex];
 
-            Console.WriteLine($"Hint: Bomb is at ({hintLocation.Item1 + 1}, {hintLocation.Item2 + 1})"); // User-friendly coordinates
+            Console.WriteLine($"Hint: Bomb is at ({hintLocation.Item1 + 1}, {hintLocation.Item2 + 1})");
         }
 
-
-        //TODO: DetermineFinalScore method
-
-        //helper function to determine if a cell is out of bounds
+        /// <summary>
+        /// helper function to determine if a cell is out of bounds
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <returns></returns>
         private bool IsCellOnBoard(int row, int col)
         {
             return row >= 0 && row < Size && col >= 0 && col < Size;
         }
-
-        //use during setup to calculate the number of bomb neighbors for each cell
+        /// <summary>
+        /// use during setup to calculate the number of bomb neighbors for each cell
+        /// </summary>
         private void CalculateNumberOfBombNeighbors()
         {
             for (int row = 0; row < Size; row++)
@@ -148,7 +176,12 @@ namespace MineSweeper.Entities
             }
         }
 
-        //helper function to determine the number of bomb neighbors for a cell
+        /// <summary>
+        /// helper function to determine the number of bomb neighbors for a cell
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        /// <returns></returns>
         private int GetNumberOfBombNeighbors(int row, int col)
         {
             int count = 0;
@@ -167,8 +200,11 @@ namespace MineSweeper.Entities
             }
             return count;
         }
-
-        //use during setup to place bombs on the board
+        /// <summary>
+        /// use during setup to place bombs on the board
+        /// 3 case statements to ask the user for easy, medium, or hard
+        /// </summary>
+        /// <param name="difficulty"></param>
         private void SetupBombs(int difficulty)
         {
             int numBombs = (int)(Size * Size * Difficulty);
@@ -176,16 +212,16 @@ namespace MineSweeper.Entities
             switch (difficulty)
             {
                 case 1: // Easy
-                    numBombs = (int)(Size * Size * 0.15f); // Example: 15% bombs
+                    numBombs = (int)(Size * Size * 0.15f); //ex: 15% bombs
                     break;
                 case 2: // Medium
-                    numBombs = (int)(Size * Size * 0.25f); // Example: 25% bombs
+                    numBombs = (int)(Size * Size * 0.25f); //ex: 25% bombs
                     break;
                 case 3: // Hard
-                    numBombs = (int)(Size * Size * 0.40f); // Example: 40% bombs
+                    numBombs = (int)(Size * Size * 0.40f); //ex: 40% bombs
                     break;
                 default:
-                    numBombs = (int)(Size * Size * 0.25f); // Default to medium if something goes wrong
+                    numBombs = (int)(Size * Size * 0.25f); //default to medium if something goes wrong
                     break;
             }
 
@@ -202,18 +238,22 @@ namespace MineSweeper.Entities
             }
         }
 
-        //use during setup to place rewards on the board
+        /// <summary>
+        /// use during setup to place rewards on the board
+        /// </summary>
         private void SetupRewards()
         {
-            // Now you can initialize the dictionary correctly:
+            //instatiate the dictionary
             AvailableRewards = new Dictionary<string, int>();
 
-            AvailableRewards.Add("Hint", 2); // Example: 2 hints
-                                             // Add other rewards as needed
+            AvailableRewards.Add("Hint", 2);
         }
 
-        //use every turn to determine the current game state
-        //This method will inspectthe contents of the Board and return one of three values: won, lost, stillPlaying
+        /// <summary>
+        /// use every turn to determine the current game state
+        /// this method will inspect the contents of the Board and return one of three values: won, lost, stillPlaying
+        /// </summary>
+        /// <returns></returns>
         public Board.GameStatus DetermineGameStatus()
         {
             bool allNonBombCellsRevealed = true;
@@ -222,28 +262,28 @@ namespace MineSweeper.Entities
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    Cell currentCell = Cells[row, col]; // Store cell for easier access
+                    Cell currentCell = Cells[row, col];
 
                     if (currentCell.IsBomb && currentCell.IsVisited)
                     {
-                        return Board.GameStatus.Lost; // Bomb visited - game lost
+                        return Board.GameStatus.Lost; //bomb visited - game lost
                     }
 
                     if (!currentCell.IsBomb && !currentCell.IsVisited)
                     {
-                        allNonBombCellsRevealed = false; // Unvisited non-bomb cell found
+                        allNonBombCellsRevealed = false; //unvisited non-bomb cell found
                     }
                 }
             }
 
-            // Check if ALL non-bomb cells are either visited OR correctly flagged
+            //check if ALL non-bomb cells are either visited OR correctly flagged
             if (allNonBombCellsRevealed)
             {
-                return Board.GameStatus.Won; // All safe cells revealed - game won
+                return Board.GameStatus.Won; //all safe cells revealed - game won
             }
             else
             {
-                return Board.GameStatus.InProgress; // Still cells to reveal
+                return Board.GameStatus.InProgress; //still cells to reveal
             }
         }
     }

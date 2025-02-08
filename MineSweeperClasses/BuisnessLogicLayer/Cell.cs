@@ -35,9 +35,9 @@ namespace MineSweeperClasses.BuisnessLayer
             Column = column;
             IsBomb = isBomb;
             HasSpecialReward = hasSpecialReward;
-            IsVisited = false; // Initialize IsVisited to false
-            IsFlagged = false; // Initialize IsFlagged to false
-            NumberOfBombNeighbors = 0; // Initialize NumberOfBombNeighbors to 0
+            IsVisited = false; //initialize IsVisited to false, will change later in the game.
+            IsFlagged = false; //initialize IsFlagged to false, will change later in the game. 
+            NumberOfBombNeighbors = 0; //initialize NumberOfBombNeighbors to 0
         }
     }
 }

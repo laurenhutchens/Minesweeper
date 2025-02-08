@@ -1,17 +1,28 @@
-﻿using System;
+﻿/*
+ * Milestone 2: Interactive Playable Version
+ * Lauren Hutchens and Arie Gerard
+ * Professor Hughes
+ * CST-250
+ * 2/9/2005
+ */
+
+using System;
 using MineSweeper.BusinessLogicLayer;
 using MineSweeper.Entities;
 
 class Program
 {
-    //main
+    /// <summary>
+    /// Handles the main welcome message and gameplay operations
+    /// </summary>
+    /// <param name="args"></param>
     static void Main(string[] args)
     {
         Console.WriteLine("Welcome to Minesweeper!");
-
+        // Checks to see if the size and difficulty are valid by calling the GetValid methods in MinesweeperGameLogic.
         int size = MinesweeperGameLogic.GetValidBoardSize();
         int difficulty = MinesweeperGameLogic.GetValidDifficulty();
-
+        // Instantiates a new board with the desires size and difficulty. 
         Board board = new Board(size, difficulty);
 
         while (board.DetermineGameStatus() == Board.GameStatus.InProgress)
@@ -19,27 +30,26 @@ class Program
             PrintBoard(board);
            
             Console.WriteLine("Enter row and column (e.g., 1,2): ");
-            string[] input = Console.ReadLine().Split(',');
-
+            string[] input = Console.ReadLine().Split(','); // Allows the user to split their input using a comma. 
+            //Error handeling for the input using Try.Parse. 
             if (input.Length != 2 || !int.TryParse(input[0], out int row) || !int.TryParse(input[1], out int col) || row < 0 || row >= size || col < 0 || col >= size) // Added bounds check
             {
-                Console.WriteLine("Invalid Input. Please try again (Valid range: 0-" + (size - 1) + ")"); // More informative message
+                Console.WriteLine("Invalid Input. Please try again (Valid range: 0-" + (size - 1) + ")");
                 continue;
             }
 
             Console.WriteLine("Enter action 1.) Flag / 2.) Visit / 3.) UseReward");
             string actionInput = Console.ReadLine();
-
+            //Error handeling using int.TryParse for the action. 
             if (!int.TryParse(actionInput, out int action) || action < 1 || action > 3)
             {
                 Console.WriteLine("Invalid Action. Please try again.");
                 continue;
             }
-
-            // Example: Handling the "Hint" reward
-            if (action == 3) // Assuming action 3 is "Use Reward"
+            //Choosing a reward when 3 is clicked. 
+            if (action == 3)
             {
-                Console.WriteLine("Choose a reward: Hint"); // Add more options as needed
+                Console.WriteLine("Choose a reward: Hint");
                 string chosenReward = Console.ReadLine();
 
                 if (board.UseSpecialBonus(chosenReward))
@@ -48,10 +58,9 @@ class Program
                 }
             }
 
-            // Adjust row and col for 0-based indexing
             row--;
             col--;
-
+            // Action loop that handles the user input actions. 
             switch (action)
             {
                 case 1: // Flag
@@ -110,7 +119,7 @@ class Program
         // Print divider line above the board
         Console.WriteLine("  " + new string('-', board.Size * 3 + 1));
 
-
+        // For loop and if statements to handle the outprint of specific components. 
         for (int row = 0; row < board.Size; row++)
         {
             // Print row number
