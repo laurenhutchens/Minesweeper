@@ -5,7 +5,7 @@ using MineSweeperClasses.BuisnessLogicLayer.Models;
 class Program
 {
     /// <summary>
-    /// Handles the main welcome message and gameplay operations
+    /// Handles the main welcome message and gameplay operations.
     /// </summary>
     /// <param name="args"></param>
     static void Main(string[] args)
@@ -21,10 +21,10 @@ class Program
         while (board.DetermineGameStatus() == Board.GameStatus.InProgress)
         {
             PrintBoard(board);
-            board.PrintAnswers();
+            
 
             Console.WriteLine("Enter row and column (e.g., 1,2): ");
-            string[] input = Console.ReadLine().Split(','); // Allows the user to split their input using a comma. 
+            string[] input = Console.ReadLine().Split(','); // Allows the user to split their input using a comma.
             // Error handling for the input using Try.Parse. 
             if (input.Length != 2 || !int.TryParse(input[0], out int row) || !int.TryParse(input[1], out int col) || row < 0 || row >= size || col < 0 || col >= size) // Added bounds check
             {
@@ -54,6 +54,7 @@ class Program
 
             row--;
             col--;
+
             // Action loop that handles the user input actions. 
             switch (action)
             {
@@ -62,6 +63,8 @@ class Program
                     break;
                 case 2: // Visit
                     board.VisitCell(row, col);
+                    Board.FloodFill(board, row, col); // Call the FloodFill method
+
                     break;
                 case 3: // Reward
                     break;
@@ -78,8 +81,10 @@ class Program
         }
     }
 
+   
+
     /// <summary>
-    /// Displays the board during the game play
+    /// Displays the board during the gameplay.
     /// </summary>
     /// <param name="board"></param>
     static void PrintBoard(Board board)

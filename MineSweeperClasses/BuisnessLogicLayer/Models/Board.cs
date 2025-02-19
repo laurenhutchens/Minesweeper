@@ -301,30 +301,27 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
                 return;
             }
 
-            if (Cells[row, col].NumberOfBombNeighbors == 0)
-            {
-                FloodFill(row, col); // Recursive flood fill for empty cells
-            }
+           
         }
-        public void FloodFill(int row, int col)
+        public static void FloodFill(Board board, int row, int col)
         {
             // Base case: Out of bounds, already visited, or a bomb
-            if (!IsCellOnBoard(row, col) || Cells[row, col].IsVisited || Cells[row, col].IsBomb)
+            if (row < 0 || row >= board.Size || col < 0 || col >= board.Size || board.Cells[row, col].IsVisited || board.Cells[row, col].IsBomb)
             {
                 return;
             }
 
-            // Mark as visited
-            Cells[row, col].IsVisited = true;
+            // Mark the cell as visited
+            board.Cells[row, col].IsVisited = true;
 
             // Change the cell to display a '.'
-            if (Cells[row, col].NumberOfBombNeighbors == 0)
+            if (board.Cells[row, col].NumberOfBombNeighbors == 0)
             {
-                Cells[row, col].DisplayChar = '.';
+                board.Cells[row, col].DisplayChar = '.';
             }
 
             // Stop if the cell has neighboring bombs
-            if (Cells[row, col].NumberOfBombNeighbors > 0)
+            if (board.Cells[row, col].NumberOfBombNeighbors > 0)
             {
                 return;
             }
@@ -339,10 +336,7 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
                 int newRow = row + rowOffsets[i];
                 int newCol = col + colOffsets[i];
 
-                if (IsCellOnBoard(newRow, newCol) && !Cells[newRow, newCol].IsVisited)
-                {
-                    FloodFill(newRow, newCol);
-                }
+                FloodFill(board, newRow, newCol);
             }
         }
     }
