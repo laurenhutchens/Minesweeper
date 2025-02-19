@@ -9,17 +9,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace MineSweeperClasses.BuisnessLogicLayer.Models
 {
-    //it stores information about the cell, such as its row and column,
-    //whether it's been visited, whether it contains a bomb, whether it's flagged
-    //by the user, the number of neighboring cells that contain bombs, and whether it has a special reward.
     public class Cell
     {
-        //declaring property
+        // Declaring properties
         public int Row { get; }
         public int Column { get; }
         public bool IsVisited { get; set; }
@@ -27,17 +25,28 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
         public bool IsFlagged { get; set; }
         public int NumberOfBombNeighbors { get; set; }
         public bool HasSpecialReward { get; set; }
+        public char DisplayChar { get; set; } // Character representation of the cell
 
-        //constructor
+        // Constructor
         public Cell(int row, int column, bool isBomb = false, bool hasSpecialReward = false)
         {
             Row = row;
             Column = column;
             IsBomb = isBomb;
             HasSpecialReward = hasSpecialReward;
-            IsVisited = false; //initialize IsVisited to false, will change later in the game.
-            IsFlagged = false; //initialize IsFlagged to false, will change later in the game. 
-            NumberOfBombNeighbors = 0; //initialize NumberOfBombNeighbors to 0
+            IsVisited = false;
+            IsFlagged = false;
+            NumberOfBombNeighbors = 0;
+
+            // Initialize display character
+            DisplayChar = '#'; // Hidden by default
+        }
+
+        // Method to update the display character when revealed
+        public void Reveal()
+        {
+            IsVisited = true;
+            DisplayChar = IsBomb ? 'B' : (NumberOfBombNeighbors > 0 ? (char)(NumberOfBombNeighbors + '0') : '.');
         }
     }
 }

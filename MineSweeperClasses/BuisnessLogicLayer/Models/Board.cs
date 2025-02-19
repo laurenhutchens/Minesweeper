@@ -1,21 +1,12 @@
-﻿/*
-* Milestone 2: Interactive Playable Version
-* Lauren Hutchens and Arie Gerard
-* Professor Hughes
-* CST-250
-* 2/9/2005
-*/
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace MineSweeperClasses.BuisnessLogicLayer.Models
 {
     public class Board
     {
-        //getters and setters
+        // Getters and setters
         public int Size { get; }
-        //dificulty getter and setter
         public int Difficulty { get; }
         public Cell[,] Cells { get; private set; }
         public int RewardsRemaining { get; set; }
@@ -24,22 +15,16 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
         public enum GameStatus { InProgress, Won, Lost }
 
         private readonly Random _random = new Random();
-
-
         public Dictionary<string, int> AvailableRewards { get; private set; }
 
-
-        private int _difficulty; // Store the difficulty
-
         /// <summary>
-        /// parameterized constructor for the board, with the parameters 
+        /// Parameterized constructor for the board, with the parameters 
         /// of size and difficulty based on user input
         /// </summary>
         /// <param name="size"></param>
         /// <param name="difficulty"></param>
         public Board(int size, int difficulty)
         {
-            _difficulty = difficulty; // Store it!
             Size = size;
             Difficulty = difficulty;
             Cells = new Cell[size, size];
@@ -50,7 +35,7 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
         }
 
         /// <summary>
-        /// method to initialize the cells
+        /// Method to initialize the cells
         /// </summary>
         private void InitializeCells()
         {
@@ -64,18 +49,18 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
         }
 
         /// <summary>
-        /// method to set up the baord
+        /// Method to set up the board
         /// </summary>
         private void InitializeBoard()
         {
-            SetupBombs(_difficulty);
+            SetupBombs(Difficulty);
             SetupRewards();
             CalculateNumberOfBombNeighbors();
             StartTime = DateTime.Now;
         }
 
         /// <summary>
-        /// method to print the answers ex: f(Flagged)
+        /// Method to print the answers
         /// </summary>
         public void PrintAnswers()
         {
@@ -87,15 +72,17 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
                     {
                         Console.Write("F ");
                     }
-
-                    Console.Write(Cells[row, col].IsBomb ? "B " : $"{Cells[row, col].NumberOfBombNeighbors} ");
+                    else
+                    {
+                        Console.Write(Cells[row, col].IsBomb ? "B " : $"{Cells[row, col].NumberOfBombNeighbors} ");
+                    }
                 }
                 Console.WriteLine();
             }
         }
 
         /// <summary>
-        /// method for the user to choose reward
+        /// Method for the user to choose reward
         /// </summary>
         /// <param name="rewardType"></param>
         /// <returns>hint</returns>
@@ -112,17 +99,16 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
                 case "Hint":
                     ShowHint();
                     break;
-                //if the user does not input "Hint" it will be invalid
                 default:
                     Console.WriteLine("Invalid reward type.");
                     return false;
             }
-            AvailableRewards[rewardType]--;  //decrement reward count
-            return true; //reward used successfully!
+            AvailableRewards[rewardType]--;  // Decrement reward count
+            return true; // Reward used successfully!
         }
 
         /// <summary>
-        /// method to make the ShowHint to be displayed on the board cell
+        /// Method to make the ShowHint to be displayed on the board cell
         /// </summary>
         private void ShowHint()
         {
@@ -144,15 +130,14 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
                 return;
             }
 
-            Random random = new Random();
-            int randomIndex = random.Next(bombLocations.Count);
+            int randomIndex = _random.Next(bombLocations.Count);
             Tuple<int, int> hintLocation = bombLocations[randomIndex];
 
             Console.WriteLine($"Hint: Bomb is at ({hintLocation.Item1 + 1}, {hintLocation.Item2 + 1})");
         }
 
         /// <summary>
-        /// helper function to determine if a cell is out of bounds
+        /// Helper function to determine if a cell is out of bounds
         /// </summary>
         /// <param name="row"></param>
         /// <param name="col"></param>
@@ -161,8 +146,9 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
         {
             return row >= 0 && row < Size && col >= 0 && col < Size;
         }
+
         /// <summary>
-        /// use during setup to calculate the number of bomb neighbors for each cell
+        /// Use during setup to calculate the number of bomb neighbors for each cell
         /// </summary>
         private void CalculateNumberOfBombNeighbors()
         {
@@ -176,7 +162,7 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
         }
 
         /// <summary>
-        /// helper function to determine the number of bomb neighbors for a cell
+        /// Helper function to determine the number of bomb neighbors for a cell
         /// </summary>
         /// <param name="row"></param>
         /// <param name="col"></param>
@@ -199,28 +185,28 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
             }
             return count;
         }
+
         /// <summary>
-        /// use during setup to place bombs on the board
-        /// 3 case statements to ask the user for easy, medium, or hard
+        /// Use during setup to place bombs on the board
         /// </summary>
         /// <param name="difficulty"></param>
         private void SetupBombs(int difficulty)
         {
-            int numBombs = Size * Size * Difficulty;
+            int numBombs;
 
             switch (difficulty)
             {
                 case 1: // Easy
-                    numBombs = (int)(Size * Size * 0.15f); //ex: 15% bombs
+                    numBombs = (int)(Size * Size * 0.15f); // 15% bombs
                     break;
                 case 2: // Medium
-                    numBombs = (int)(Size * Size * 0.25f); //ex: 25% bombs
+                    numBombs = (int)(Size * Size * 0.25f); // 25% bombs
                     break;
                 case 3: // Hard
-                    numBombs = (int)(Size * Size * 0.40f); //ex: 40% bombs
+                    numBombs = (int)(Size * Size * 0.40f); // 40% bombs
                     break;
                 default:
-                    numBombs = (int)(Size * Size * 0.25f); //default to medium if something goes wrong
+                    numBombs = (int)(Size * Size * 0.25f); // Default to medium if something goes wrong
                     break;
             }
 
@@ -238,19 +224,19 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
         }
 
         /// <summary>
-        /// use during setup to place rewards on the board
+        /// Use during setup to place rewards on the board
         /// </summary>
         private void SetupRewards()
         {
-            //instatiate the dictionary
-            AvailableRewards = new Dictionary<string, int>();
-
-            AvailableRewards.Add("Hint", 2);
+            // Instantiate the dictionary
+            AvailableRewards = new Dictionary<string, int>
+            {
+                { "Hint", 2 }
+            };
         }
 
         /// <summary>
-        /// use every turn to determine the current game state
-        /// this method will inspect the contents of the Board and return one of three values: won, lost, stillPlaying
+        /// Use every turn to determine the current game state
         /// </summary>
         /// <returns></returns>
         public GameStatus DetermineGameStatus()
@@ -265,24 +251,98 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
 
                     if (currentCell.IsBomb && currentCell.IsVisited)
                     {
-                        return GameStatus.Lost; //bomb visited - game lost
+                        return GameStatus.Lost; // Bomb visited - game lost
                     }
 
                     if (!currentCell.IsBomb && !currentCell.IsVisited)
                     {
-                        allNonBombCellsRevealed = false; //unvisited non-bomb cell found
+                        allNonBombCellsRevealed = false; // Unvisited non-bomb cell found
                     }
                 }
             }
 
-            //check if ALL non-bomb cells are either visited OR correctly flagged
+            // Check if ALL non-bomb cells are either visited OR correctly flagged
             if (allNonBombCellsRevealed)
             {
-                return GameStatus.Won; //all safe cells revealed - game won
+                return GameStatus.Won; // All safe cells revealed - game won
             }
             else
             {
-                return GameStatus.InProgress; //still cells to reveal
+                return GameStatus.InProgress; // Still cells to reveal
+            }
+        }
+
+        /// <summary>
+        /// Flood fill algorithm to reveal empty cells
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+
+
+        /// <summary>
+        /// Visit a cell and handle game logic
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="col"></param>
+        public void VisitCell(int row, int col)
+        {
+            if (!IsCellOnBoard(row, col) || Cells[row, col].IsVisited || Cells[row, col].IsFlagged)
+            {
+                Console.WriteLine("Invalid move: Cell is out of bounds, already visited, or flagged.");
+                return;
+            }
+
+            Cells[row, col].IsVisited = true;
+
+            if (Cells[row, col].IsBomb)
+            {
+                Console.WriteLine("Game Over!! You hit a Bomb.");
+                PrintAnswers(); // Reveal all bombs
+                return;
+            }
+
+            if (Cells[row, col].NumberOfBombNeighbors == 0)
+            {
+                FloodFill(row, col); // Recursive flood fill for empty cells
+            }
+        }
+        public void FloodFill(int row, int col)
+        {
+            // Base case: Out of bounds, already visited, or a bomb
+            if (!IsCellOnBoard(row, col) || Cells[row, col].IsVisited || Cells[row, col].IsBomb)
+            {
+                return;
+            }
+
+            // Mark as visited
+            Cells[row, col].IsVisited = true;
+
+            // Change the cell to display a '.'
+            if (Cells[row, col].NumberOfBombNeighbors == 0)
+            {
+                Cells[row, col].DisplayChar = '.';
+            }
+
+            // Stop if the cell has neighboring bombs
+            if (Cells[row, col].NumberOfBombNeighbors > 0)
+            {
+                return;
+            }
+
+            // Define directions for 8 possible adjacent cells
+            int[] rowOffsets = { -1, -1, -1, 0, 0, 1, 1, 1 };
+            int[] colOffsets = { -1, 0, 1, -1, 1, -1, 0, 1 };
+
+            // Recursively visit all adjacent cells
+            for (int i = 0; i < 8; i++)
+            {
+                int newRow = row + rowOffsets[i];
+                int newCol = col + colOffsets[i];
+
+                if (IsCellOnBoard(newRow, newCol) && !Cells[newRow, newCol].IsVisited)
+                {
+                    FloodFill(newRow, newCol);
+                }
             }
         }
     }

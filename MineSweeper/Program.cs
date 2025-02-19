@@ -1,12 +1,4 @@
-﻿/*
- * Milestone 2: Interactive Playable Version
- * Lauren Hutchens and Arie Gerard
- * Professor Hughes
- * CST-250
- * 2/9/2005
- */
-
-using System;
+﻿using System;
 using MineSweeper.BusinessLogicLayer;
 using MineSweeperClasses.BuisnessLogicLayer.Models;
 
@@ -19,19 +11,21 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("Welcome to Minesweeper!");
+
         // Checks to see if the size and difficulty are valid by calling the GetValid methods in MinesweeperGameLogic.
         int size = MinesweeperGameLogic.GetValidBoardSize();
         int difficulty = MinesweeperGameLogic.GetValidDifficulty();
-        // Instantiates a new board with the desires size and difficulty. 
+        // Instantiates a new board with the desired size and difficulty. 
         Board board = new Board(size, difficulty);
 
         while (board.DetermineGameStatus() == Board.GameStatus.InProgress)
         {
             PrintBoard(board);
-           
+            board.PrintAnswers();
+
             Console.WriteLine("Enter row and column (e.g., 1,2): ");
             string[] input = Console.ReadLine().Split(','); // Allows the user to split their input using a comma. 
-            //Error handeling for the input using Try.Parse. 
+            // Error handling for the input using Try.Parse. 
             if (input.Length != 2 || !int.TryParse(input[0], out int row) || !int.TryParse(input[1], out int col) || row < 0 || row >= size || col < 0 || col >= size) // Added bounds check
             {
                 Console.WriteLine("Invalid Input. Please try again (Valid range: 0-" + (size - 1) + ")");
@@ -40,13 +34,13 @@ class Program
 
             Console.WriteLine("Enter action 1.) Flag / 2.) Visit / 3.) UseReward");
             string actionInput = Console.ReadLine();
-            //Error handeling using int.TryParse for the action. 
+            // Error handling using int.TryParse for the action. 
             if (!int.TryParse(actionInput, out int action) || action < 1 || action > 3)
             {
                 Console.WriteLine("Invalid Action. Please try again.");
                 continue;
             }
-            //Choosing a reward when 3 is clicked. 
+            // Choosing a reward when 3 is clicked. 
             if (action == 3)
             {
                 Console.WriteLine("Choose a reward: Hint");
@@ -67,22 +61,9 @@ class Program
                     board.Cells[row, col].IsFlagged = !board.Cells[row, col].IsFlagged;
                     break;
                 case 2: // Visit
-                    if (board.Cells[row, col].IsVisited) // Prevent re-visiting
-                    {
-                        Console.WriteLine("Cell already visited.");
-                        break;
-                    }
-
-                    board.Cells[row, col].IsVisited = true;
-                    if (board.Cells[row, col].IsBomb)
-                    {
-                        Console.WriteLine("Game Over!! You hit a Bomb.");
-                        board.PrintAnswers(); // Reveal all bombs
-                        return; // End the game
-                    }
+                    board.VisitCell(row, col);
                     break;
                 case 3: // Reward
-                 
                     break;
                 default:
                     Console.WriteLine("Issue with the input");
@@ -95,17 +76,12 @@ class Program
             Console.WriteLine("Congratulations! You won!");
             PrintBoard(board); // Show the final board state
         }
-    }//end main method
+    }
 
-
-
-
-
-
-
-
-
-    //displays the board during the game play
+    /// <summary>
+    /// Displays the board during the game play
+    /// </summary>
+    /// <param name="board"></param>
     static void PrintBoard(Board board)
     {
         // Print column numbers
@@ -119,7 +95,7 @@ class Program
         // Print divider line above the board
         Console.WriteLine("  " + new string('-', board.Size * 3 + 1));
 
-        // For loop and if statements to handle the outprint of specific components. 
+        // For loop and if statements to handle the output of specific components. 
         for (int row = 0; row < board.Size; row++)
         {
             // Print row number
@@ -148,7 +124,7 @@ class Program
                     }
                     else
                     {
-                        Console.Write(".");
+                        Console.Write(board.Cells[row, col].DisplayChar); // Use DisplayChar
                     }
                 }
                 else

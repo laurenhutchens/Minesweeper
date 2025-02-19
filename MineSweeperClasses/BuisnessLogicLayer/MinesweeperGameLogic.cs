@@ -1,31 +1,17 @@
-﻿/*
- * Milestone 2: Interactive Playable Version
- * Lauren Hutchens and Arie Gerard
- * Professor Hughes
- * CST-250
- * 2/9/2005
- */
-
-using System;
-using System.Diagnostics;
+﻿using System;
 using MineSweeperClasses.BuisnessLogicLayer.Models;
 
 namespace MineSweeper.BusinessLogicLayer
 {
-
-    //this class encapsulates the rules and operations of the Minesweeper game
-    //this class controls the game's overall flow and rules. It initializes the game board,
-    //handles user input (row, column, and action), updates the board based on user actions (flag, visit),
-    //checks for game over conditions (win/loss), and prints the board's current state to the console.
-    //It also contains methods to get the board size and difficulty
+    // This class encapsulates the rules and operations of the Minesweeper game
     public class MinesweeperGameLogic
     {
-        //declare field
+        // Declare field
         private Board board;
 
         public MinesweeperGameLogic(int size, int difficulty)
         {
-            //Instantiate a new board 
+            // Instantiate a new board 
             board = new Board(size, difficulty);
         }
 
@@ -46,6 +32,7 @@ namespace MineSweeper.BusinessLogicLayer
                 Console.WriteLine("Invalid Input. Please enter a number between 5 and 20.");
             }
         }
+
         /// <summary>
         /// Method to ask/check if the user input is valid. In this case it is for the Difficulty. 
         /// </summary>
@@ -60,7 +47,7 @@ namespace MineSweeper.BusinessLogicLayer
                 Console.WriteLine("2 - Medium");
                 Console.WriteLine("3 - Hard");
                 Console.Write("Enter difficulty (1, 2, or 3): ");
-                //Checks to see if the user input is acceptable or not. 
+                // Checks to see if the user input is acceptable or not. 
                 if (int.TryParse(Console.ReadLine(), out difficulty) && difficulty >= 1 && difficulty <= 3)
                 {
                     return difficulty;
@@ -68,13 +55,5 @@ namespace MineSweeper.BusinessLogicLayer
                 Console.WriteLine("Invalid input, please enter 1, 2, or 3.");
             }
         }
-        public static bool GetValidInput()
-        {
-            bool valid = true;
-            return true;
-            //fix out of bounds handeling. 
-
-        }
-
     }
 }
