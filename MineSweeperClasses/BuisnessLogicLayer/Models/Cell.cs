@@ -46,7 +46,24 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
         public void Reveal()
         {
             IsVisited = true;
-            DisplayChar = IsBomb ? 'B' : (NumberOfBombNeighbors > 0 ? (char)(NumberOfBombNeighbors + '0') : '.');
+
+            // For bombs, set the display character to 'B'
+            if (IsBomb)
+            {
+                DisplayChar = 'B';
+            }
+            // If there are bomb neighbors, show the number of neighbors
+            else if (NumberOfBombNeighbors > 0)
+            {
+                DisplayChar = (char)(NumberOfBombNeighbors + '0');  // Convert to char ('0'-'9')
+            }
+            // If there are no bomb neighbors, set the display to '.'
+            else
+            {
+                DisplayChar = '.';  // Empty cell should be represented by '.'
+            }
         }
+
+
     }
 }

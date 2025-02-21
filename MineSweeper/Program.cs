@@ -16,12 +16,14 @@ class Program
         int size = MinesweeperGameLogic.GetValidBoardSize();
         int difficulty = MinesweeperGameLogic.GetValidDifficulty();
         // Instantiates a new board with the desired size and difficulty. 
-        Board board = new Board(size, difficulty);
+        BoardModel board = new BoardModel(size, difficulty);
 
-        while (board.DetermineGameStatus() == Board.GameStatus.InProgress)
+        while (board.DetermineGameStatus() == BoardModel.GameStatus.InProgress)
         {
             PrintBoard(board);
-            
+
+
+
 
             Console.WriteLine("Enter row and column (e.g., 1,2): ");
             string[] input = Console.ReadLine().Split(','); // Allows the user to split their input using a comma.
@@ -62,8 +64,8 @@ class Program
                     board.Cells[row, col].IsFlagged = !board.Cells[row, col].IsFlagged;
                     break;
                 case 2: // Visit
+                    BoardModel.FloodFill(board, row, col); // Call the FloodFill method
                     board.VisitCell(row, col);
-                    Board.FloodFill(board, row, col); // Call the FloodFill method
 
                     break;
                 case 3: // Reward
@@ -74,31 +76,31 @@ class Program
             }
         }
 
-        if (board.DetermineGameStatus() == Board.GameStatus.Won)
+        if (board.DetermineGameStatus() == BoardModel.GameStatus.Won)
         {
             Console.WriteLine("Congratulations! You won!");
             PrintBoard(board); // Show the final board state
         }
     }
 
-   
+
 
     /// <summary>
     /// Displays the board during the gameplay.
     /// </summary>
     /// <param name="board"></param>
-    static void PrintBoard(Board board)
+    static void PrintBoard(BoardModel board)
     {
         // Print column numbers
-        Console.Write("  "); // Adjust spacing as needed
+        Console.Write("   "); // Adjust spacing for column headers
         for (int i = 0; i < board.Size; i++)
         {
-            Console.Write($"{i,2} "); // Format column numbers
+            Console.Write($" {i,2} "); // Format column numbers with two spaces
         }
         Console.WriteLine();
 
         // Print divider line above the board
-        Console.WriteLine("  " + new string('-', board.Size * 3 + 1));
+        Console.WriteLine("   " + new string('-', board.Size * 4 + 1));
 
         // For loop and if statements to handle the output of specific components. 
         for (int row = 0; row < board.Size; row++)
@@ -143,7 +145,8 @@ class Program
             }
             Console.WriteLine();
             // Print divider line below the row
-            Console.WriteLine("  " + new string('-', board.Size * 3 + 1));
+            Console.WriteLine("   " + new string('-', board.Size * 4 + 1));
         }
     }
+
 }

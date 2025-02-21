@@ -7,12 +7,12 @@ namespace MineSweeper.BusinessLogicLayer
     public class MinesweeperGameLogic
     {
         // Declare field
-        private Board board;
+        private BoardModel board;
 
         public MinesweeperGameLogic(int size, int difficulty)
         {
             // Instantiate a new board 
-            board = new Board(size, difficulty);
+            board = new BoardModel(size, difficulty);
         }
 
         /// <summary>

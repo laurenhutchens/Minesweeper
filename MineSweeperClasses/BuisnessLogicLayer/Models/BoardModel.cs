@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace MineSweeperClasses.BuisnessLogicLayer.Models
 {
-    public class Board
+    public class BoardModel
     {
         // Getters and setters
         public int Size { get; }
@@ -23,7 +23,7 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
         /// </summary>
         /// <param name="size"></param>
         /// <param name="difficulty"></param>
-        public Board(int size, int difficulty)
+        public BoardModel(int size, int difficulty)
         {
             Size = size;
             Difficulty = difficulty;
@@ -302,42 +302,28 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
             }
 
            
+           
         }
-        public static void FloodFill(Board board, int row, int col)
+
+        public static void FloodFill(BoardModel board, int x, int y)
         {
-            // Base case: Out of bounds, already visited, or a bomb
-            if (row < 0 || row >= board.Size || col < 0 || col >= board.Size || board.Cells[row, col].IsVisited || board.Cells[row, col].IsBomb)
+            if (x < 0 || x >= board.Size || y < 0 || y >= board.Size || board.Cells[x, y].IsVisited || board.Cells[x, y].IsBomb)
             {
                 return;
             }
+            board.Cells[x, y].DisplayChar = '.';
+            board.Cells[x, y].IsVisited = true;
 
-            // Mark the cell as visited
-            board.Cells[row, col].IsVisited = true;
-
-            // Change the cell to display a '.'
-            if (board.Cells[row, col].NumberOfBombNeighbors == 0)
+            if (board.Cells[x, y].NumberOfBombNeighbors == 0)
             {
-                board.Cells[row, col].DisplayChar = '.';
-            }
-
-            // Stop if the cell has neighboring bombs
-            if (board.Cells[row, col].NumberOfBombNeighbors > 0)
-            {
-                return;
-            }
-
-            // Define directions for 8 possible adjacent cells
-            int[] rowOffsets = { -1, -1, -1, 0, 0, 1, 1, 1 };
-            int[] colOffsets = { -1, 0, 1, -1, 1, -1, 0, 1 };
-
-            // Recursively visit all adjacent cells
-            for (int i = 0; i < 8; i++)
-            {
-                int newRow = row + rowOffsets[i];
-                int newCol = col + colOffsets[i];
-
-                FloodFill(board, newRow, newCol);
+                FloodFill(board, x + 1, y);
+                FloodFill(board, x - 1, y);
+                FloodFill(board, x, y + 1);
+                FloodFill(board, x, y - 1);
             }
         }
+
+
+
     }
 }
