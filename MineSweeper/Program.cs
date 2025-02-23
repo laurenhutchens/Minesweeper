@@ -1,6 +1,6 @@
 ﻿using System;
 using MineSweeper.BusinessLogicLayer;
-using MineSweeperClasses.BuisnessLogicLayer.Models;
+using MineSweeperClasses.Models;
 
 class Program
 {
@@ -17,7 +17,6 @@ class Program
         int difficulty = MinesweeperGameLogic.GetValidDifficulty();
         // Instantiates a new board with the desired size and difficulty. 
         BoardModel board = new BoardModel(size, difficulty);
-
         while (board.DetermineGameStatus() == BoardModel.GameStatus.InProgress)
         {
             PrintBoard(board);

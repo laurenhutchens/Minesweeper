@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MineSweeperClasses.BuisnessLogicLayer.Models
+namespace MineSweeperClasses.Models
 {
     public class BoardModel
     {
@@ -301,8 +301,8 @@ namespace MineSweeperClasses.BuisnessLogicLayer.Models
                 return;
             }
 
-           
-           
+
+
         }
 
         public static void FloodFill(BoardModel board, int x, int y)

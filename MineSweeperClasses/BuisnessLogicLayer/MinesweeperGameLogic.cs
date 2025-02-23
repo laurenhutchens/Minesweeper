@@ -1,5 +1,5 @@
 ﻿using System;
-using MineSweeperClasses.BuisnessLogicLayer.Models;
+using MineSweeperClasses.Models;
 
 namespace MineSweeper.BusinessLogicLayer
 {
