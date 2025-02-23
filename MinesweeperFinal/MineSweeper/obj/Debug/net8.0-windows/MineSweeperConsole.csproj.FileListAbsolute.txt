@@ -1,0 +1,111 @@
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.exe
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.deps.json
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.runtimeconfig.json
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.AssemblyReference.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfoInputs.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfo.cs
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.CoreCompileInputs.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSwee.CB494607.Up2Date
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\refint\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.genruntimeconfig.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\ref\MineSweeperConsole.dll
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.exe
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.deps.json
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.runtimeconfig.json
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.AssemblyReference.cache
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfoInputs.cache
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfo.cs
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.CoreCompileInputs.cache
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSwee.CB494607.Up2Date
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\refint\MineSweeperConsole.dll
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.genruntimeconfig.cache
+C:\Users\majes\source\repos\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\ref\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.exe
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.deps.json
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.runtimeconfig.json
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.AssemblyReference.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfoInputs.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfo.cs
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.CoreCompileInputs.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.sourcelink.json
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSwee.CB494607.Up2Date
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\refint\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.genruntimeconfig.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\New folder\MineSweeper\MineSweeper\obj\Debug\net8.0-windows\ref\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.AssemblyReference.cache
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfoInputs.cache
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfo.cs
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.CoreCompileInputs.cache
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.sourcelink.json
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\refint\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.exe
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.deps.json
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.runtimeconfig.json
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSwee.CB494607.Up2Date
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.genruntimeconfig.cache
+C:\Users\majes\Source\Repos\MinesweeperRecursion\MineSweeper\obj\Debug\net8.0-windows\ref\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.exe
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.deps.json
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.runtimeconfig.json
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.AssemblyReference.cache
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfoInputs.cache
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfo.cs
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.CoreCompileInputs.cache
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.sourcelink.json
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSwee.CB494607.Up2Date
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\refint\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.genruntimeconfig.cache
+C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\ref\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.exe
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.deps.json
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.runtimeconfig.json
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\bin\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\bin\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.AssemblyReference.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfoInputs.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfo.cs
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.CoreCompileInputs.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\MineSwee.CB494607.Up2Date
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\refint\MineSweeperConsole.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.genruntimeconfig.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\Minesweeper-mdevarie\MineSweeper\obj\Debug\net8.0-windows\ref\MineSweeperConsole.dll
