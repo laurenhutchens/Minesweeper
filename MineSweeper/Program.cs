@@ -21,6 +21,7 @@ class Program
         while (board.DetermineGameStatus() == BoardModel.GameStatus.InProgress)
         {
             PrintBoard(board);
+            board.PrintAnswers();
 
 
 
