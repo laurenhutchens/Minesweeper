@@ -68,11 +68,11 @@ namespace MineSweeperGUI
         private void Btn_Click(object sender, EventArgs e)
         {
             // Retrieve the Button that was clicked
-            Button btn = sender as Button;
+            Button? btn = sender as Button;
             if (btn == null) return;
 
             // Retrieve the Cell associated with the button from its Tag property
-            Cell clickedCell = btn.Tag as Cell;
+            Cell? clickedCell = btn.Tag as Cell;
             if (clickedCell == null) return;
 
             int row = clickedCell.Row;
