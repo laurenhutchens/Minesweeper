@@ -1,37 +1,33 @@
-﻿/*
- * Milestone 2: Interactive Playable Version
- * Lauren Hutchens and Arie Gerard
- * Professor Hughes
- * CST-250
- * 2/9/2005
- */
-
-using System;
+﻿using System;
 using MineSweeper.BusinessLogicLayer;
-using MineSweeperClasses.BuisnessLogicLayer.Models;
+using MineSweeperClasses.Models;
 
 class Program
 {
     /// <summary>
-    /// Handles the main welcome message and gameplay operations
+    /// Handles the main welcome message and gameplay operations.
     /// </summary>
     /// <param name="args"></param>
     static void Main(string[] args)
     {
         Console.WriteLine("Welcome to Minesweeper!");
+
         // Checks to see if the size and difficulty are valid by calling the GetValid methods in MinesweeperGameLogic.
         int size = MinesweeperGameLogic.GetValidBoardSize();
         int difficulty = MinesweeperGameLogic.GetValidDifficulty();
-        // Instantiates a new board with the desires size and difficulty. 
-        Board board = new Board(size, difficulty);
-
-        while (board.DetermineGameStatus() == Board.GameStatus.InProgress)
+        // Instantiates a new board with the desired size and difficulty. 
+        BoardModel board = new BoardModel(size, difficulty);
+        while (board.DetermineGameStatus() == BoardModel.GameStatus.InProgress)
         {
             PrintBoard(board);
-           
+            board.PrintAnswers();
+
+
+
+
             Console.WriteLine("Enter row and column (e.g., 1,2): ");
-            string[] input = Console.ReadLine().Split(','); // Allows the user to split their input using a comma. 
-            //Error handeling for the input using Try.Parse. 
+            string[] input = Console.ReadLine().Split(','); // Allows the user to split their input using a comma.
+            // Error handling for the input using Try.Parse. 
             if (input.Length != 2 || !int.TryParse(input[0], out int row) || !int.TryParse(input[1], out int col) || row < 0 || row >= size || col < 0 || col >= size) // Added bounds check
             {
                 Console.WriteLine("Invalid Input. Please try again (Valid range: 0-" + (size - 1) + ")");
@@ -40,13 +36,13 @@ class Program
 
             Console.WriteLine("Enter action 1.) Flag / 2.) Visit / 3.) UseReward");
             string actionInput = Console.ReadLine();
-            //Error handeling using int.TryParse for the action. 
+            // Error handling using int.TryParse for the action. 
             if (!int.TryParse(actionInput, out int action) || action < 1 || action > 3)
             {
                 Console.WriteLine("Invalid Action. Please try again.");
                 continue;
             }
-            //Choosing a reward when 3 is clicked. 
+            // Choosing a reward when 3 is clicked. 
             if (action == 3)
             {
                 Console.WriteLine("Choose a reward: Hint");
@@ -60,6 +56,7 @@ class Program
 
             row--;
             col--;
+
             // Action loop that handles the user input actions. 
             switch (action)
             {
@@ -67,22 +64,11 @@ class Program
                     board.Cells[row, col].IsFlagged = !board.Cells[row, col].IsFlagged;
                     break;
                 case 2: // Visit
-                    if (board.Cells[row, col].IsVisited) // Prevent re-visiting
-                    {
-                        Console.WriteLine("Cell already visited.");
-                        break;
-                    }
+                    BoardModel.FloodFill(board, row, col); // Call the FloodFill method
+                    board.VisitCell(row, col);
 
-                    board.Cells[row, col].IsVisited = true;
-                    if (board.Cells[row, col].IsBomb)
-                    {
-                        Console.WriteLine("Game Over!! You hit a Bomb.");
-                        board.PrintAnswers(); // Reveal all bombs
-                        return; // End the game
-                    }
                     break;
                 case 3: // Reward
-                 
                     break;
                 default:
                     Console.WriteLine("Issue with the input");
@@ -90,36 +76,33 @@ class Program
             }
         }
 
-        if (board.DetermineGameStatus() == Board.GameStatus.Won)
+        if (board.DetermineGameStatus() == BoardModel.GameStatus.Won)
         {
             Console.WriteLine("Congratulations! You won!");
             PrintBoard(board); // Show the final board state
         }
-    }//end main method
+    }
 
 
 
-
-
-
-
-
-
-    //displays the board during the game play
-    static void PrintBoard(Board board)
+    /// <summary>
+    /// Displays the board during the gameplay.
+    /// </summary>
+    /// <param name="board"></param>
+    static void PrintBoard(BoardModel board)
     {
         // Print column numbers
-        Console.Write("  "); // Adjust spacing as needed
+        Console.Write("   "); // Adjust spacing for column headers
         for (int i = 0; i < board.Size; i++)
         {
-            Console.Write($"{i,2} "); // Format column numbers
+            Console.Write($" {i,2} "); // Format column numbers with two spaces
         }
         Console.WriteLine();
 
         // Print divider line above the board
-        Console.WriteLine("  " + new string('-', board.Size * 3 + 1));
+        Console.WriteLine("   " + new string('-', board.Size * 4 + 1));
 
-        // For loop and if statements to handle the outprint of specific components. 
+        // For loop and if statements to handle the output of specific components. 
         for (int row = 0; row < board.Size; row++)
         {
             // Print row number
@@ -148,7 +131,7 @@ class Program
                     }
                     else
                     {
-                        Console.Write(".");
+                        Console.Write(board.Cells[row, col].DisplayChar); // Use DisplayChar
                     }
                 }
                 else
@@ -162,7 +145,8 @@ class Program
             }
             Console.WriteLine();
             // Print divider line below the row
-            Console.WriteLine("  " + new string('-', board.Size * 3 + 1));
+            Console.WriteLine("   " + new string('-', board.Size * 4 + 1));
         }
     }
+
 }

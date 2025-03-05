@@ -1,80 +1,112 @@
-﻿/*
- * Milestone 2: Interactive Playable Version
- * Lauren Hutchens and Arie Gerard
- * Professor Hughes
- * CST-250
- * 2/9/2005
- */
+﻿using MineSweeperClasses.Models;
 
-using System;
-using System.Diagnostics;
-using MineSweeperClasses.BuisnessLogicLayer.Models;
-
-namespace MineSweeper.BusinessLogicLayer
+public class MinesweeperGameLogic
 {
+    public BoardModel Board { get; private set; }
+    private int boardSize;
+    private int difficulty;
+    private Random rand = new Random();
 
-    //this class encapsulates the rules and operations of the Minesweeper game
-    //this class controls the game's overall flow and rules. It initializes the game board,
-    //handles user input (row, column, and action), updates the board based on user actions (flag, visit),
-    //checks for game over conditions (win/loss), and prints the board's current state to the console.
-    //It also contains methods to get the board size and difficulty
-    public class MinesweeperGameLogic
+    public MinesweeperGameLogic(int size, int difficulty)
     {
-        //declare field
-        private Board board;
+        this.boardSize = size;
+        this.difficulty = difficulty;
 
-        public MinesweeperGameLogic(int size, int difficulty)
-        {
-            //Instantiate a new board 
-            board = new Board(size, difficulty);
-        }
+        // Initialize the board with the given size and difficulty
+        Board = new BoardModel(boardSize, difficulty);
 
-        /// <summary>
-        /// Method to ask/check if the user input is valid. In this case it is for the BoardSize. 
-        /// </summary>
-        /// <returns></returns>
-        public static int GetValidBoardSize()
+        // Initialize the game board
+        InitializeBoard();
+    }
+
+    private void InitializeBoard()
+    {
+        // First, clear any previous setup on the board
+        for (int row = 0; row < boardSize; row++)
         {
-            int size;
-            while (true)
+            for (int col = 0; col < boardSize; col++)
             {
-                Console.Write("Enter Board Size (5 - 20): ");
-                if (int.TryParse(Console.ReadLine(), out size) && size >= 5 && size <= 20)
-                {
-                    return size;
-                }
-                Console.WriteLine("Invalid Input. Please enter a number between 5 and 20.");
+                // Create a new cell for each position on the board
+                Board.Cells[row, col] = new Cell(row, col);
             }
         }
-        /// <summary>
-        /// Method to ask/check if the user input is valid. In this case it is for the Difficulty. 
-        /// </summary>
-        /// <returns></returns>
-        public static int GetValidDifficulty()
+
+        // Determine number of bombs based on difficulty
+        int totalBombs = GetTotalBombsForDifficulty(difficulty);
+
+        // Randomly place bombs on the board
+        PlaceBombs(totalBombs);
+
+        // After placing bombs, calculate neighboring bombs for each non-bomb cell
+        CalculateNeighboringBombs();
+    }
+
+    private int GetTotalBombsForDifficulty(int difficulty)
+    {
+        // The number of bombs changes based on difficulty
+        switch (difficulty)
         {
-            int difficulty;
-            while (true)
+            case 1: return (int)(boardSize * boardSize * 0.1); // Easy: 10% of cells are bombs
+            case 2: return (int)(boardSize * boardSize * 0.15); // Medium: 15% of cells are bombs
+            case 3: return (int)(boardSize * boardSize * 0.2); // Hard: 20% of cells are bombs
+            default: return 0;
+        }
+    }
+
+    private void PlaceBombs(int totalBombs)
+    {
+        int bombsPlaced = 0;
+        while (bombsPlaced < totalBombs)
+        {
+            int row = rand.Next(boardSize);
+            int col = rand.Next(boardSize);
+
+            // Place a bomb only if the cell doesn't already have a bomb
+            if (!Board.Cells[row, col].IsBomb)
             {
-                Console.WriteLine("Difficulty Levels:");
-                Console.WriteLine("1 - Easy");
-                Console.WriteLine("2 - Medium");
-                Console.WriteLine("3 - Hard");
-                Console.Write("Enter difficulty (1, 2, or 3): ");
-                //Checks to see if the user input is acceptable or not. 
-                if (int.TryParse(Console.ReadLine(), out difficulty) && difficulty >= 1 && difficulty <= 3)
-                {
-                    return difficulty;
-                }
-                Console.WriteLine("Invalid input, please enter 1, 2, or 3.");
+                Board.Cells[row, col].IsBomb = true;
+                bombsPlaced++;
             }
         }
-        public static bool GetValidInput()
+    }
+
+    private void CalculateNeighboringBombs()
+    {
+        // Iterate through each cell on the board
+        for (int row = 0; row < boardSize; row++)
         {
-            bool valid = true;
-            return true;
-            //fix out of bounds handeling. 
+            for (int col = 0; col < boardSize; col++)
+            {
+                // Skip cells that are bombs
+                if (Board.Cells[row, col].IsBomb)
+                {
+                    continue;
+                }
 
+                // Calculate the number of bombs in neighboring cells
+                int bombCount = 0;
+
+                // Check all adjacent cells (8 directions: up, down, left, right, diagonals)
+                for (int r = -1; r <= 1; r++)
+                {
+                    for (int c = -1; c <= 1; c++)
+                    {
+                        int neighborRow = row + r;
+                        int neighborCol = col + c;
+
+                        // Make sure the neighbor is within bounds
+                        if (neighborRow >= 0 && neighborRow < boardSize &&
+                            neighborCol >= 0 && neighborCol < boardSize &&
+                            Board.Cells[neighborRow, neighborCol].IsBomb)
+                        {
+                            bombCount++;
+                        }
+                    }
+                }
+
+                // Set the number of neighboring bombs for the current cell
+                Board.Cells[row, col].NumberOfBombNeighbors = bombCount;
+            }
         }
-
     }
 }

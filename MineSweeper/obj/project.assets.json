@@ -30,39 +30,40 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\laurenhutchens\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\majes\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeper\\MineSweeperConsole.csproj",
+      "projectUniqueName": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeper\\MineSweeperConsole.csproj",
       "projectName": "MineSweeperConsole",
-      "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeper\\MineSweeperConsole.csproj",
-      "packagesPath": "C:\\Users\\laurenhutchens\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeper\\obj\\",
+      "projectPath": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeper\\MineSweeperConsole.csproj",
+      "packagesPath": "C:\\Users\\majes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeper\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\laurenhutchens\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Users\\majes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0-windows"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "projectReferences": {
-            "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeperClasses\\MineSweeperClasses.csproj": {
-              "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\New folder\\MineSweeper\\MineSweeperClasses\\MineSweeperClasses.csproj"
+            "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeperClasses\\MineSweeperClasses.csproj": {
+              "projectPath": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeperClasses\\MineSweeperClasses.csproj"
             }
           }
         }
@@ -100,7 +101,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
