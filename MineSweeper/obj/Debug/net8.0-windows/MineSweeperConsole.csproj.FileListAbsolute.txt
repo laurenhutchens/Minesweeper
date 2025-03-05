@@ -91,3 +91,12 @@ C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windo
 C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.pdb
 C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.genruntimeconfig.cache
 C:\Users\majes\Source\Repos\Minesweepercheck1\MineSweeper\obj\Debug\net8.0-windows\ref\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\MinesweeperGUI\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.AssemblyReference.cache
+C:\Users\majes\Source\Repos\MinesweeperGUI\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\majes\Source\Repos\MinesweeperGUI\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfoInputs.cache
+C:\Users\majes\Source\Repos\MinesweeperGUI\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.AssemblyInfo.cs
+C:\Users\majes\Source\Repos\MinesweeperGUI\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.csproj.CoreCompileInputs.cache
+C:\Users\majes\Source\Repos\MinesweeperGUI\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.sourcelink.json
+C:\Users\majes\Source\Repos\MinesweeperGUI\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\MinesweeperGUI\MineSweeper\obj\Debug\net8.0-windows\refint\MineSweeperConsole.dll
+C:\Users\majes\Source\Repos\MinesweeperGUI\MineSweeper\obj\Debug\net8.0-windows\MineSweeperConsole.pdb

@@ -3,57 +3,174 @@ using MineSweeperClasses.Models;
 
 namespace MineSweeper.BusinessLogicLayer
 {
-    // This class encapsulates the rules and operations of the Minesweeper game
     public class MinesweeperGameLogic
     {
-        // Declare field
+        // Declare field for the board model (the game board)
         private BoardModel board;
 
         public MinesweeperGameLogic(int size, int difficulty)
         {
-            // Instantiate a new board 
+            // Initialize the board based on size and difficulty
             board = new BoardModel(size, difficulty);
         }
 
-        /// <summary>
-        /// Method to ask/check if the user input is valid. In this case it is for the BoardSize. 
-        /// </summary>
-        /// <returns></returns>
-        public static int GetValidBoardSize()
+        // Method to get the current state of the board
+        public BoardModel GetBoardModel()
         {
-            int size;
-            while (true)
-            {
-                Console.Write("Enter Board Size (5 - 20): ");
-                if (int.TryParse(Console.ReadLine(), out size) && size >= 5 && size <= 20)
+            return board;
+        }
+
+        /// <summary>
+        /// Method to handle the player's move. It checks if the clicked cell is a bomb or not,
+        /// and processes the move accordingly (reveals the cell, checks game status).
+        /// </summary>
+        /// <param name="row">The row of the clicked cell.</param>
+        /// <param name="col">The column of the clicked cell.</param>
+        public void MakeMove(int row, int col)
+        {
+           {
+                if (row < 0 || row >= board.Size || col < 0 || col >= board.Size)
                 {
-                    return size;
+                    throw new ArgumentException("Invalid cell coordinates.");
                 }
-                Console.WriteLine("Invalid Input. Please enter a number between 5 and 20.");
+
+                // If the cell is already visited or flagged, we don't process it.
+                var cell = board.Cells[row, col];
+                if (cell.IsVisited || cell.IsFlagged)
+                {
+                    return;
+                }
+
+                // Visit the cell
+                cell.IsVisited = true;
+
+                // If it's a bomb, game over
+                if (cell.IsBomb)
+                {
+                  // Set game status to Lost
+                    RevealAllBombs(); // Reveal all bombs
+                    return;
+                }
+
+                // If the cell has no neighboring bombs, use flood fill to reveal adjacent safe cells
+                if (cell.NumberOfBombNeighbors == 0)
+                {
+                    FloodFill(row, col);
+                }
+
+                // After each move, check if the game has been won
+                if (CheckGameWin())
+                {
+                   
+                }
+                else
+                {
+                   
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Method to check if the game has been won. 
+        /// The game is won when all non-bomb cells have been revealed.
+        /// </summary>
+        /// <returns>True if the game is won, false otherwise.</returns>
+        public bool CheckGameWin()
+        {
+            foreach (var cell in board.Cells)
+            {
+                // If there's any non-bomb cell that's not revealed, the game is not won yet.
+                if (!cell.IsBomb && !cell.IsVisited)
+                {
+                    return false;
+                }
+            }
+
+            return true; // All non-bomb cells are revealed
+        }
+
+        /// <summary>
+        /// Recursively reveals all connected cells if they have no adjacent bombs (flood fill).
+        /// </summary>
+        private void FloodFill(int row, int col)
+        {
+            // Perform flood fill if the cell is within bounds and is safe
+            if (row < 0 || row >= board.Size || col < 0 || col >= board.Size ||
+                board.Cells[row, col].IsVisited || board.Cells[row, col].IsBomb)
+            {
+                return;
+            }
+
+            var cell = board.Cells[row, col];
+            cell.IsVisited = true;
+
+            // If the current cell has no bomb neighbors, flood fill its neighbors
+            if (cell.NumberOfBombNeighbors == 0)
+            {
+                FloodFill(row - 1, col); // Up
+                FloodFill(row + 1, col); // Down
+                FloodFill(row, col - 1); // Left
+                FloodFill(row, col + 1); // Right
             }
         }
 
         /// <summary>
-        /// Method to ask/check if the user input is valid. In this case it is for the Difficulty. 
+        /// Reveals all bombs on the board (used when the game is lost).
         /// </summary>
-        /// <returns></returns>
-        public static int GetValidDifficulty()
+        private void RevealAllBombs()
         {
-            int difficulty;
-            while (true)
+            foreach (var cell in board.Cells)
             {
-                Console.WriteLine("Difficulty Levels:");
-                Console.WriteLine("1 - Easy");
-                Console.WriteLine("2 - Medium");
-                Console.WriteLine("3 - Hard");
-                Console.Write("Enter difficulty (1, 2, or 3): ");
-                // Checks to see if the user input is acceptable or not. 
-                if (int.TryParse(Console.ReadLine(), out difficulty) && difficulty >= 1 && difficulty <= 3)
+                if (cell.IsBomb)
                 {
-                    return difficulty;
+                    cell.IsVisited = true;
                 }
-                Console.WriteLine("Invalid input, please enter 1, 2, or 3.");
             }
         }
+
+        /// <summary>
+        /// Marks a cell as flagged or unflagged.
+        /// </summary>
+        /// <param name="row">The row of the cell to flag/unflag.</param>
+        /// <param name="col">The column of the cell to flag/unflag.</param>
+        public void ToggleFlag(int row, int col)
+        {
+            if (row < 0 || row >= board.Size || col < 0 || col >= board.Size)
+            {
+                throw new ArgumentException("Invalid cell coordinates.");
+            }
+
+            var cell = board.Cells[row, col];
+            if (cell.IsVisited)
+            {
+                return; // Can't flag a visited cell
+            }
+
+            cell.IsFlagged = !cell.IsFlagged;
+        }
+
+        /// <summary>
+        /// Uses a special bonus like a hint to help the player.
+        /// </summary>
+        /// <param name="rewardType">The type of reward (e.g., "Hint").</param>
+        /// <returns>True if the reward was used, false if not.</returns>
+        public bool UseSpecialBonus(string rewardType)
+        {
+            return board.UseSpecialBonus(rewardType);
+        }
+
+        /// <summary>
+        /// Returns whether the game is over (either won or lost).
+        /// </summary>
+        /// <returns>True if the game is over, false if ongoing.</returns>
+      
+       
+        /// <summary>
+        /// Get the current game status (InProgress, Won, Lost).
+        /// </summary>
+        /// <returns>The current game status.</returns>
+      
+    
     }
 }

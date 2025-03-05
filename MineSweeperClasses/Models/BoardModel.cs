@@ -239,6 +239,10 @@ namespace MineSweeperClasses.Models
         /// Use every turn to determine the current game state
         /// </summary>
         /// <returns></returns>
+        /// <summary>
+        /// Determines the current game status (InProgress, Won, or Lost).
+        /// </summary>
+        /// <returns>GameStatus indicating the current state of the game.</returns>
         public GameStatus DetermineGameStatus()
         {
             bool allNonBombCellsRevealed = true;
@@ -249,27 +253,35 @@ namespace MineSweeperClasses.Models
                 {
                     Cell currentCell = Cells[row, col];
 
+                    // If a bomb is visited, the game is lost.
                     if (currentCell.IsBomb && currentCell.IsVisited)
                     {
-                        return GameStatus.Lost; // Bomb visited - game lost
+                        return GameStatus.Lost; // Bomb visited, game lost.
                     }
 
+                    // If a non-bomb cell is not revealed, the game is not won yet.
                     if (!currentCell.IsBomb && !currentCell.IsVisited)
                     {
-                        allNonBombCellsRevealed = false; // Unvisited non-bomb cell found
+                        allNonBombCellsRevealed = false; // There are still non-bomb cells that are not revealed
+                    }
+
+                    // You can also check if any flagged cell is incorrectly flagged (optional).
+                    if (currentCell.IsFlagged && !currentCell.IsBomb)
+                    {
+                        // This could be a case where you've flagged a non-bomb cell (depending on your logic).
+                        // If you want to handle this, you can add additional logic here.
                     }
                 }
             }
 
-            // Check if ALL non-bomb cells are either visited OR correctly flagged
+            // If all non-bomb cells are revealed, the player wins the game.
             if (allNonBombCellsRevealed)
             {
-                return GameStatus.Won; // All safe cells revealed - game won
+                return GameStatus.Won; // All non-bomb cells are revealed, game won.
             }
-            else
-            {
-                return GameStatus.InProgress; // Still cells to reveal
-            }
+
+            // Otherwise, the game is still in progress.
+            return GameStatus.InProgress;
         }
 
         /// <summary>
