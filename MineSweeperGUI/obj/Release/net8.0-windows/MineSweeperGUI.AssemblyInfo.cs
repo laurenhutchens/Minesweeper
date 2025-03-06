@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("MineSweeperConsole")]
-[assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("MineSweeperGUI")]
+[assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b80430184cb16505fa749db68a827899378b87e")]
-[assembly: System.Reflection.AssemblyProductAttribute("MineSweeperConsole")]
-[assembly: System.Reflection.AssemblyTitleAttribute("MineSweeperConsole")]
+[assembly: System.Reflection.AssemblyProductAttribute("MineSweeperGUI")]
+[assembly: System.Reflection.AssemblyTitleAttribute("MineSweeperGUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Windows7.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Windows7.0")]

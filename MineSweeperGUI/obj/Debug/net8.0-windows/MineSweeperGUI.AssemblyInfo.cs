@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MineSweeperGUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+714dc82566cb1cbbda225de5d51ed6573485e63b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0b80430184cb16505fa749db68a827899378b87e")]
 [assembly: System.Reflection.AssemblyProductAttribute("MineSweeperGUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MineSweeperGUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
