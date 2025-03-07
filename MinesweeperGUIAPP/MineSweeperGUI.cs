@@ -1,24 +1,34 @@
-using MineSweeper.BusinessLogicLayer;
 using MineSweeperClasses;
 using MineSweeperClasses.Models;
+using System.Diagnostics;
 namespace MinesweeperGUIAPP
 {
     public partial class MineSweeperGUI : Form
     {
+        private int secondsElapsed;
         private MinesweeperGameLogic gameLogic;
         private BoardModel boardModel;
         private Button[,] btnBoard;
+        private int score;
         public MineSweeperGUI()
         {
             InitializeComponent();
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+
         private void BtnStartGame_Click(object sender, EventArgs e)
         {
+            tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
+            score = 0;
+            secondsElapsed = 0;
+            tmrGameTime.Start();
+
             // Get size and difficulty values from sliders
             int size = hsbSize.Value; // Assuming hsbSize is a HorizontalScrollBar for board size (e.g., 5 - 20)
             int difficulty = hsbDifficulty.Value; // Assuming hsbDifficulty is for difficulty level (1-3)
@@ -29,7 +39,7 @@ namespace MinesweeperGUIAPP
 
             // Initialize the board buttons
             InitializeBoardButtons(size);
-
+            Console.WriteLine("Start");
             // Start the game
             UpdateBoardGUI();
         }
@@ -39,9 +49,17 @@ namespace MinesweeperGUIAPP
         {
             btnBoard = new Button[size, size];
 
-            // Remove any existing buttons from the form (if any)
-            this.Controls.Clear();
-            this.Controls.Add(btnStartGame); // Add the Start Button back to the form
+            // Reset all cells' IsVisited flag to false before starting a new game
+            for (int row = 0; row < size; row++)
+            {
+                for (int col = 0; col < size; col++)
+                {
+                    boardModel.Cells[row, col].IsVisited = false; // Reset the visited status
+                }
+            }
+
+            
+            
 
             for (int row = 0; row < size; row++)
             {
@@ -65,23 +83,81 @@ namespace MinesweeperGUIAPP
             }
         }
 
-        // Cell button click handler
-        private void CellButton_Click(object sender, EventArgs e)
+        private void CellButton_MouseUp(object sender, MouseEventArgs e)
         {
             Button clickedButton = (Button)sender;
             Point location = (Point)clickedButton.Tag;
             int row = location.X;
             int col = location.Y;
 
+            if (e.Button == MouseButtons.Right) // Check for right-click
+            {
+                // Toggle flag state
+                boardModel.Cells[row, col].IsFlagged = !boardModel.Cells[row, col].IsFlagged;
+                UpdateBoardGUI();
+            }
+            else if (e.Button == MouseButtons.Left) // Check for left-click
+            {
+                CellButton_Click(sender, e); // Call the cell click handler with row and col
+            }
+        }
+
+        // Cell button click handler
+        private void CellButton_Click(object sender, EventArgs e)
+        {
+            
+            Button clickedButton = (Button)sender;
+
+           
+            Point location = (Point)clickedButton.Tag;
+            int row = location.X;
+            int col = location.Y;
+
+           
+
+
+            // Mark the clicked cell as visited
+
+
             // Make the move in the game logic
             gameLogic.MakeMove(row, col);
 
-            // Update the board UI to reflect the current state
-            UpdateBoardGUI();
+            // Get the clicked cell from the game logic to check its status
+            var clickedCell = boardModel.Cells[row, col];
+
+            if (!clickedCell.IsVisited)
+            {
+                score += 200;
+                lblScore.Text = $"Score: {score}";
+            }
+
+            
+
+            // If the clicked cell has no bomb neighbors, trigger flood fill
+
+            // Trigger flood fill to reveal all adjacent empty cells
+            if (clickedCell.NumberOfBombNeighbors == 0)
+            {
+                FloodFill(boardModel, row, col, this);
+
+                Debug.WriteLine("Called");
+                UpdateBoardGUI();
+
+            }
+            else
+            {
+                boardModel.Cells[row, col].IsVisited = true;
+                UpdateBoardGUI();
+            }
+
 
             // Check if the game is won or lost
             CheckGameStatus();
         }
+
+
+
+
 
         // Method to update the board UI based on the game state
         private void UpdateBoardGUI()
@@ -96,7 +172,21 @@ namespace MinesweeperGUIAPP
                     // Set the button text based on the cell's state
                     if (cell.IsVisited)
                     {
-                        cellButton.Text = cell.DisplayChar.ToString();
+                        if (cell.IsBomb)
+                        {
+                            cellButton.Text = "B"; // Indicate bomb
+                        }
+                        else if (cell.NumberOfBombNeighbors == 0)
+                        {
+                            cellButton.Text = ".";  // Empty for cells with no neighbors
+                        }
+                        else
+                        {
+                            cellButton.Text = cell.NumberOfBombNeighbors.ToString();
+                        }
+
+                        // Optionally, apply color styling for cells with bomb neighbors
+
                         cellButton.Enabled = false; // Disable the button once it's visited
                     }
                     else
@@ -105,18 +195,17 @@ namespace MinesweeperGUIAPP
                         cellButton.Enabled = true; // Enable the button for clicking
                     }
 
-                    // Optionally, apply different styles to bombs or safe cells
-                    if (cell.IsBomb)
-                    {
-                        cellButton.BackColor = Color.Red; // For bombs
-                    }
-                    else
-                    {
-                        cellButton.BackColor = Color.LightGray; // For safe cells
-                    }
+                    // Apply different styles to bombs or safe cells
+
                 }
             }
+            Refresh(); // Refresh the UI after updates
         }
+
+
+
+
+
 
         // Method to check the current game status (Win or Lose)
         private void CheckGameStatus()
@@ -131,6 +220,8 @@ namespace MinesweeperGUIAPP
             {
                 MessageBox.Show("Game Over! You hit a bomb.");
                 // Optionally, reveal all bombs and disable further game input
+                tmrGameTime.Stop();
+                ResetGame();
             }
         }
 
@@ -151,6 +242,75 @@ namespace MinesweeperGUIAPP
         private void BtnResetGame_Click(object sender, EventArgs e)
         {
             BtnStartGame_Click(sender, e); // Re-start the game
+
         }
+        //Put floodfill into the GameLogic
+
+        public static void FloodFill(BoardModel board, int x, int y, MineSweeperGUI gui)
+        {
+            Debug.WriteLine("x: " + x + " y: " + y);
+            // Boundary check
+            if (x < 0 || x >= board.Size || y < 0 || y >= board.Size)
+            {
+                Debug.WriteLine("Boundary Check Fail: ", x, y);
+                return;
+            }
+
+            // Stop if the cell is already visited, is a bomb, or has already been revealed
+            if (board.Cells[x, y].IsVisited || board.Cells[x, y].IsBomb || board.Cells[x, y].NumberOfBombNeighbors > 0)
+            {
+                Debug.WriteLine("Is Visited: " + board.Cells[x, y].IsVisited + " is Bomb: " + board.Cells[x, y].IsBomb);
+                return;
+            }
+
+            Debug.WriteLine("Setting visited to true");
+            // Mark the cell as visited
+            board.Cells[x, y].IsVisited = true;
+
+
+            // Update the board UI after visiting the cell
+            gui.UpdateBoardGUI();
+
+
+            // Recursively reveal adjacent empty cells
+            FloodFill(board, x + 1, y, gui);  // Right
+            Debug.WriteLine("RIght");
+            FloodFill(board, x - 1, y, gui);
+            Debug.WriteLine("left");// Left
+            FloodFill(board, x, y + 1, gui);
+            Debug.WriteLine("down");// Down
+            FloodFill(board, x, y - 1, gui);
+            Debug.WriteLine("up");// Up
+
+        }
+
+        private void TmrGameTime_Tick(object sender, EventArgs e)
+        {
+            {
+                secondsElapsed++;
+                lblGameTime.Text = TimeSpan.FromSeconds(secondsElapsed).ToString();
+
+                score -= 1;
+                lblScore.Text = $"Score: {score}";
+
+            }
+        }
+        private void ResetGame()
+        {
+            secondsElapsed = 0;
+            lblGameTime.Text = "00:00:00";
+
+            foreach (var button in btnBoard)
+            {
+                this.Controls.Remove(button); // Remove buttons from the form
+            }
+            score = 0;
+            lblScore.Text = "Score: 0";
+        }
+
+       
+
+
+
     }
 }
