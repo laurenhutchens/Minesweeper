@@ -99,6 +99,7 @@ namespace MinesweeperGUIAPP
             else if (e.Button == MouseButtons.Left) // Check for left-click
             {
                 CellButton_Click(sender, e); // Call the cell click handler with row and col
+                //Commit
             }
         }
 
