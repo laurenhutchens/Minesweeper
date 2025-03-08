@@ -100,6 +100,7 @@ namespace MinesweeperGUIAPP
             {
                 CellButton_Click(sender, e); // Call the cell click handler with row and col
                 //Commit
+                //Commit 
             }
         }
 
