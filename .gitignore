@@ -2,3 +2,4 @@
 bin/
 obj/
 
+-e "bin/\nobj/" 
