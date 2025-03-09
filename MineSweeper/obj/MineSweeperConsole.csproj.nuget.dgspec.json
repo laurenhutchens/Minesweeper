@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeper\\MineSweeperConsole.csproj": {}
+    "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeper\\MineSweeperConsole.csproj": {}
   },
   "projects": {
-    "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeperClasses\\MineSweeperClasses.csproj": {
+    "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeperClasses\\MineSweeperClasses.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeperClasses\\MineSweeperClasses.csproj",
+        "projectUniqueName": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeperClasses\\MineSweeperClasses.csproj",
         "projectName": "MineSweeperClasses",
-        "projectPath": "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeperClasses\\MineSweeperClasses.csproj",
+        "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeperClasses\\MineSweeperClasses.csproj",
         "packagesPath": "C:\\Users\\laurenhutchens\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeperClasses\\obj\\",
+        "outputPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeperClasses\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -71,14 +71,14 @@
         }
       }
     },
-    "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeper\\MineSweeperConsole.csproj": {
+    "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeper\\MineSweeperConsole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeper\\MineSweeperConsole.csproj",
+        "projectUniqueName": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeper\\MineSweeperConsole.csproj",
         "projectName": "MineSweeperConsole",
-        "projectPath": "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeper\\MineSweeperConsole.csproj",
+        "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeper\\MineSweeperConsole.csproj",
         "packagesPath": "C:\\Users\\laurenhutchens\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeper\\obj\\",
+        "outputPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -99,8 +99,8 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeperClasses\\MineSweeperClasses.csproj": {
-                "projectPath": "C:\\Users\\laurenhutchens\\Source\\Repos\\Minesweeper\\MineSweeperClasses\\MineSweeperClasses.csproj"
+              "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeperClasses\\MineSweeperClasses.csproj": {
+                "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeperClasses\\MineSweeperClasses.csproj"
               }
             }
           }
