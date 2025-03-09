@@ -11,32 +11,12 @@ namespace MinesweeperGUIAPP
         private Button[,] btnBoard;
         private int score;
 
-        private TrackBar hsbSize;
-        private TrackBar hsbDifficulty;
-
         public FrmStart()
         {
             InitializeComponent();
 
-            // Create and initialize hsbSize
-            hsbSize = new TrackBar();
-            hsbSize.Minimum = 5;  // Set minimum value (adjust as needed)
-            hsbSize.Maximum = 20; // Set maximum value (adjust as needed)
-            hsbSize.Value = 10; // Set default value (adjust as needed)
-            hsbSize.Location = new Point(10, 10); // Set location (adjust as needed)
-            hsbSize.Size = new Size(200, 45); // Set size (adjust as needed)
-            this.Controls.Add(hsbSize); // Add to form
-
-            // Create and initialize hsbDifficulty
-            hsbDifficulty = new TrackBar();
-            hsbDifficulty.Minimum = 1; // Set the minimum value
-            hsbDifficulty.Maximum = 3; // Set the maximum value
-            hsbDifficulty.Value = 1;   // Set the initial value
-            hsbDifficulty.Location = new Point(10, 10); // Set the location on the form
-            hsbDifficulty.Size = new Size(200, 45); // Set the size of the control
-
-            // Add the control to the form's Controls collection
-            this.Controls.Add(hsbDifficulty);
+           
+           
         }
 
         // Method to initialize the board buttons based on the board size
@@ -52,10 +32,6 @@ namespace MinesweeperGUIAPP
                     boardModel.Cells[row, col].IsVisited = false; // Reset the visited status
                 }
             }
-
-
-
-
             for (int row = 0; row < size; row++)
             {
                 for (int col = 0; col < size; col++)
@@ -347,6 +323,11 @@ namespace MinesweeperGUIAPP
         }
 
         private void BtnChooseDifficultyClickEH(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmStart_Load(object sender, EventArgs e)
         {
 
         }
