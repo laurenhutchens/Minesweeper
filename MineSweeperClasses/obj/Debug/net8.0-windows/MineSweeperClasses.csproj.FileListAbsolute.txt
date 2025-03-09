@@ -13,3 +13,15 @@ C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone
 C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\CloneMilestoneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\refint\MineSweeperClasses.dll
 C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\CloneMilestoneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.pdb
 C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\CloneMilestoneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\ref\MineSweeperClasses.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\bin\Debug\Debug\net8.0-windows\MineSweeperClasses.deps.json
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\bin\Debug\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\bin\Debug\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.AssemblyInfoInputs.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.AssemblyInfo.cs
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.csproj.CoreCompileInputs.cache
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.sourcelink.json
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\refint\MineSweeperClasses.dll
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\laurenhutchens\OneDrive\Academics\current uni classes\CST-250\milestone\MilestoneCloneMineSweeper\MineSweeperClasses\obj\Debug\net8.0-windows\ref\MineSweeperClasses.dll
