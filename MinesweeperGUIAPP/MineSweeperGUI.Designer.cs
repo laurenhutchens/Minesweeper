@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            label2 = new Label();
-            label1 = new Label();
-            hsbSize = new HScrollBar();
-            hsbDifficulty = new HScrollBar();
             btnStartGame = new Button();
             tmrGameTime = new System.Windows.Forms.Timer(components);
             label3 = new Label();
@@ -40,46 +36,6 @@
             label4 = new Label();
             lblScore = new Label();
             SuspendLayout();
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(678, 67);
-            label2.Name = "label2";
-            label2.Size = new Size(69, 20);
-            label2.TabIndex = 9;
-            label2.Text = "Difficulty";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(690, 146);
-            label1.Name = "label1";
-            label1.Size = new Size(36, 20);
-            label1.TabIndex = 8;
-            label1.Text = "Size";
-            // 
-            // hsbSize
-            // 
-            hsbSize.LargeChange = 5;
-            hsbSize.Location = new Point(662, 185);
-            hsbSize.Maximum = 20;
-            hsbSize.Minimum = 5;
-            hsbSize.Name = "hsbSize";
-            hsbSize.Size = new Size(100, 26);
-            hsbSize.TabIndex = 7;
-            hsbSize.Value = 5;
-            // 
-            // hsbDifficulty
-            // 
-            hsbDifficulty.LargeChange = 1;
-            hsbDifficulty.Location = new Point(662, 100);
-            hsbDifficulty.Maximum = 3;
-            hsbDifficulty.Minimum = 1;
-            hsbDifficulty.Name = "hsbDifficulty";
-            hsbDifficulty.Size = new Size(100, 26);
-            hsbDifficulty.TabIndex = 6;
-            hsbDifficulty.Value = 1;
             // 
             // btnStartGame
             // 
@@ -141,10 +97,6 @@
             Controls.Add(label4);
             Controls.Add(lblGameTime);
             Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(hsbSize);
-            Controls.Add(hsbDifficulty);
             Controls.Add(btnStartGame);
             Name = "MineSweeperGUI";
             Text = "Minesweeper";
@@ -154,11 +106,6 @@
         }
 
         #endregion
-
-        private Label label2;
-        private Label label1;
-        private HScrollBar hsbSize;
-        private HScrollBar hsbDifficulty;
         private Button btnStartGame;
         private System.Windows.Forms.Timer tmrGameTime;
         private Label label3;
