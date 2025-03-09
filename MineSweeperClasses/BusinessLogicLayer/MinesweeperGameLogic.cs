@@ -1,4 +1,5 @@
 ﻿using MineSweeperClasses.Models;
+using System;
 
 public class MinesweeperGameLogic
 {
@@ -107,6 +108,44 @@ public class MinesweeperGameLogic
                 // Set the number of neighboring bombs for the current cell
                 Board.Cells[row, col].NumberOfBombNeighbors = bombCount;
             }
+        }
+    }
+
+    /// <summary>
+    /// Get Valid Board Size method
+    /// NEW
+    /// </summary>
+    /// <returns></returns>
+    public static int GetValidBoardSize()
+    {
+        int size;
+        while (true)
+        {
+            Console.WriteLine("Enter board size (5-20): ");
+            if (int.TryParse(Console.ReadLine(), out size) && size >= 5 && size <= 20)
+            {
+                return size;
+            }
+            Console.WriteLine("Invalid input. Please enter a number between 5 and 20.");
+        }
+    }
+
+    /// <summary>
+    /// Get Valid Difficulty method
+    /// NEW
+    /// </summary>
+    /// <returns></returns>
+    public static int GetValidDifficulty()
+    {
+        int difficulty;
+        while (true)
+        {
+            Console.WriteLine("Enter difficulty (1: Easy, 2: Medium, 3: Hard): ");
+            if (int.TryParse(Console.ReadLine(), out difficulty) && difficulty >= 1 && difficulty <= 3)
+            {
+                return difficulty;
+            }
+            Console.WriteLine("Invalid input. Please enter 1, 2, or 3.");
         }
     }
 }

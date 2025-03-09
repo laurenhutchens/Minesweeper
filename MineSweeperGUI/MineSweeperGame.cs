@@ -11,6 +11,10 @@ namespace MineSweeperGUI
         public MinesweeperGameLogic gameLogic; // Game logic to manage the board and game state
         public BoardModel board; // Reference to the board model to manage cells and status
 
+        //generated properties for hScrollBars
+        public TrackBar hsbSize { get; set; }
+        public TrackBar hsbDifficulty { get; set; }
+
         public MineSweeperGame()
         {
             InitializeComponent();
@@ -190,6 +194,11 @@ namespace MineSweeperGUI
 
                 btn.Enabled = false; // Disable buttons when the game ends
             }
+        }
+
+        private void BtnRestartClickEH(object sender, EventArgs e)
+        {
+
         }
     }
 }

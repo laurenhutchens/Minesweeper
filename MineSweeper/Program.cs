@@ -1,5 +1,5 @@
-﻿using System;
-using MineSweeper.BusinessLogicLayer;
+﻿//using System;
+//using MineSweeperClasses.BusinessLogicLayer;
 using MineSweeperClasses.Models;
 
 class Program

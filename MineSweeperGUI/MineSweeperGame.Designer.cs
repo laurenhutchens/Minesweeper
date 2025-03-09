@@ -28,42 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnStartGame = new Button();
-            btnReset = new Button();
+            btnRestartGame = new Button();
             label1 = new Label();
             lblScoreAmount = new Label();
             lblStartTime = new Label();
             lblTimer = new Label();
-            hsbDifficulty = new HScrollBar();
-            hsbSize = new HScrollBar();
-            label2 = new Label();
-            label3 = new Label();
             SuspendLayout();
             // 
-            // btnStartGame
+            // btnRestartGame
             // 
-            btnStartGame.Location = new Point(627, 103);
-            btnStartGame.Name = "btnStartGame";
-            btnStartGame.Size = new Size(94, 29);
-            btnStartGame.TabIndex = 0;
-            btnStartGame.Text = "Start Game";
-            btnStartGame.UseVisualStyleBackColor = true;
-            btnStartGame.Click += btnStartGame_Click;
-            // 
-            // btnReset
-            // 
-            btnReset.Location = new Point(627, 158);
-            btnReset.Name = "btnReset";
-            btnReset.Size = new Size(94, 29);
-            btnReset.TabIndex = 1;
-            btnReset.Text = "Reset";
-            btnReset.UseVisualStyleBackColor = true;
-            btnReset.Click += btnReset_Click;
+            btnRestartGame.Location = new Point(627, 158);
+            btnRestartGame.Name = "btnRestartGame";
+            btnRestartGame.Size = new Size(94, 29);
+            btnRestartGame.TabIndex = 1;
+            btnRestartGame.Text = "Restart Gane";
+            btnRestartGame.UseVisualStyleBackColor = true;
+            btnRestartGame.Click += BtnRestartClickEH;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(627, 63);
+            label1.Location = new Point(627, 95);
             label1.Name = "label1";
             label1.Size = new Size(53, 20);
             label1.TabIndex = 2;
@@ -72,7 +57,7 @@
             // lblScoreAmount
             // 
             lblScoreAmount.AutoSize = true;
-            lblScoreAmount.Location = new Point(723, 63);
+            lblScoreAmount.Location = new Point(723, 95);
             lblScoreAmount.Name = "lblScoreAmount";
             lblScoreAmount.Size = new Size(25, 20);
             lblScoreAmount.TabIndex = 3;
@@ -81,7 +66,7 @@
             // lblStartTime
             // 
             lblStartTime.AutoSize = true;
-            lblStartTime.Location = new Point(627, 16);
+            lblStartTime.Location = new Point(627, 48);
             lblStartTime.Name = "lblStartTime";
             lblStartTime.Size = new Size(80, 20);
             lblStartTime.TabIndex = 4;
@@ -91,66 +76,22 @@
             // lblTimer
             // 
             lblTimer.AutoSize = true;
-            lblTimer.Location = new Point(723, 16);
+            lblTimer.Location = new Point(723, 48);
             lblTimer.Name = "lblTimer";
             lblTimer.Size = new Size(25, 20);
             lblTimer.TabIndex = 5;
             lblTimer.Text = "00";
-            // 
-            // hsbDifficulty
-            // 
-            hsbDifficulty.LargeChange = 3;
-            hsbDifficulty.Location = new Point(627, 230);
-            hsbDifficulty.Maximum = 3;
-            hsbDifficulty.Minimum = 1;
-            hsbDifficulty.Name = "hsbDifficulty";
-            hsbDifficulty.Size = new Size(164, 26);
-            hsbDifficulty.TabIndex = 7;
-            hsbDifficulty.Value = 1;
-            // 
-            // hsbSize
-            // 
-            hsbSize.Location = new Point(621, 327);
-            hsbSize.Maximum = 20;
-            hsbSize.Minimum = 5;
-            hsbSize.Name = "hsbSize";
-            hsbSize.Size = new Size(170, 26);
-            hsbSize.TabIndex = 8;
-            hsbSize.Value = 5;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(686, 210);
-            label2.Name = "label2";
-            label2.Size = new Size(69, 20);
-            label2.TabIndex = 9;
-            label2.Text = "Difficulty";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(686, 307);
-            label3.Name = "label3";
-            label3.Size = new Size(36, 20);
-            label3.TabIndex = 10;
-            label3.Text = "Size";
             // 
             // MineSweeperGame
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label3);
-            Controls.Add(label2);
-            Controls.Add(hsbSize);
-            Controls.Add(hsbDifficulty);
             Controls.Add(lblTimer);
             Controls.Add(lblStartTime);
             Controls.Add(lblScoreAmount);
             Controls.Add(label1);
-            Controls.Add(btnReset);
-            Controls.Add(btnStartGame);
+            Controls.Add(btnRestartGame);
             Name = "MineSweeperGame";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MineSweeper";
@@ -161,14 +102,10 @@
         #endregion
 
         private Button btnStartGame;
-        private Button btnReset;
+        private Button btnRestartGame;
         private Label label1;
         private Label lblScoreAmount;
         private Label lblStartTime;
         private Label lblTimer;
-        private HScrollBar hsbDifficulty;
-        private HScrollBar hsbSize;
-        private Label label2;
-        private Label label3;
     }
 }

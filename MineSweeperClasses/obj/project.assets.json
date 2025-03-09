@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeperClasses\\MineSweeperClasses.csproj",
+      "projectUniqueName": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\CloneMilestoneMineSweeper\\MineSweeperClasses\\MineSweeperClasses.csproj",
       "projectName": "MineSweeperClasses",
-      "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeperClasses\\MineSweeperClasses.csproj",
+      "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\CloneMilestoneMineSweeper\\MineSweeperClasses\\MineSweeperClasses.csproj",
       "packagesPath": "C:\\Users\\laurenhutchens\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\MilestoneMineSweeperGameApp\\MineSweeperClasses\\obj\\",
+      "outputPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\CloneMilestoneMineSweeper\\MineSweeperClasses\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
