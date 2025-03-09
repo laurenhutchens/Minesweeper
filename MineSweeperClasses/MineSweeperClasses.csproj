@@ -16,10 +16,4 @@
     <None Remove="UI Layer\**" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="BuisnessLogicLayer\" />
-    <Folder Include="BusinessLogicLayer\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-
 </Project>
