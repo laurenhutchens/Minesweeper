@@ -28,69 +28,94 @@
         /// </summary>
         private void InitializeComponent()
         {
-            trackBar1 = new TrackBar();
-            trackBar2 = new TrackBar();
-            label1 = new Label();
-            label2 = new Label();
-            ((System.ComponentModel.ISupportInitialize)trackBar1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar2).BeginInit();
+            trbSize = new TrackBar();
+            trbDifficulty = new TrackBar();
+            lblSize = new Label();
+            lblDifficulty = new Label();
+            lblPlayMinesweeper = new Label();
+            btnPlay = new Button();
+            ((System.ComponentModel.ISupportInitialize)trbSize).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)trbDifficulty).BeginInit();
             SuspendLayout();
             // 
-            // trackBar1
+            // trbSize
             // 
-            trackBar1.Location = new Point(344, 143);
-            trackBar1.Name = "trackBar1";
-            trackBar1.Size = new Size(130, 56);
-            trackBar1.TabIndex = 0;
+            trbSize.Location = new Point(63, 131);
+            trbSize.Name = "trbSize";
+            trbSize.Size = new Size(130, 56);
+            trbSize.TabIndex = 0;
             // 
-            // trackBar2
+            // trbDifficulty
             // 
-            trackBar2.Location = new Point(344, 299);
-            trackBar2.Name = "trackBar2";
-            trackBar2.Size = new Size(130, 56);
-            trackBar2.TabIndex = 1;
+            trbDifficulty.Location = new Point(63, 273);
+            trbDifficulty.Name = "trbDifficulty";
+            trbDifficulty.Size = new Size(130, 56);
+            trbDifficulty.TabIndex = 1;
             // 
-            // label1
+            // lblSize
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(387, 108);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 2;
-            label1.Text = "label1";
+            lblSize.AutoSize = true;
+            lblSize.Location = new Point(106, 96);
+            lblSize.Name = "lblSize";
+            lblSize.Size = new Size(36, 20);
+            lblSize.TabIndex = 2;
+            lblSize.Text = "Size";
             // 
-            // label2
+            // lblDifficulty
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(387, 276);
-            label2.Name = "label2";
-            label2.Size = new Size(50, 20);
-            label2.TabIndex = 3;
-            label2.Text = "label2";
+            lblDifficulty.AutoSize = true;
+            lblDifficulty.Location = new Point(92, 229);
+            lblDifficulty.Name = "lblDifficulty";
+            lblDifficulty.Size = new Size(69, 20);
+            lblDifficulty.TabIndex = 3;
+            lblDifficulty.Text = "Difficulty";
+            // 
+            // lblPlayMinesweeper
+            // 
+            lblPlayMinesweeper.AutoSize = true;
+            lblPlayMinesweeper.Location = new Point(38, 29);
+            lblPlayMinesweeper.Name = "lblPlayMinesweeper";
+            lblPlayMinesweeper.Size = new Size(132, 20);
+            lblPlayMinesweeper.TabIndex = 5;
+            lblPlayMinesweeper.Text = "Play Minesweeper!";
+            // 
+            // btnPlay
+            // 
+            btnPlay.Location = new Point(99, 354);
+            btnPlay.Name = "btnPlay";
+            btnPlay.Size = new Size(94, 29);
+            btnPlay.TabIndex = 6;
+            btnPlay.Text = "Play";
+            btnPlay.UseVisualStyleBackColor = true;
+            btnPlay.Click += BtnPlayClickEH;
             // 
             // FrmPlay
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label2);
-            Controls.Add(label1);
-            Controls.Add(trackBar2);
-            Controls.Add(trackBar1);
+            Controls.Add(btnPlay);
+            Controls.Add(lblPlayMinesweeper);
+            Controls.Add(lblDifficulty);
+            Controls.Add(lblSize);
+            Controls.Add(trbDifficulty);
+            Controls.Add(trbSize);
             Name = "FrmPlay";
             Text = "FrmPlay";
             Load += FrmPlayLoadEH;
-            ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trbSize).EndInit();
+            ((System.ComponentModel.ISupportInitialize)trbDifficulty).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TrackBar trackBar1;
-        private TrackBar trackBar2;
-        private Label label1;
-        private Label label2;
+        private TrackBar trbSize;
+        private TrackBar trbDifficulty;
+        private Label lblSize;
+        private Label lblDifficulty;
+        private Label lblPlayMinesweeper;
+        private Button btnPlay;
     }
 }

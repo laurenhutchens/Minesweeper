@@ -14,9 +14,6 @@ namespace MinesweeperGUIAPP
         public FrmStart()
         {
             InitializeComponent();
-
-
-
         }
 
         // Method to initialize the board buttons based on the board size
