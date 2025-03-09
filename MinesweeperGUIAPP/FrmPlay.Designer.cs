@@ -79,6 +79,7 @@
             Controls.Add(trackBar1);
             Name = "FrmPlay";
             Text = "FrmPlay";
+            Load += FrmPlayLoadEH;
             ((System.ComponentModel.ISupportInitialize)trackBar1).EndInit();
             ((System.ComponentModel.ISupportInitialize)trackBar2).EndInit();
             ResumeLayout(false);

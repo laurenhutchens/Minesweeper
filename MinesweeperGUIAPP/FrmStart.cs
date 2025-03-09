@@ -15,8 +15,8 @@ namespace MinesweeperGUIAPP
         {
             InitializeComponent();
 
-           
-           
+
+
         }
 
         // Method to initialize the board buttons based on the board size
@@ -324,7 +324,13 @@ namespace MinesweeperGUIAPP
 
         private void BtnChooseDifficultyClickEH(object sender, EventArgs e)
         {
+            FrmPlay frmPlay = new FrmPlay();
 
+            this.Hide();
+
+            frmPlay.Show();
+
+            frmPlay.FormClosed += (s, args) => this.Show();
         }
 
         private void FrmStart_Load(object sender, EventArgs e)
