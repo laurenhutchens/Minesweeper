@@ -1,6 +1,6 @@
-﻿namespace MinesweeperGUIAPP
+﻿namespace MineSweeperGUI
 {
-    partial class FrmStartaNewGame
+    partial class FrmDifficultyAndSize
     {
         /// <summary>
         /// Required designer variable.
@@ -28,41 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblPlayMinesweeper = new Label();
             hsbSize = new HScrollBar();
             hsbDifficulty = new HScrollBar();
+            lblPlayMineSweeper = new Label();
             lblSize = new Label();
             lblDifficulty = new Label();
             btnPlay = new Button();
             SuspendLayout();
             // 
-            // lblPlayMinesweeper
-            // 
-            lblPlayMinesweeper.AutoSize = true;
-            lblPlayMinesweeper.Location = new Point(57, 30);
-            lblPlayMinesweeper.Name = "lblPlayMinesweeper";
-            lblPlayMinesweeper.Size = new Size(132, 20);
-            lblPlayMinesweeper.TabIndex = 0;
-            lblPlayMinesweeper.Text = "Play Minesweeper!";
-            // 
             // hsbSize
             // 
-            hsbSize.Location = new Point(57, 153);
+            hsbSize.Location = new Point(12, 100);
             hsbSize.Name = "hsbSize";
-            hsbSize.Size = new Size(236, 26);
-            hsbSize.TabIndex = 1;
+            hsbSize.Size = new Size(301, 26);
+            hsbSize.TabIndex = 0;
             // 
             // hsbDifficulty
             // 
-            hsbDifficulty.Location = new Point(57, 265);
+            hsbDifficulty.Location = new Point(12, 199);
             hsbDifficulty.Name = "hsbDifficulty";
-            hsbDifficulty.Size = new Size(236, 26);
-            hsbDifficulty.TabIndex = 2;
+            hsbDifficulty.Size = new Size(301, 26);
+            hsbDifficulty.TabIndex = 1;
+            // 
+            // lblPlayMineSweeper
+            // 
+            lblPlayMineSweeper.AutoSize = true;
+            lblPlayMineSweeper.Location = new Point(12, 20);
+            lblPlayMineSweeper.Name = "lblPlayMineSweeper";
+            lblPlayMineSweeper.Size = new Size(134, 20);
+            lblPlayMineSweeper.TabIndex = 2;
+            lblPlayMineSweeper.Text = "Play MineSweeper!";
             // 
             // lblSize
             // 
             lblSize.AutoSize = true;
-            lblSize.Location = new Point(57, 116);
+            lblSize.Location = new Point(12, 71);
             lblSize.Name = "lblSize";
             lblSize.Size = new Size(36, 20);
             lblSize.TabIndex = 3;
@@ -71,7 +71,7 @@
             // lblDifficulty
             // 
             lblDifficulty.AutoSize = true;
-            lblDifficulty.Location = new Point(57, 230);
+            lblDifficulty.Location = new Point(12, 179);
             lblDifficulty.Name = "lblDifficulty";
             lblDifficulty.Size = new Size(69, 20);
             lblDifficulty.TabIndex = 4;
@@ -79,14 +79,15 @@
             // 
             // btnPlay
             // 
-            btnPlay.Location = new Point(303, 303);
+            btnPlay.Location = new Point(74, 228);
             btnPlay.Name = "btnPlay";
             btnPlay.Size = new Size(94, 29);
             btnPlay.TabIndex = 5;
             btnPlay.Text = "Play";
             btnPlay.UseVisualStyleBackColor = true;
+            btnPlay.Click += BtnPlayClickEH;
             // 
-            // FrmStartaNewGame
+            // FrmDifficultyAndSize
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -94,20 +95,20 @@
             Controls.Add(btnPlay);
             Controls.Add(lblDifficulty);
             Controls.Add(lblSize);
+            Controls.Add(lblPlayMineSweeper);
             Controls.Add(hsbDifficulty);
             Controls.Add(hsbSize);
-            Controls.Add(lblPlayMinesweeper);
-            Name = "FrmStartaNewGame";
-            Text = "Start a New Game";
+            Name = "FrmDifficultyAndSize";
+            Text = "FrmDifficultyAndSize";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label lblPlayMinesweeper;
         private HScrollBar hsbSize;
         private HScrollBar hsbDifficulty;
+        private Label lblPlayMineSweeper;
         private Label lblSize;
         private Label lblDifficulty;
         private Button btnPlay;

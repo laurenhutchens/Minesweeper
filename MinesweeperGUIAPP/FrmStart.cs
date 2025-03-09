@@ -3,45 +3,40 @@ using MineSweeperClasses.Models;
 using System.Diagnostics;
 namespace MinesweeperGUIAPP
 {
-    public partial class MineSweeperGUI : Form
+    public partial class FrmStart : Form
     {
         private int secondsElapsed;
         private MinesweeperGameLogic gameLogic;
         private BoardModel boardModel;
         private Button[,] btnBoard;
         private int score;
-        public MineSweeperGUI()
+
+        private TrackBar hsbSize;
+        private TrackBar hsbDifficulty;
+
+        public FrmStart()
         {
             InitializeComponent();
 
+            // Create and initialize hsbSize
+            hsbSize = new TrackBar();
+            hsbSize.Minimum = 5;  // Set minimum value (adjust as needed)
+            hsbSize.Maximum = 20; // Set maximum value (adjust as needed)
+            hsbSize.Value = 10; // Set default value (adjust as needed)
+            hsbSize.Location = new Point(10, 10); // Set location (adjust as needed)
+            hsbSize.Size = new Size(200, 45); // Set size (adjust as needed)
+            this.Controls.Add(hsbSize); // Add to form
 
-        }
+            // Create and initialize hsbDifficulty
+            hsbDifficulty = new TrackBar();
+            hsbDifficulty.Minimum = 1; // Set the minimum value
+            hsbDifficulty.Maximum = 3; // Set the maximum value
+            hsbDifficulty.Value = 1;   // Set the initial value
+            hsbDifficulty.Location = new Point(10, 10); // Set the location on the form
+            hsbDifficulty.Size = new Size(200, 45); // Set the size of the control
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnStartGame_Click(object sender, EventArgs e)
-        {
-            tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
-            score = 0;
-            secondsElapsed = 0;
-            tmrGameTime.Start();
-
-            // Get size and difficulty values from sliders
-            int size = hsbSize.Value; // Assuming hsbSize is a HorizontalScrollBar for board size (e.g., 5 - 20)
-            int difficulty = hsbDifficulty.Value; // Assuming hsbDifficulty is for difficulty level (1-3)
-
-            // Initialize game logic with the selected size and difficulty
-            gameLogic = new MinesweeperGameLogic(size, difficulty);
-            boardModel = gameLogic.GetBoardModel();
-
-            // Initialize the board buttons
-            InitializeBoardButtons(size);
-            Console.WriteLine("Start");
-            // Start the game
-            UpdateBoardGUI();
+            // Add the control to the form's Controls collection
+            this.Controls.Add(hsbDifficulty);
         }
 
         // Method to initialize the board buttons based on the board size
@@ -58,8 +53,8 @@ namespace MinesweeperGUIAPP
                 }
             }
 
-            
-            
+
+
 
             for (int row = 0; row < size; row++)
             {
@@ -107,15 +102,15 @@ namespace MinesweeperGUIAPP
         // Cell button click handler
         private void CellButton_Click(object sender, EventArgs e)
         {
-            
+
             Button clickedButton = (Button)sender;
 
-           
+
             Point location = (Point)clickedButton.Tag;
             int row = location.X;
             int col = location.Y;
 
-           
+
 
 
             // Mark the clicked cell as visited
@@ -133,7 +128,7 @@ namespace MinesweeperGUIAPP
                 lblScore.Text = $"Score: {score}";
             }
 
-            
+
 
             // If the clicked cell has no bomb neighbors, trigger flood fill
 
@@ -243,12 +238,12 @@ namespace MinesweeperGUIAPP
         // Optional: Reset game button (if needed)
         private void BtnResetGame_Click(object sender, EventArgs e)
         {
-            BtnStartGame_Click(sender, e); // Re-start the game
+            BtnStartGameClickEH(sender, e); // Re-start the game
 
         }
         //Put floodfill into the GameLogic
 
-        public static void FloodFill(BoardModel board, int x, int y, MineSweeperGUI gui)
+        public static void FloodFill(BoardModel board, int x, int y, FrmStart gui)
         {
             Debug.WriteLine("x: " + x + " y: " + y);
             // Boundary check
@@ -310,9 +305,50 @@ namespace MinesweeperGUIAPP
             lblScore.Text = "Score: 0";
         }
 
-       
+        private void FrmStartLoadEH(object sender, EventArgs e)
+        {
+            //impliment
+        }
 
+        private void BtnStartGameClickEH(object sender, EventArgs e)
+        {
+            tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
+            score = 0;
+            secondsElapsed = 0;
+            tmrGameTime.Start();
 
+            // Check if hsbSize is initialized
+            if (hsbSize == null)
+            {
+                MessageBox.Show("hsbSize was not initialized");
+                return; // Exit if not initialized
+            }
 
+            // Check if hsbDifficulty is initialized
+            if (hsbDifficulty == null)
+            {
+                MessageBox.Show("hsbDifficulty was not initialized");
+                return; // Exit if not initialized
+            }
+
+            // Get size and difficulty values from sliders
+            int size = hsbSize.Value;
+            int difficulty = hsbDifficulty.Value;
+
+            // Initialize game logic with the selected size and difficulty
+            gameLogic = new MinesweeperGameLogic(size, difficulty);
+            boardModel = gameLogic.GetBoardModel();
+
+            // Initialize the board buttons
+            InitializeBoardButtons(size);
+            Console.WriteLine("Start");
+            // Start the game
+            UpdateBoardGUI();
+        }
+
+        private void BtnChooseDifficultyClickEH(object sender, EventArgs e)
+        {
+
+        }
     }
 }

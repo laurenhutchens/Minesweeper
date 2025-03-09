@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MinesweeperGUIAPP
+namespace MineSweeperGUI
 {
-    public partial class FrmStartaNewGame : Form
+    public partial class FrmDifficultyAndSize : Form
     {
-        public FrmStartaNewGame()
+        public FrmDifficultyAndSize()
         {
             InitializeComponent();
+        }
+
+        private void BtnPlayClickEH(object sender, EventArgs e)
+        {
+
         }
     }
 }
