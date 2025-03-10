@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*Arie Gerard and Lauren Hutches 
+ * Cst-250
+ * Minesweeper 
+ * Bill Hughes
+ *03/10/2025
+ */
+using System;
 using System.Collections.Generic;
 
 namespace MineSweeperClasses.Models
