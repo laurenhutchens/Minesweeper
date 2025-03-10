@@ -41,16 +41,23 @@
             // trbSize
             // 
             trbSize.Location = new Point(63, 131);
+            trbSize.Maximum = 25;
+            trbSize.Minimum = 5;
             trbSize.Name = "trbSize";
             trbSize.Size = new Size(130, 56);
+            trbSize.SmallChange = 5;
             trbSize.TabIndex = 0;
+            trbSize.Value = 5;
             // 
             // trbDifficulty
             // 
             trbDifficulty.Location = new Point(63, 273);
+            trbDifficulty.Maximum = 3;
+            trbDifficulty.Minimum = 1;
             trbDifficulty.Name = "trbDifficulty";
             trbDifficulty.Size = new Size(130, 56);
             trbDifficulty.TabIndex = 1;
+            trbDifficulty.Value = 1;
             // 
             // lblSize
             // 
@@ -75,9 +82,9 @@
             lblPlayMinesweeper.AutoSize = true;
             lblPlayMinesweeper.Location = new Point(38, 29);
             lblPlayMinesweeper.Name = "lblPlayMinesweeper";
-            lblPlayMinesweeper.Size = new Size(132, 20);
+            lblPlayMinesweeper.Size = new Size(184, 20);
             lblPlayMinesweeper.TabIndex = 5;
-            lblPlayMinesweeper.Text = "Play Minesweeper!";
+            lblPlayMinesweeper.Text = "Choose Difficulty And Size";
             // 
             // btnPlay
             // 
@@ -113,8 +120,8 @@
 
         private TrackBar trbSize;
         private TrackBar trbDifficulty;
-        private Label lblSize;
-        private Label lblDifficulty;
+        public Label lblSize;
+        public Label lblDifficulty;
         private Label lblPlayMinesweeper;
         private Button btnPlay;
     }

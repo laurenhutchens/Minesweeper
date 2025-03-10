@@ -11,6 +11,18 @@ namespace MinesweeperGUIAPP
         private Button[,] btnBoard;
         private int score;
 
+        public String DifficultyText
+        {
+            get { return lblDifficulty.Text; }
+            set { lblDifficulty.Text = value; }
+        }
+
+        public String SizeText
+        {
+            get { return lblSize.Text; }
+            set { lblSize.Text = value; }
+        }
+
         public FrmStart()
         {
             InitializeComponent();
@@ -145,14 +157,50 @@ namespace MinesweeperGUIAPP
                         if (cell.IsBomb)
                         {
                             cellButton.Text = "B"; // Indicate bomb
+                            cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Skull.png");
+                            cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                         }
                         else if (cell.NumberOfBombNeighbors == 0)
                         {
                             cellButton.Text = ".";  // Empty for cells with no neighbors
+                            cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Tile 1.png");
+                            cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                         }
                         else
                         {
                             cellButton.Text = cell.NumberOfBombNeighbors.ToString();
+                            if (cell.NumberOfBombNeighbors == 1)
+                            {
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 1.png");
+                            }
+                            if (cell.NumberOfBombNeighbors == 2)
+                            {
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 2.png");
+                            }
+                            if (cell.NumberOfBombNeighbors == 3)
+                            {
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 3.png");
+                            }
+                            if (cell.NumberOfBombNeighbors == 4)
+                            {
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 4.png");
+                            }
+                            if (cell.NumberOfBombNeighbors == 5)
+                            {
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 5.png");
+                            }
+                            if (cell.NumberOfBombNeighbors == 6)
+                            {
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 6.png");
+                            }
+                            if (cell.NumberOfBombNeighbors == 7)
+                            {
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 7.png");
+                            }
+                            if (cell.NumberOfBombNeighbors == 8)
+                            {
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 8.png");
+                            }
                         }
 
                         // Optionally, apply color styling for cells with bomb neighbors
@@ -163,6 +211,8 @@ namespace MinesweeperGUIAPP
                     {
                         cellButton.Text = ""; // Hide the button text if not visited
                         cellButton.Enabled = true; // Enable the button for clicking
+                        cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Tile Flat.png");
+                        cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                     }
 
                     // Apply different styles to bombs or safe cells
@@ -201,6 +251,7 @@ namespace MinesweeperGUIAPP
             if (gameLogic.UseSpecialBonus("Hint"))
             {
                 MessageBox.Show("Hint: Bomb location revealed.");
+
             }
             else
             {
@@ -211,8 +262,15 @@ namespace MinesweeperGUIAPP
         // Optional: Reset game button (if needed)
         private void BtnResetGame_Click(object sender, EventArgs e)
         {
-            BtnStartGameClickEH(sender, e); // Re-start the game
+            secondsElapsed = 0;
+            lblGameTime.Text = "00:00:00";
 
+            foreach (var button in btnBoard)
+            {
+                this.Controls.Remove(button); // Remove buttons from the form
+            }
+            score = 0;
+            lblScore.Text = "Score: 0";
         }
         //Put floodfill into the GameLogic
 
@@ -280,42 +338,37 @@ namespace MinesweeperGUIAPP
 
         private void FrmStartLoadEH(object sender, EventArgs e)
         {
-            //impliment
-        }
+            MessageBox.Show($"Size: {SizeText}, Difficulty: {DifficultyText}");
 
-        private void BtnStartGameClickEH(object sender, EventArgs e)
-        {
-            tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
-            score = 0;
-            secondsElapsed = 0;
-            tmrGameTime.Start();
+            // Convert values to integers
+            int size = int.TryParse(SizeText, out int s) ? s : 5;  // Default to 5 if conversion fails
+            int difficulty = int.TryParse(DifficultyText, out int d) ? d : 3;  // Default to 3 if conversion fails
 
-            // Check if hsbSize is initialized
-            if (hsbSize == null)
-            {
-                MessageBox.Show("hsbSize was not initialized");
-                return; // Exit if not initialized
-            }
-
-            // Check if hsbDifficulty is initialized
-            if (hsbDifficulty == null)
-            {
-                MessageBox.Show("hsbDifficulty was not initialized");
-                return; // Exit if not initialized
-            }
-
-            // Get size and difficulty values from sliders
-            int size = hsbSize.Value;
-            int difficulty = hsbDifficulty.Value;
-
-            // Initialize game logic with the selected size and difficulty
+            // Initialize game logic
             gameLogic = new MinesweeperGameLogic(size, difficulty);
             boardModel = gameLogic.GetBoardModel();
 
             // Initialize the board buttons
             InitializeBoardButtons(size);
-            Console.WriteLine("Start");
-            // Start the game
+            UpdateBoardGUI();
+        }
+
+        private void BtnStartGameClickEH(object sender, EventArgs e)
+        {
+
+            tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
+            score = 0;
+            secondsElapsed = 0;
+            tmrGameTime.Start();
+            
+            // Convert values properly
+            int size = Convert.ToInt32(SizeText);
+            int difficulty = Convert.ToInt32(DifficultyText);
+
+            gameLogic = new MinesweeperGameLogic(size, difficulty);
+            boardModel = gameLogic.GetBoardModel();
+
+            InitializeBoardButtons(size);
             UpdateBoardGUI();
         }
 
@@ -323,9 +376,10 @@ namespace MinesweeperGUIAPP
         {
             FrmPlay frmPlay = new FrmPlay();
 
-            this.Hide();
+
 
             frmPlay.Show();
+
 
             frmPlay.FormClosed += (s, args) => this.Show();
         }
@@ -334,5 +388,6 @@ namespace MinesweeperGUIAPP
         {
 
         }
+
     }
 }

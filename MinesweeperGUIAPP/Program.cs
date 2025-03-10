@@ -12,6 +12,9 @@ namespace MinesweeperGUIAPP
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new FrmStart());
+
         }
+
+        public static FrmPlay FrmPlay { get; set; }
     }
 }
