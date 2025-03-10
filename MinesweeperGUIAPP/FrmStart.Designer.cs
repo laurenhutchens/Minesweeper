@@ -39,13 +39,14 @@ namespace MinesweeperGUIAPP
             btnChooseDifficulty = new Button();
             hsbSize = new TrackBar();
             hsbDifficulty = new TrackBar();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)hsbSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)hsbDifficulty).BeginInit();
             SuspendLayout();
             // 
             // btnStartGame
             // 
-            btnStartGame.Location = new Point(656, 125);
+            btnStartGame.Location = new Point(645, 124);
             btnStartGame.Name = "btnStartGame";
             btnStartGame.Size = new Size(94, 29);
             btnStartGame.TabIndex = 5;
@@ -95,9 +96,9 @@ namespace MinesweeperGUIAPP
             // 
             // btnChooseDifficulty
             // 
-            btnChooseDifficulty.Location = new Point(656, 188);
+            btnChooseDifficulty.Location = new Point(626, 184);
             btnChooseDifficulty.Name = "btnChooseDifficulty";
-            btnChooseDifficulty.Size = new Size(94, 29);
+            btnChooseDifficulty.Size = new Size(130, 29);
             btnChooseDifficulty.TabIndex = 14;
             btnChooseDifficulty.Text = "Choose Difficulty";
             btnChooseDifficulty.UseVisualStyleBackColor = true;
@@ -123,11 +124,22 @@ namespace MinesweeperGUIAPP
             hsbDifficulty.TabIndex = 16;
             hsbDifficulty.Value = 1;
             // 
+            // button1
+            // 
+            button1.Location = new Point(656, 366);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 17;
+            button1.Text = "Reset";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += BtnResetGame_Click;
+            // 
             // FrmStart
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(hsbDifficulty);
             Controls.Add(hsbSize);
             Controls.Add(btnChooseDifficulty);
@@ -163,5 +175,6 @@ namespace MinesweeperGUIAPP
         private Button btnChooseDifficulty;
         private TrackBar hsbSize;
         private TrackBar hsbDifficulty;
+        private Button button1;
     }
 }
