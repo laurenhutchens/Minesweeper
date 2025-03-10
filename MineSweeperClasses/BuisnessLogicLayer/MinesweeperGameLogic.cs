@@ -106,7 +106,7 @@ public class MinesweeperGameLogic
         // After each move, check if the game has been won
         if (CheckGameWin())
         {
-            // Game Win Logic here
+            //handled elsewhere for GUI 
         }
     }
 

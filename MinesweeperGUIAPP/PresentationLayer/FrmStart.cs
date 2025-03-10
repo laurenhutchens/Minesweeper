@@ -5,18 +5,21 @@ namespace MinesweeperGUIAPP
 {
     public partial class FrmStart : Form
     {
+        //class level variables 
         private int secondsElapsed;
         private MinesweeperGameLogic gameLogic;
         private BoardModel boardModel;
         private Button[,] btnBoard;
         private int score;
 
+        //Getter and setters for the lbl to transfer data from the secondary form to the main form 
+
         public String DifficultyText
         {
             get { return lblDifficulty.Text; }
             set { lblDifficulty.Text = value; }
         }
-
+        //Getter and setters for the lbl to transfer data from the secondary form to the main form 
         public String SizeText
         {
             get { return lblSize.Text; }
@@ -63,6 +66,12 @@ namespace MinesweeperGUIAPP
             }
         }
 
+
+        /// <summary>
+        /// Click event handler for the right click event to flag 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CellButton_MouseUp(object sender, MouseEventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -79,8 +88,7 @@ namespace MinesweeperGUIAPP
             else if (e.Button == MouseButtons.Left) // Check for left-click
             {
                 CellButton_Click(sender, e); // Call the cell click handler with row and col
-                //Commit
-                //Commit 
+                
             }
         }
 
@@ -90,15 +98,9 @@ namespace MinesweeperGUIAPP
 
             Button clickedButton = (Button)sender;
 
-
             Point location = (Point)clickedButton.Tag;
             int row = location.X;
             int col = location.Y;
-
-
-
-
-            // Mark the clicked cell as visited
 
 
             // Make the move in the game logic
@@ -144,6 +146,7 @@ namespace MinesweeperGUIAPP
         // Method to update the board UI based on the game state
         private void UpdateBoardGUI()
         {
+            //loop throuhg and update the board values and display pictures
             for (int row = 0; row < boardModel.Size; row++)
             {
                 for (int col = 0; col < boardModel.Size; col++)
@@ -166,6 +169,7 @@ namespace MinesweeperGUIAPP
                             cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Tile 1.png");
                             cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                         }
+                        //for any number of bomb neighbors it displays a picture
                         else
                         {
                             cellButton.Text = cell.NumberOfBombNeighbors.ToString();
@@ -203,9 +207,9 @@ namespace MinesweeperGUIAPP
                             }
                         }
 
-                        // Optionally, apply color styling for cells with bomb neighbors
+                        /
 
-                        cellButton.Enabled = false; // Disable the button once it's visited
+                        cellButton.Enabled = false; 
                     }
                     else
                     {
@@ -219,7 +223,7 @@ namespace MinesweeperGUIAPP
 
                 }
             }
-            Refresh(); // Refresh the UI after updates
+            Refresh(); //refresh after updates
         }
 
 
@@ -245,7 +249,7 @@ namespace MinesweeperGUIAPP
             }
         }
 
-        // Optional: Reward usage or hint functionality
+        //Button hint click.
         private void BtnHint_Click(object sender, EventArgs e)
         {
             if (gameLogic.UseSpecialBonus("Hint"))
@@ -259,7 +263,11 @@ namespace MinesweeperGUIAPP
             }
         }
 
-        // Optional: Reset game button (if needed)
+        /// <summary>
+        /// Reset game event. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnResetGame_Click(object sender, EventArgs e)
         {
             secondsElapsed = 0;
@@ -273,7 +281,13 @@ namespace MinesweeperGUIAPP
             lblScore.Text = "Score: 0";
         }
         //Put floodfill into the GameLogic
-
+        /// <summary>
+        /// Floofiill to update the gui starting from where an empty cell is clicked to fill in other empty cells. 
+        /// </summary>
+        /// <param name="board"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="gui"></param>
         public static void FloodFill(BoardModel board, int x, int y, FrmStart gui)
         {
             Debug.WriteLine("x: " + x + " y: " + y);
@@ -335,7 +349,11 @@ namespace MinesweeperGUIAPP
             score = 0;
             lblScore.Text = "Score: 0";
         }
-
+        /// <summary>
+        /// form load to grab the difficulty and size from the secondary form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmStartLoadEH(object sender, EventArgs e)
         {
             MessageBox.Show($"Size: {SizeText}, Difficulty: {DifficultyText}");
@@ -353,6 +371,11 @@ namespace MinesweeperGUIAPP
             UpdateBoardGUI();
         }
 
+        /// <summary>
+        /// STart game to initialize and update the board as the game is played 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnStartGameClickEH(object sender, EventArgs e)
         {
 
@@ -372,6 +395,7 @@ namespace MinesweeperGUIAPP
             UpdateBoardGUI();
         }
 
+        //SHows the secondary form with the trackbars to select the size and difficully
         private void BtnChooseDifficultyClickEH(object sender, EventArgs e)
         {
             FrmPlay frmPlay = new FrmPlay();

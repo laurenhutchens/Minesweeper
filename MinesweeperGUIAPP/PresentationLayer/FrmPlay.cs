@@ -15,6 +15,8 @@ namespace MinesweeperGUIAPP
     {
         public string DifficultyLevel { get; set; }
 
+        //set a new instatiation of Frmstart
+
         private FrmStart frmStart;
 
 
@@ -24,13 +26,18 @@ namespace MinesweeperGUIAPP
             InitializeComponent();
 
         }
+        /// <summary>
+        /// To load the trbs and their minimun and max values. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void FrmPlayLoadEH(object sender, EventArgs e)
         {
-            // Use the passed data
+            
             if (!string.IsNullOrEmpty(DifficultyLevel))
             {
                 MessageBox.Show("Difficulty: " + DifficultyLevel);
-                //or set a label.text, etc.
+                
             }
 
             // Set basic values for trbSize
@@ -46,14 +53,23 @@ namespace MinesweeperGUIAPP
 
         }
 
-        //new methods
+        /// <summary>
+        /// CLicke event to play and pass the data from teh secondary form to the main form. 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnPlayClickEH(object sender, EventArgs e)
         {
+            //grabbing the size from the difficulty 
+            
             int size = trbSize.Value;
             int difficulty = trbDifficulty.Value;
+            //using application to grab data from form start and send it to form start 
             var frmstart = Application.OpenForms["FrmStart"] as FrmStart;
+
             frmstart.SizeText = size.ToString();
             frmstart.DifficultyText = difficulty.ToString();
+
             this.Hide();  // Hide the current form
         }
       
