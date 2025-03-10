@@ -1,6 +1,8 @@
 using MineSweeperClasses;
 using MineSweeperClasses.Models;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 namespace MinesweeperGUIAPP
 {
     public partial class FrmStart : Form
@@ -56,7 +58,7 @@ namespace MinesweeperGUIAPP
                     };
 
                     // Attach the click event handler
-                    btn.Click += CellButton_Click;
+                    btn.MouseUp += CellButton_MouseUp;
 
                     // Position the buttons on the form
                     btn.Location = new Point(col * 30, row * 30);
@@ -66,12 +68,6 @@ namespace MinesweeperGUIAPP
             }
         }
 
-
-        /// <summary>
-        /// Click event handler for the right click event to flag 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void CellButton_MouseUp(object sender, MouseEventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -82,69 +78,59 @@ namespace MinesweeperGUIAPP
             if (e.Button == MouseButtons.Right) // Check for right-click
             {
                 // Toggle flag state
-                boardModel.Cells[row, col].IsFlagged = !boardModel.Cells[row, col].IsFlagged;
+                boardModel.Cells[row, col].IsFlagged = boardModel.Cells[row, col].IsFlagged;
+                if (boardModel.Cells[row, col].IsFlagged)
+                {
+                    clickedButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Gold.png");
+                    clickedButton.BackgroundImageLayout = ImageLayout.Stretch;
+                    UpdateBoardGUI();
+                }
+                else
+                {
+                    return;
+                    
+                }
+                
                 UpdateBoardGUI();
+                
             }
             else if (e.Button == MouseButtons.Left) // Check for left-click
             {
-                CellButton_Click(sender, e); // Call the cell click handler with row and col
                 
+
+                // Make the move in the game logic
+                gameLogic.MakeMove(row, col);
+
+                // Get the clicked cell from the game logic to check its status
+                var clickedCell = boardModel.Cells[row, col];
+
+                if (!clickedCell.IsVisited)
+                {
+                    score += 200;
+                    lblScore.Text = $"Score: {score}";
+                }
+
+                // If the clicked cell has no bomb neighbors, trigger flood fill
+                if (clickedCell.NumberOfBombNeighbors == 0)
+                {
+                    FloodFill(boardModel, row, col, this);
+                    Debug.WriteLine("Called");
+                    UpdateBoardGUI();
+                }
+                else
+                {
+                    boardModel.Cells[row, col].IsVisited = true;
+                    UpdateBoardGUI();
+                }
+
+                // Check if the game is won or lost
+                CheckGameStatus();
             }
+
         }
 
-        // Cell button click handler
-        private void CellButton_Click(object sender, EventArgs e)
-        {
-
-            Button clickedButton = (Button)sender;
-
-            Point location = (Point)clickedButton.Tag;
-            int row = location.X;
-            int col = location.Y;
-
-
-            // Make the move in the game logic
-            gameLogic.MakeMove(row, col);
-
-            // Get the clicked cell from the game logic to check its status
-            var clickedCell = boardModel.Cells[row, col];
-
-            if (!clickedCell.IsVisited)
-            {
-                score += 200;
-                lblScore.Text = $"Score: {score}";
-            }
-
-
-
-            // If the clicked cell has no bomb neighbors, trigger flood fill
-
-            // Trigger flood fill to reveal all adjacent empty cells
-            if (clickedCell.NumberOfBombNeighbors == 0)
-            {
-                FloodFill(boardModel, row, col, this);
-
-                Debug.WriteLine("Called");
-                UpdateBoardGUI();
-
-            }
-            else
-            {
-                boardModel.Cells[row, col].IsVisited = true;
-                UpdateBoardGUI();
-            }
-
-
-            // Check if the game is won or lost
-            CheckGameStatus();
-        }
-
-
-
-
-
-        // Method to update the board UI based on the game state
-        private void UpdateBoardGUI()
+            // Method to update the board UI based on the game state
+            private void UpdateBoardGUI()
         {
             //loop throuhg and update the board values and display pictures
             for (int row = 0; row < boardModel.Size; row++)
@@ -160,13 +146,13 @@ namespace MinesweeperGUIAPP
                         if (cell.IsBomb)
                         {
                             cellButton.Text = "B"; // Indicate bomb
-                            cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Skull.png");
+                            cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Skull.png");
                             cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                         }
                         else if (cell.NumberOfBombNeighbors == 0)
                         {
                             cellButton.Text = ".";  // Empty for cells with no neighbors
-                            cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Tile 1.png");
+                            cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Tile Flat.png");
                             cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                         }
                         //for any number of bomb neighbors it displays a picture
@@ -175,56 +161,60 @@ namespace MinesweeperGUIAPP
                             cellButton.Text = cell.NumberOfBombNeighbors.ToString();
                             if (cell.NumberOfBombNeighbors == 1)
                             {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 1.png");
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 1.png");
                             }
                             if (cell.NumberOfBombNeighbors == 2)
                             {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 2.png");
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 2.png");
                             }
                             if (cell.NumberOfBombNeighbors == 3)
                             {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 3.png");
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 3.png");
                             }
                             if (cell.NumberOfBombNeighbors == 4)
                             {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 4.png");
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 4.png");
                             }
                             if (cell.NumberOfBombNeighbors == 5)
                             {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 5.png");
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 5.png");
                             }
                             if (cell.NumberOfBombNeighbors == 6)
                             {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 6.png");
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 6.png");
                             }
                             if (cell.NumberOfBombNeighbors == 7)
                             {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 7.png");
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 7.png");
                             }
                             if (cell.NumberOfBombNeighbors == 8)
                             {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Number 8.png");
+                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 8.png");
                             }
                         }
 
-                        /
+                       
 
                         cellButton.Enabled = false; 
                     }
+                   
                     else
                     {
                         cellButton.Text = ""; // Hide the button text if not visited
                         cellButton.Enabled = true; // Enable the button for clicking
-                        cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MinesweeperGUIAPP\\Images\\Tile Flat.png");
+                        cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Tile Flat.png");
                         cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                     }
+                    
 
                     // Apply different styles to bombs or safe cells
 
                 }
             }
             Refresh(); //refresh after updates
-        }
+            
+                
+        }   
 
 
 
@@ -341,6 +331,7 @@ namespace MinesweeperGUIAPP
         {
             secondsElapsed = 0;
             lblGameTime.Text = "00:00:00";
+            tmrGameTime.Stop();
 
             foreach (var button in btnBoard)
             {
