@@ -102,6 +102,7 @@ namespace MinesweeperGUIAPP
             btnChooseDifficulty.TabIndex = 14;
             btnChooseDifficulty.Text = "Choose Difficulty";
             btnChooseDifficulty.UseVisualStyleBackColor = true;
+            btnChooseDifficulty.Click += BtnChooseDifficultyClickEH;
             // 
             // hsbSize
             // 
