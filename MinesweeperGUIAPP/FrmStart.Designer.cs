@@ -32,13 +32,14 @@ namespace MinesweeperGUIAPP
             components = new System.ComponentModel.Container();
             btnStartGame = new Button();
             tmrGameTime = new System.Windows.Forms.Timer(components);
-            label3 = new Label();
+            lblTime = new Label();
             lblGameTime = new Label();
-            label4 = new Label();
             lblScore = new Label();
             btnChooseDifficulty = new Button();
             hsbSize = new TrackBar();
             hsbDifficulty = new TrackBar();
+            labelScore = new Label();
+            labelGameScore = new Label();
             ((System.ComponentModel.ISupportInitialize)hsbSize).BeginInit();
             ((System.ComponentModel.ISupportInitialize)hsbDifficulty).BeginInit();
             SuspendLayout();
@@ -57,14 +58,14 @@ namespace MinesweeperGUIAPP
             // 
             tmrGameTime.Interval = 1000;
             // 
-            // label3
+            // lblTime
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(626, 28);
-            label3.Name = "label3";
-            label3.Size = new Size(45, 20);
-            label3.TabIndex = 10;
-            label3.Text = "Time:";
+            lblTime.AutoSize = true;
+            lblTime.Location = new Point(626, 28);
+            lblTime.Name = "lblTime";
+            lblTime.Size = new Size(45, 20);
+            lblTime.TabIndex = 10;
+            lblTime.Text = "Time:";
             // 
             // lblGameTime
             // 
@@ -75,23 +76,12 @@ namespace MinesweeperGUIAPP
             lblGameTime.TabIndex = 11;
             lblGameTime.Text = "00";
             // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(626, 69);
-            label4.Name = "label4";
-            label4.Size = new Size(49, 20);
-            label4.TabIndex = 12;
-            label4.Text = "Score:";
-            // 
             // lblScore
             // 
-            lblScore.AutoSize = true;
-            lblScore.Location = new Point(695, 69);
+            lblScore.Location = new Point(0, 0);
             lblScore.Name = "lblScore";
-            lblScore.Size = new Size(25, 20);
-            lblScore.TabIndex = 13;
-            lblScore.Text = "00";
+            lblScore.Size = new Size(100, 23);
+            lblScore.TabIndex = 18;
             // 
             // btnChooseDifficulty
             // 
@@ -124,18 +114,36 @@ namespace MinesweeperGUIAPP
             hsbDifficulty.TabIndex = 16;
             hsbDifficulty.Value = 1;
             // 
+            // labelScore
+            // 
+            labelScore.Location = new Point(626, 76);
+            labelScore.Name = "labelScore";
+            labelScore.Size = new Size(51, 23);
+            labelScore.TabIndex = 0;
+            labelScore.Text = "Score: ";
+            // 
+            // labelGameScore
+            // 
+            labelGameScore.AutoSize = true;
+            labelGameScore.Location = new Point(695, 76);
+            labelGameScore.Name = "labelGameScore";
+            labelGameScore.Size = new Size(25, 20);
+            labelGameScore.TabIndex = 19;
+            labelGameScore.Text = "00";
+            // 
             // FrmStart
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(labelGameScore);
+            Controls.Add(labelScore);
             Controls.Add(hsbDifficulty);
             Controls.Add(hsbSize);
             Controls.Add(btnChooseDifficulty);
             Controls.Add(lblScore);
-            Controls.Add(label4);
             Controls.Add(lblGameTime);
-            Controls.Add(label3);
+            Controls.Add(lblTime);
             Controls.Add(btnStartGame);
             Name = "FrmStart";
             Text = "Minesweeper";
@@ -157,12 +165,14 @@ namespace MinesweeperGUIAPP
 
         private Button btnStartGame;
         private System.Windows.Forms.Timer tmrGameTime;
-        private Label label3;
+        private Label lblTime;
         private Label lblGameTime;
-        private Label label4;
+        private Label lblFrmStartScore;
         private Label lblScore;
         private Button btnChooseDifficulty;
         private TrackBar hsbSize;
         private TrackBar hsbDifficulty;
+        private Label labelScore;
+        private Label labelGameScore;
     }
 }

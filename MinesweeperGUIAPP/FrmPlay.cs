@@ -89,7 +89,8 @@ namespace MinesweeperGUIAPP
             // Clear any existing game board controls
             this.Controls.OfType<Button>().Where(b => b.Tag is Cell).ToList().ForEach(b => this.Controls.Remove(b));
 
-            int buttonSize = 30; // Adjust button size as needed
+            int buttonSize = 50; // Adjust button size as needed
+
             for (int row = 0; row < board.Size; row++)
             {
                 for (int col = 0; col < board.Size; col++)
@@ -99,12 +100,13 @@ namespace MinesweeperGUIAPP
                     cellButton.Height = buttonSize;
                     cellButton.Left = col * buttonSize;
                     cellButton.Top = row * buttonSize;
-                    cellButton.Tag = board.Cells[row, col]; // Store the Cell object in the button's Tag
-                    cellButton.Click += CellButtonClickEH; // Add click event handler
+                    cellButton.Tag = board.Cells[row, col];
+                    cellButton.Click += CellButtonClickEH;
                     this.Controls.Add(cellButton);
                 }
             }
         }
+
 
         private void CellButtonClickEH(object sender, EventArgs e)
         {
