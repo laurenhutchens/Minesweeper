@@ -24,7 +24,6 @@ namespace MinesweeperGUIAPP
 
         //set a new instatiation of Frmstart
 
-        private FrmStart frmStart;
 
 
         public FrmPlay()
@@ -56,6 +55,7 @@ namespace MinesweeperGUIAPP
             trbDifficulty.Minimum = 1; 
             trbDifficulty.Maximum = 3; 
             trbDifficulty.Value = 1; 
+
 
 
         }

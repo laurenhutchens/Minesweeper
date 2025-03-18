@@ -23,7 +23,6 @@ namespace MineSweeperClasses.Models
 
         private readonly Random _random = new Random(); // Fixed typo here: removed space in _rand om
 
-        private readonly BoardModel boardModel;
 
         public Dictionary<string, int> AvailableRewards { get; private set; }
 

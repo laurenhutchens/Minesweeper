@@ -100,7 +100,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(266, 450);
             Controls.Add(btnPlay);
             Controls.Add(lblPlayMinesweeper);
             Controls.Add(lblDifficulty);
@@ -108,7 +108,6 @@
             Controls.Add(trbDifficulty);
             Controls.Add(trbSize);
             Name = "FrmPlay";
-            Text = "FrmPlay";
             Load += FrmPlayLoadEH;
             ((System.ComponentModel.ISupportInitialize)trbSize).EndInit();
             ((System.ComponentModel.ISupportInitialize)trbDifficulty).EndInit();
@@ -118,8 +117,8 @@
 
         #endregion
 
-        private TrackBar trbSize;
-        private TrackBar trbDifficulty;
+        public TrackBar trbSize;
+        public TrackBar trbDifficulty;
         public Label lblSize;
         public Label lblDifficulty;
         private Label lblPlayMinesweeper;

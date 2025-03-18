@@ -7,6 +7,7 @@
 
 using MineSweeperClasses;
 using MineSweeperClasses.Models;
+using MinesweeperGUIAPP.PresentationLayer;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
@@ -20,6 +21,9 @@ namespace MinesweeperGUIAPP
         private BoardModel boardModel;
         private Button[,] btnBoard;
         private int score;
+        public string finalScore;
+
+
 
         //Getter and setters for the lbl to transfer data from the secondary form to the main form 
 
@@ -85,25 +89,28 @@ namespace MinesweeperGUIAPP
             if (e.Button == MouseButtons.Right) // Check for right-click
             {
                 // Toggle flag state
-                boardModel.Cells[row, col].IsFlagged = boardModel.Cells[row, col].IsFlagged;
+                // Toggle the flag state for the cell in your data model
+                boardModel.Cells[row, col].IsFlagged = !boardModel.Cells[row, col].IsFlagged;
+
+                // Update the UI based on the new flag state
                 if (boardModel.Cells[row, col].IsFlagged)
                 {
                     clickedButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Gold.png");
                     clickedButton.BackgroundImageLayout = ImageLayout.Stretch;
-                    UpdateBoardGUI();
                 }
                 else
                 {
-                    return;
-                    
+                    clickedButton.BackgroundImage = null;
                 }
-                
+
+                // Update the GUI after making changes
                 UpdateBoardGUI();
-                
+
+
             }
             else if (e.Button == MouseButtons.Left) // Check for left-click
             {
-                
+
 
                 // Make the move in the game logic
                 gameLogic.MakeMove(row, col);
@@ -114,7 +121,7 @@ namespace MinesweeperGUIAPP
                 if (!clickedCell.IsVisited)
                 {
                     score += 200;
-                    lblScore.Text = $"Score: {score}";
+                    lblScore.Text = score.ToString();
                 }
 
                 // If the clicked cell has no bomb neighbors, trigger flood fill
@@ -136,8 +143,8 @@ namespace MinesweeperGUIAPP
 
         }
 
-            // Method to update the board UI based on the game state
-            private void UpdateBoardGUI()
+        // Method to update the board UI based on the game state
+        private void UpdateBoardGUI()
         {
             //loop throuhg and update the board values and display pictures
             for (int row = 0; row < boardModel.Size; row++)
@@ -200,11 +207,11 @@ namespace MinesweeperGUIAPP
                             }
                         }
 
-                       
 
-                        cellButton.Enabled = false; 
+
+                        cellButton.Enabled = false;
                     }
-                   
+
                     else
                     {
                         cellButton.Text = ""; // Hide the button text if not visited
@@ -212,16 +219,16 @@ namespace MinesweeperGUIAPP
                         cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Tile Flat.png");
                         cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                     }
-                    
+
 
                     // Apply different styles to bombs or safe cells
 
                 }
             }
             Refresh(); //refresh after updates
-            
-                
-        }   
+
+
+        }
 
 
 
@@ -236,12 +243,19 @@ namespace MinesweeperGUIAPP
             {
                 MessageBox.Show("Congratulations, You Won!");
                 // Optionally, disable further game input here
+
+
+                //show the winning forms for data encapsulation. 
             }
             else if (gameStatus == BoardModel.GameStatus.Lost)
             {
+
                 MessageBox.Show("Game Over! You hit a bomb.");
                 // Optionally, reveal all bombs and disable further game input
+                int score = int.Parse(lblScore.Text);
                 tmrGameTime.Stop();
+                FrmWin frmWin = new FrmWin(score);
+                frmWin.Show();
                 ResetGame();
             }
         }
@@ -275,7 +289,7 @@ namespace MinesweeperGUIAPP
                 this.Controls.Remove(button); // Remove buttons from the form
             }
             score = 0;
-            lblScore.Text = "Score: 0";
+            lblScore.Text = score.ToString();
         }
         //Put floodfill into the GameLogic
         /// <summary>
@@ -330,7 +344,7 @@ namespace MinesweeperGUIAPP
                 lblGameTime.Text = TimeSpan.FromSeconds(secondsElapsed).ToString();
 
                 score -= 1;
-                lblScore.Text = $"Score: {score}";
+                lblScore.Text = score.ToString();
 
             }
         }
@@ -345,7 +359,7 @@ namespace MinesweeperGUIAPP
                 this.Controls.Remove(button); // Remove buttons from the form
             }
             score = 0;
-            lblScore.Text = "Score: 0";
+            lblScore.Text = score.ToString();
         }
         /// <summary>
         /// form load to grab the difficulty and size from the secondary form.
@@ -375,24 +389,20 @@ namespace MinesweeperGUIAPP
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnStartGameClickEH(object sender, EventArgs e)
-        {
 
-            tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
-            score = 0;
+        {
+           tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
+           score = 0;
             secondsElapsed = 0;
             tmrGameTime.Start();
-            
-            // Convert values properly
+            // Convert values proper
             int size = Convert.ToInt32(SizeText);
             int difficulty = Convert.ToInt32(DifficultyText);
-
             gameLogic = new MinesweeperGameLogic(size, difficulty);
             boardModel = gameLogic.GetBoardModel();
-
             InitializeBoardButtons(size);
             UpdateBoardGUI();
         }
-
         //SHows the secondary form with the trackbars to select the size and difficully
         private void BtnChooseDifficultyClickEH(object sender, EventArgs e)
         {
