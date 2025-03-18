@@ -44,6 +44,9 @@ namespace MinesweeperGUIAPP
             InitializeComponent();
         }
 
+
+        string basePath = Path.Combine(Application.StartupPath, "Images");
+
         // Method to initialize the board buttons based on the board size
         private void InitializeBoardButtons(int size)
         {
@@ -95,7 +98,7 @@ namespace MinesweeperGUIAPP
                 // Update the UI based on the new flag state
                 if (boardModel.Cells[row, col].IsFlagged)
                 {
-                    clickedButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Gold.png");
+                    clickedButton.BackgroundImage = Image.FromFile("...\\Images\\Gold.png");
                     clickedButton.BackgroundImageLayout = ImageLayout.Stretch;
                 }
                 else
@@ -146,7 +149,6 @@ namespace MinesweeperGUIAPP
         // Method to update the board UI based on the game state
         private void UpdateBoardGUI()
         {
-            //loop throuhg and update the board values and display pictures
             for (int row = 0; row < boardModel.Size; row++)
             {
                 for (int col = 0; col < boardModel.Size; col++)
@@ -154,82 +156,38 @@ namespace MinesweeperGUIAPP
                     var cell = boardModel.Cells[row, col];
                     Button cellButton = btnBoard[row, col];
 
-                    // Set the button text based on the cell's state
                     if (cell.IsVisited)
                     {
                         if (cell.IsBomb)
                         {
-                            cellButton.Text = "B"; // Indicate bomb
-                            cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Skull.png");
-                            cellButton.BackgroundImageLayout = ImageLayout.Stretch;
+                            cellButton.Text = "B";
+                            cellButton.BackgroundImage = Image.FromFile(Path.Combine(basePath, "Skull.png"));
                         }
                         else if (cell.NumberOfBombNeighbors == 0)
                         {
-                            cellButton.Text = ".";  // Empty for cells with no neighbors
-                            cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Tile Flat.png");
-                            cellButton.BackgroundImageLayout = ImageLayout.Stretch;
+                            cellButton.Text = ".";
+                            cellButton.BackgroundImage = Image.FromFile(Path.Combine(basePath, "Tile Flat.png"));
                         }
-                        //for any number of bomb neighbors it displays a picture
                         else
                         {
                             cellButton.Text = cell.NumberOfBombNeighbors.ToString();
-                            if (cell.NumberOfBombNeighbors == 1)
-                            {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 1.png");
-                            }
-                            if (cell.NumberOfBombNeighbors == 2)
-                            {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 2.png");
-                            }
-                            if (cell.NumberOfBombNeighbors == 3)
-                            {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 3.png");
-                            }
-                            if (cell.NumberOfBombNeighbors == 4)
-                            {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 4.png");
-                            }
-                            if (cell.NumberOfBombNeighbors == 5)
-                            {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 5.png");
-                            }
-                            if (cell.NumberOfBombNeighbors == 6)
-                            {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 6.png");
-                            }
-                            if (cell.NumberOfBombNeighbors == 7)
-                            {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 7.png");
-                            }
-                            if (cell.NumberOfBombNeighbors == 8)
-                            {
-                                cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Number 8.png");
-                            }
+                            cellButton.BackgroundImage = Image.FromFile(Path.Combine(basePath, $"Number {cell.NumberOfBombNeighbors}.png"));
                         }
 
-
-
+                        cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                         cellButton.Enabled = false;
                     }
-
                     else
                     {
-                        cellButton.Text = ""; // Hide the button text if not visited
-                        cellButton.Enabled = true; // Enable the button for clicking
-                        cellButton.BackgroundImage = Image.FromFile("C:\\Users\\majes\\Source\\Repos\\MinesweeperFinal\\MineSweeperClasses\\Images\\Tile Flat.png");
+                        cellButton.Text = "";
+                        cellButton.Enabled = true;
+                        cellButton.BackgroundImage = Image.FromFile(Path.Combine(basePath, "Tile Flat.png"));
                         cellButton.BackgroundImageLayout = ImageLayout.Stretch;
                     }
-
-
-                    // Apply different styles to bombs or safe cells
-
                 }
             }
-            Refresh(); //refresh after updates
-
-
+            Refresh();
         }
-
 
 
 
