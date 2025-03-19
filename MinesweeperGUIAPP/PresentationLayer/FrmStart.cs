@@ -5,12 +5,9 @@
  *03/10/2025
  */
 
-using MineSweeperClasses;
 using MineSweeperClasses.Models;
 using MinesweeperGUIAPP.PresentationLayer;
 using System.Diagnostics;
-using System.Diagnostics.Eventing.Reader;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 namespace MinesweeperGUIAPP
 {
     public partial class FrmStart : Form
@@ -81,6 +78,11 @@ namespace MinesweeperGUIAPP
                 }
             }
         }
+        /// <summary>
+        /// Method to check if there was a right click 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void CellButton_MouseUp(object sender, MouseEventArgs e)
         {
@@ -146,7 +148,9 @@ namespace MinesweeperGUIAPP
 
         }
 
-        // Method to update the board UI based on the game state
+        /// <summary>
+        /// Method to update the board GUI
+        /// </summary>
         private void UpdateBoardGUI()
         {
             for (int row = 0; row < boardModel.Size; row++)
@@ -193,7 +197,9 @@ namespace MinesweeperGUIAPP
 
 
 
-        // Method to check the current game status (Win or Lose)
+        /// <summary>
+        /// Method to check the game status
+        /// </summary>
         private void CheckGameStatus()
         {
             var gameStatus = boardModel.DetermineGameStatus();
@@ -218,7 +224,11 @@ namespace MinesweeperGUIAPP
             }
         }
 
-        //Button hint click.
+        /// <summary>
+        /// Button for showing a bomb location
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnHint_Click(object sender, EventArgs e)
         {
             if (gameLogic.UseSpecialBonus("Hint"))
@@ -294,6 +304,11 @@ namespace MinesweeperGUIAPP
             Debug.WriteLine("up");// Up
 
         }
+        /// <summary>
+        /// Tine for game timer 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
         private void TmrGameTime_Tick(object sender, EventArgs e)
         {
@@ -306,6 +321,10 @@ namespace MinesweeperGUIAPP
 
             }
         }
+
+        /// <summary>
+        /// Button for resetting the game 
+        /// </summary>
         private void ResetGame()
         {
             secondsElapsed = 0;
@@ -349,8 +368,8 @@ namespace MinesweeperGUIAPP
         private void BtnStartGameClickEH(object sender, EventArgs e)
 
         {
-           tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
-           score = 0;
+            tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
+            score = 0;
             secondsElapsed = 0;
             tmrGameTime.Start();
             // Convert values proper
@@ -365,19 +384,8 @@ namespace MinesweeperGUIAPP
         private void BtnChooseDifficultyClickEH(object sender, EventArgs e)
         {
             FrmPlay frmPlay = new FrmPlay();
-
-
-
             frmPlay.Show();
-
-
             frmPlay.FormClosed += (s, args) => this.Show();
         }
-
-        private void FrmStart_Load(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

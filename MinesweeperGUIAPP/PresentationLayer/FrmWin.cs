@@ -19,20 +19,13 @@ namespace MinesweeperGUIAPP.PresentationLayer
         public FrmWin(int score)
         {
             InitializeComponent();
-
             Score = score;
             lblFinalScore.Text = score.ToString(); // Display the score as a string
-
-           
-
         }
 
         private void FrmWin_Load(object sender, EventArgs e)
         {
-
-
         }
-
         private void BtnSave_Click(object sender, EventArgs e)
         {
             string playerName = txtName.Text;
@@ -42,7 +35,6 @@ namespace MinesweeperGUIAPP.PresentationLayer
                 MessageBox.Show("Please enter a player name.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return; // Stop execution if player name is empty or whitespace
             }
-
             FrmLeaderBoard leaderBoard = new FrmLeaderBoard(playerName, Score);
             leaderBoard.Show();
         }

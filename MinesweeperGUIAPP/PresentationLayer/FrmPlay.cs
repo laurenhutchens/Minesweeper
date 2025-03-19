@@ -21,16 +21,9 @@ namespace MinesweeperGUIAPP
     public partial class FrmPlay : Form
     {
         public string DifficultyLevel { get; set; }
-
-        //set a new instatiation of Frmstart
-
-
-
         public FrmPlay()
         {
-
             InitializeComponent();
-
         }
         /// <summary>
         /// To load the trbs and their minimun and max values. 
@@ -43,10 +36,8 @@ namespace MinesweeperGUIAPP
             if (!string.IsNullOrEmpty(DifficultyLevel))
             {
                 MessageBox.Show("Difficulty: " + DifficultyLevel);
-                
             }
-
-            // Set basic values for trbSize
+             // Set basic values for trbSize
             trbSize.Minimum = 5; 
             trbSize.Maximum = 25; 
             trbSize.Value = 5; 
@@ -56,10 +47,7 @@ namespace MinesweeperGUIAPP
             trbDifficulty.Maximum = 3; 
             trbDifficulty.Value = 1; 
 
-
-
         }
-
         /// <summary>
         /// CLicke event to play and pass the data from teh secondary form to the main form. 
         /// </summary>

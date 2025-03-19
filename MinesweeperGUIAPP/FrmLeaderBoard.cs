@@ -26,51 +26,72 @@ namespace MinesweeperGUIAPP
             gameStat.Date = DateTime.Now;
             gameStat.Id = statList.Count + 1;
             statList.Add(gameStat);
-
             bindingSource.DataSource = statList;
-
             dgvScoreBoard.DataSource = bindingSource;
-
-
-
-
-
-
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmLeaderBoard_Load(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            //Save 
+             
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ByNameToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ByScoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ByDateToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
+
     }
 }

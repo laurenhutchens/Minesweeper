@@ -160,7 +160,6 @@ namespace MinesweeperGUIAPP
             Controls.Add(btnStartGame);
             Name = "FrmStart";
             Text = "Minesweeper";
-            Load += FrmStart_Load;
             ResumeLayout(false);
             PerformLayout();
         }
