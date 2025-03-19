@@ -24,7 +24,6 @@ public class MinesweeperGameLogic
         // Initialize the game board
         InitializeBoard();
     }
-
     private void InitializeBoard()
     {
         // First, clear any previous setup on the board
@@ -36,7 +35,6 @@ public class MinesweeperGameLogic
                 Board.Cells[row, col] = new Cell(row, col);
             }
         }
-
         // Determine number of bombs based on difficulty
         int totalBombs = GetTotalBombsForDifficulty(difficulty);
 
@@ -46,7 +44,12 @@ public class MinesweeperGameLogic
         // After placing bombs, calculate neighboring bombs for each non-bomb cell
         CalculateNeighboringBombs();
     }
-
+    
+    /// <summary>
+    /// Gets the total bombs per difficulty. 
+    /// </summary>
+    /// <param name="difficulty"></param>
+    /// <returns></returns>
     private int GetTotalBombsForDifficulty(int difficulty)
     {
         // The number of bombs changes based on difficulty
@@ -59,6 +62,10 @@ public class MinesweeperGameLogic
         }
     }
 
+    /// <summary>
+    /// Method to place the bombs
+    /// </summary>
+    /// <param name="totalBombs"></param>
     private void PlaceBombs(int totalBombs)
     {
         int bombsPlaced = 0;
@@ -218,7 +225,10 @@ public class MinesweeperGameLogic
     {
         return CheckGameWin() || Board.Cells.Cast<Cell>().Any(cell => cell.IsBomb && cell.IsVisited);
     }
-
+  
+    /// <summary>
+    /// Calculuate the number of neighboring bombs. 
+    /// </summary>
     private void CalculateNeighboringBombs()
     {
         // Iterate through each cell on the board
@@ -260,12 +270,12 @@ public class MinesweeperGameLogic
             }
         }
     }
-
-
+    /// <summary>
+    /// Method to return the board model 
+    /// </summary>
+    /// <returns></returns>
     public BoardModel GetBoardModel()
     {
         return Board;
     }
- 
-
 }

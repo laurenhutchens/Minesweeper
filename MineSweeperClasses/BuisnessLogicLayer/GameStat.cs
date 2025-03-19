@@ -25,7 +25,6 @@ namespace MineSweeperClasses.BuisnessLogicLayer
         {
 
         }
-
         // Optional ToString() override for debugging
         public override string ToString()
         {
