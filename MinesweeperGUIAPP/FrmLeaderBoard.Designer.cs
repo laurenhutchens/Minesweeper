@@ -64,7 +64,6 @@
             toolStripMenuItem2.Name = "toolStripMenuItem2";
             toolStripMenuItem2.Size = new Size(224, 26);
             toolStripMenuItem2.Text = "Save";
-            toolStripMenuItem2.Click += ToolStripMenuItem2_Click;
             // 
             // loadToolStripMenuItem
             // 

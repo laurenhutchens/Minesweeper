@@ -8,6 +8,7 @@
 using MineSweeperClasses.Models;
 using MinesweeperGUIAPP.PresentationLayer;
 using System.Diagnostics;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 namespace MinesweeperGUIAPP
 {
     public partial class FrmStart : Form
@@ -20,10 +21,7 @@ namespace MinesweeperGUIAPP
         private int score;
         public string finalScore;
 
-
-
         //Getter and setters for the lbl to transfer data from the secondary form to the main form 
-
         public String DifficultyText
         {
             get { return lblDifficulty.Text; }
@@ -35,15 +33,12 @@ namespace MinesweeperGUIAPP
             get { return lblSize.Text; }
             set { lblSize.Text = value; }
         }
-
         public FrmStart()
         {
             InitializeComponent();
         }
 
-
         string basePath = Path.Combine(Application.StartupPath, "Images");
-
         // Method to initialize the board buttons based on the board size
         private void InitializeBoardButtons(int size)
         {
@@ -100,23 +95,19 @@ namespace MinesweeperGUIAPP
                 // Update the UI based on the new flag state
                 if (boardModel.Cells[row, col].IsFlagged)
                 {
-                    clickedButton.BackgroundImage = Image.FromFile("...\\Images\\Gold.png");
+                    clickedButton.BackgroundImage = Image.FromFile(Path.Combine(basePath, "Gold.png"));
                     clickedButton.BackgroundImageLayout = ImageLayout.Stretch;
                 }
                 else
                 {
                     clickedButton.BackgroundImage = null;
                 }
-
+                clickedButton.Invalidate(); // Force a visual update
                 // Update the GUI after making changes
                 UpdateBoardGUI();
-
-
             }
             else if (e.Button == MouseButtons.Left) // Check for left-click
             {
-
-
                 // Make the move in the game logic
                 gameLogic.MakeMove(row, col);
 
@@ -147,7 +138,6 @@ namespace MinesweeperGUIAPP
             }
 
         }
-
         /// <summary>
         /// Method to update the board GUI
         /// </summary>
@@ -192,34 +182,55 @@ namespace MinesweeperGUIAPP
             }
             Refresh();
         }
-
-
-
-
-
         /// <summary>
         /// Method to check the game status
         /// </summary>
         private void CheckGameStatus()
         {
             var gameStatus = boardModel.DetermineGameStatus();
+
             if (gameStatus == BoardModel.GameStatus.Won)
             {
                 MessageBox.Show("Congratulations, You Won!");
                 // Optionally, disable further game input here
 
+                // Show the winning form for data encapsulation
+                int score = int.Parse(lblScore.Text); // Parse the score if needed
 
-                //show the winning forms for data encapsulation. 
+                TimeSpan gameTime;
+
+                // Parse the game time and handle invalid formats gracefully
+                if (TimeSpan.TryParse(lblGameTime.Text, out gameTime))
+                {
+                    FrmWin frmWin = new FrmWin(score, gameTime);
+                    frmWin.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid game time format. Cannot display results.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                ResetGame();
             }
             else if (gameStatus == BoardModel.GameStatus.Lost)
             {
-
                 MessageBox.Show("Game Over! You hit a bomb.");
                 // Optionally, reveal all bombs and disable further game input
                 int score = int.Parse(lblScore.Text);
-                tmrGameTime.Stop();
-                FrmWin frmWin = new FrmWin(score);
-                frmWin.Show();
+                TimeSpan gameTime;
+
+                // Attempt to parse lblGameTime.Text as TimeSpan
+                if (TimeSpan.TryParse(lblGameTime.Text, out gameTime))
+                {
+                    tmrGameTime.Stop();
+                    FrmWin frmWin = new FrmWin(score, gameTime);
+                    frmWin.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid game time format. Cannot display results.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
                 ResetGame();
             }
         }
@@ -315,10 +326,8 @@ namespace MinesweeperGUIAPP
             {
                 secondsElapsed++;
                 lblGameTime.Text = TimeSpan.FromSeconds(secondsElapsed).ToString();
-
                 score -= 1;
                 lblScore.Text = score.ToString();
-
             }
         }
 
