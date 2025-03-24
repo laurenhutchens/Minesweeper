@@ -376,20 +376,37 @@ namespace MinesweeperGUIAPP
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnStartGameClickEH(object sender, EventArgs e)
-
         {
             tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
             score = 0;
             secondsElapsed = 0;
             tmrGameTime.Start();
-            // Convert values proper
-            int size = Convert.ToInt32(SizeText);
-            int difficulty = Convert.ToInt32(DifficultyText);
-            gameLogic = new MinesweeperGameLogic(size, difficulty);
-            boardModel = gameLogic.GetBoardModel();
-            InitializeBoardButtons(size);
-            UpdateBoardGUI();
+
+            try
+            {
+                // Safely convert values and handle invalid input
+                int size = Convert.ToInt32(SizeText);
+                int difficulty = Convert.ToInt32(DifficultyText);
+
+                gameLogic = new MinesweeperGameLogic(size, difficulty);
+                boardModel = gameLogic.GetBoardModel();
+                InitializeBoardButtons(size);
+                UpdateBoardGUI();
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Please Select Difficulty first.", "Input Error");
+            }
+            catch (OverflowException)
+            {
+                MessageBox.Show("Please Select Difficulty first.", "Input Error");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error");
+            }
         }
+
 
         /// <summary>
         /// Evnent handler to choose the difficulty of the game
