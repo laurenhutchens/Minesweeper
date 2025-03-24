@@ -59,7 +59,7 @@
             btnSave.TabIndex = 4;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += BtnSave_Click;
+            btnSave.Click += BtnSaveClick;
             // 
             // label2
             // 
@@ -91,7 +91,6 @@
             Controls.Add(txtName);
             Name = "FrmWin";
             Text = "You Won!!!";
-            Load += FrmWin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -33,6 +33,7 @@ namespace MinesweeperGUIAPP
             get { return lblSize.Text; }
             set { lblSize.Text = value; }
         }
+
         public FrmStart()
         {
             InitializeComponent();
@@ -240,7 +241,7 @@ namespace MinesweeperGUIAPP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnHint_Click(object sender, EventArgs e)
+        private void BtnHintClickEH(object sender, EventArgs e)
         {
             if (gameLogic.UseSpecialBonus("Hint"))
             {
@@ -258,7 +259,7 @@ namespace MinesweeperGUIAPP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnResetGame_Click(object sender, EventArgs e)
+        private void BtnResetGameClickEH(object sender, EventArgs e)
         {
             secondsElapsed = 0;
             lblGameTime.Text = "00:00:00";
@@ -389,10 +390,17 @@ namespace MinesweeperGUIAPP
             InitializeBoardButtons(size);
             UpdateBoardGUI();
         }
-        //SHows the secondary form with the trackbars to select the size and difficully
+
+        /// <summary>
+        /// Evnent handler to choose the difficulty of the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnChooseDifficultyClickEH(object sender, EventArgs e)
         {
+            // New Form to choose the difficulty
             FrmPlay frmPlay = new FrmPlay();
+            
             frmPlay.Show();
             frmPlay.FormClosed += (s, args) => this.Show();
         }

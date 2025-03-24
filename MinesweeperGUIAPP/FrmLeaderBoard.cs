@@ -1,4 +1,10 @@
-﻿using MineSweeperClasses.BuisnessLogicLayer;
+﻿/*Arie Gerard and Lauren Hutches 
+ * Cst-250
+ * Minesweeper 
+ * Bill Hughes
+ *03/10/2025
+ */
+using MineSweeperClasses.BuisnessLogicLayer;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -36,7 +42,7 @@ namespace MinesweeperGUIAPP
             SetupDataGridView();
         }
 
-        private void FrmLeaderBoard_Load(object sender, EventArgs e)
+        private void FrmLeaderBoardLoad(object sender, EventArgs e)
         {
             // Ensure the leaderboard is displayed correctly when the form loads
             bindingSource.ResetBindings(false);
@@ -44,7 +50,7 @@ namespace MinesweeperGUIAPP
 
         private void SetupDataGridView()
         {
-            // Set column headers if not already defined
+            // Set column headers if not already added
             if (dgvScoreBoard.Columns.Count == 0)
             {
                 dgvScoreBoard.AutoGenerateColumns = false;
@@ -88,32 +94,54 @@ namespace MinesweeperGUIAPP
             }
         }
 
-        // Menu handlers can be implemented here if needed
-        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Event handler to load a file with game statistics
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LoadToolStripMenuItemClick(object sender, EventArgs e)
         {
-            // Logic to load leaderboard data from a file or database
-        }
 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+        }
+        /// <summary>
+        /// Event handler toe xit the application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExitToolStripMenuItemClick(object sender, EventArgs e)
         {
             Close();
         }
+        /// <summary>
+        /// button to orginize by name 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
-        private void ByNameToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ByNameToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Sort by name and refresh the DataGridView
             statList.Sort((a, b) => a.Name.CompareTo(b.Name));
             bindingSource.ResetBindings(false);
         }
-
-        private void ByScoreToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Button to Orginize by score 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ByScoreToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Sort by score in descending order and refresh
             statList.Sort((a, b) => b.Score.CompareTo(a.Score));
             bindingSource.ResetBindings(false);
         }
+        /// <summary>
+        /// Button to orginize by date
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
-        private void ByDateToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ByDateToolStripMenuItemClick(object sender, EventArgs e)
         {
             // Sort by date and refresh
             statList.Sort((a, b) => a.Date.CompareTo(b.Date));

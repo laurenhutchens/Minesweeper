@@ -1,9 +1,17 @@
-﻿using System;
+﻿/*Arie Gerard and Lauren Hutches 
+ * Cst-250
+ * Minesweeper 
+ * Bill Hughes
+ *03/10/2025
+ */
+
+using System;
 
 namespace MineSweeperClasses.BuisnessLogicLayer
 {
     public class GameStat
     {
+        //Properties of GameStat to set and get values
         public int Id { get; set; }
         public string Name { get; set; }
         public int Score { get; set; }

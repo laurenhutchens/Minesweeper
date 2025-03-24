@@ -70,14 +70,14 @@
             loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             loadToolStripMenuItem.Size = new Size(224, 26);
             loadToolStripMenuItem.Text = "Load";
-            loadToolStripMenuItem.Click += LoadToolStripMenuItem_Click;
+            loadToolStripMenuItem.Click += LoadToolStripMenuItemClick;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.Size = new Size(224, 26);
             exitToolStripMenuItem.Text = "Exit";
-            exitToolStripMenuItem.Click += ExitToolStripMenuItem_Click;
+            exitToolStripMenuItem.Click += ExitToolStripMenuItemClick;
             // 
             // sortToolStripMenuItem
             // 
@@ -91,21 +91,21 @@
             byNameToolStripMenuItem.Name = "byNameToolStripMenuItem";
             byNameToolStripMenuItem.Size = new Size(224, 26);
             byNameToolStripMenuItem.Text = "By Name";
-            byNameToolStripMenuItem.Click += ByNameToolStripMenuItem_Click;
+            byNameToolStripMenuItem.Click += ByNameToolStripMenuItemClick;
             // 
             // byScoreToolStripMenuItem
             // 
             byScoreToolStripMenuItem.Name = "byScoreToolStripMenuItem";
             byScoreToolStripMenuItem.Size = new Size(224, 26);
             byScoreToolStripMenuItem.Text = "By Score";
-            byScoreToolStripMenuItem.Click += ByScoreToolStripMenuItem_Click;
+            byScoreToolStripMenuItem.Click += ByScoreToolStripMenuItemClick;
             // 
             // byDateToolStripMenuItem
             // 
             byDateToolStripMenuItem.Name = "byDateToolStripMenuItem";
             byDateToolStripMenuItem.Size = new Size(224, 26);
             byDateToolStripMenuItem.Text = "By Date";
-            byDateToolStripMenuItem.Click += ByDateToolStripMenuItem_Click;
+            byDateToolStripMenuItem.Click += ByDateToolStripMenuItemClick;
             // 
             // dgvScoreBoard
             // 
@@ -125,7 +125,7 @@
             Controls.Add(mnuOptions);
             Name = "FrmLeaderBoard";
             Text = "Leaderboard";
-            Load += FrmLeaderBoard_Load;
+            Load += FrmLeaderBoardLoad;
             mnuOptions.ResumeLayout(false);
             mnuOptions.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvScoreBoard).EndInit();

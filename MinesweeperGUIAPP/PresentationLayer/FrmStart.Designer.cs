@@ -111,7 +111,7 @@ namespace MinesweeperGUIAPP
             btnReset.TabIndex = 17;
             btnReset.Text = "Reset";
             btnReset.UseVisualStyleBackColor = true;
-            btnReset.Click += BtnResetGame_Click;
+            btnReset.Click += BtnResetGameClickEH;
             // 
             // lblDifficulty
             // 
@@ -141,7 +141,7 @@ namespace MinesweeperGUIAPP
             btnHint.TabIndex = 20;
             btnHint.Text = "Hint";
             btnHint.UseVisualStyleBackColor = true;
-            btnHint.Click += BtnHint_Click;
+            btnHint.Click += BtnHintClickEH;
             // 
             // FrmStart
             // 
