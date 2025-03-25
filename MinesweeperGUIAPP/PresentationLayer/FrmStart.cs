@@ -33,14 +33,18 @@ namespace MinesweeperGUIAPP
             get { return lblSize.Text; }
             set { lblSize.Text = value; }
         }
-
+        
         public FrmStart()
         {
             InitializeComponent();
         }
 
         string basePath = Path.Combine(Application.StartupPath, "Images");
-        // Method to initialize the board buttons based on the board size
+
+        /// <summary>
+        /// Method to initalize the board buttons 
+        /// </summary>
+        /// <param name="size"></param>
         private void InitializeBoardButtons(int size)
         {
             btnBoard = new Button[size, size];
@@ -74,6 +78,7 @@ namespace MinesweeperGUIAPP
                 }
             }
         }
+
         /// <summary>
         /// Method to check if there was a right click 
         /// </summary>
@@ -183,6 +188,7 @@ namespace MinesweeperGUIAPP
             }
             Refresh();
         }
+
         /// <summary>
         /// Method to check the game status
         /// </summary>
