@@ -30,7 +30,11 @@ namespace MinesweeperGUIAPP.PresentationLayer
             lblFinalScore.Text = score.ToString(); // Display the score as a string
         }
 
-       
+       /// <summary>
+       ///  button tk save the player name 
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         private void BtnSaveClick(object sender, EventArgs e)
         {
             string playerName = txtName.Text;

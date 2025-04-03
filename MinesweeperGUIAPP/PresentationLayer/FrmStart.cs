@@ -21,6 +21,9 @@ namespace MinesweeperGUIAPP
         private int score;
         public string finalScore;
 
+
+
+
         //Getter and setters for the lbl to transfer data from the secondary form to the main form 
         public String DifficultyText
         {
@@ -249,15 +252,21 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void BtnHintClickEH(object sender, EventArgs e)
         {
-            if (gameLogic.UseSpecialBonus("Hint"))
-            {
-                MessageBox.Show("Hint: Bomb location revealed.");
+            // Implement hint game logic.
+            var bombCoordinates = gameLogic.GetRandomBombCoordinates();
 
+            //Checks if the bomb coordinates has a value to check if there is a bomb on the board. 
+            if (bombCoordinates.HasValue)
+            {
+                // Show the bomb's coordinates in a message box.
+                MessageBox.Show($"Bomb found at: Row {bombCoordinates.Value.Item1}, Column {bombCoordinates.Value.Item2}");
             }
             else
             {
-                MessageBox.Show("No hints available.");
+                // If no bombs are found (unexpected scenario), show an appropriate message.
+                MessageBox.Show("No bombs found on the board.");
             }
+
         }
 
         /// <summary>

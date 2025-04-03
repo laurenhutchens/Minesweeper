@@ -278,4 +278,35 @@ public class MinesweeperGameLogic
     {
         return Board;
     }
+    /// <summary>
+    /// Gets the coordinates of a random bomb from the board.
+    /// </summary>
+    /// <returns>A tuple containing the (row, column) coordinates of the bomb, or null if no bombs are found.</returns>
+    public (int, int)? GetRandomBombCoordinates()
+    {
+        // Create a list to store all bomb cells
+        List<(int, int)> bombCoordinates = new List<(int, int)>();
+
+        // Iterate through the board to find bomb cells
+        for (int row = 0; row < boardSize; row++)
+        {
+            for (int col = 0; col < boardSize; col++)
+            {
+                if (Board.Cells[row, col].IsBomb)
+                {
+                    bombCoordinates.Add((row, col));
+                }
+            }
+        }
+
+        // If there are no bombs, return null
+        if (bombCoordinates.Count == 0)
+        {
+            return null;
+        }
+
+        // Randomly select a bomb's coordinates from the list
+        int randomIndex = rand.Next(bombCoordinates.Count);
+        return bombCoordinates[randomIndex];
+    }
 }
