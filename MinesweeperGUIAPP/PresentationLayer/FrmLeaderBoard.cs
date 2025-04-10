@@ -106,7 +106,7 @@ namespace MinesweeperGUIAPP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LoadToolStripMenuItemClickEH(object sender, EventArgs e)
+        private void TsmLoadClickEH(object sender, EventArgs e)
         {
             // method to load the file
         }
@@ -115,7 +115,7 @@ namespace MinesweeperGUIAPP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ExitToolStripMenuItemClickEH(object sender, EventArgs e)
+        private void TsmExitClickEH(object sender, EventArgs e)
         {
             Close();
         }
@@ -125,7 +125,7 @@ namespace MinesweeperGUIAPP
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void ByNameToolStripMenuItemClickEH(object sender, EventArgs e)
+        private void TsmByNameClickEH(object sender, EventArgs e)
         {
             // Sort by name and refresh the DataGridView
             statList.Sort((a, b) => a.Name.CompareTo(b.Name));
@@ -136,7 +136,7 @@ namespace MinesweeperGUIAPP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ByScoreToolStripMenuItemClickEH(object sender, EventArgs e)
+        private void TsmByScoreClickEH(object sender, EventArgs e)
         {
             // Sort by score in descending order and refresh
             statList.Sort((a, b) => b.Score.CompareTo(a.Score));
@@ -148,14 +148,14 @@ namespace MinesweeperGUIAPP
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void ByDateToolStripMenuItemClickEH(object sender, EventArgs e)
+        private void TsmByDateClickEH(object sender, EventArgs e)
         {
             // Sort by date and refresh
             statList.Sort((a, b) => a.Date.CompareTo(b.Date));
             bindingSource.ResetBindings(false);
         }
 
-        private void SaveToolStrp2ClickEH(object sender, EventArgs e)
+        private void TsmSaveClickEH(object sender, EventArgs e)
         {
             // To save the file 
         }

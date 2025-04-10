@@ -64,21 +64,21 @@
             toolStripMenuItem2.Name = "toolStripMenuItem2";
             toolStripMenuItem2.Size = new Size(224, 26);
             toolStripMenuItem2.Text = "Save";
-            toolStripMenuItem2.Click += SaveToolStrp2ClickEH;
+            toolStripMenuItem2.Click += TsmSaveClickEH;
             // 
             // loadToolStripMenuItem
             // 
             loadToolStripMenuItem.Name = "loadToolStripMenuItem";
             loadToolStripMenuItem.Size = new Size(224, 26);
             loadToolStripMenuItem.Text = "Load";
-            loadToolStripMenuItem.Click += LoadToolStripMenuItemClickEH;
+            loadToolStripMenuItem.Click += TsmLoadClickEH;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             exitToolStripMenuItem.Size = new Size(224, 26);
             exitToolStripMenuItem.Text = "Exit";
-            exitToolStripMenuItem.Click += ExitToolStripMenuItemClickEH;
+            exitToolStripMenuItem.Click += TsmExitClickEH;
             // 
             // sortToolStripMenuItem
             // 
@@ -92,21 +92,21 @@
             byNameToolStripMenuItem.Name = "byNameToolStripMenuItem";
             byNameToolStripMenuItem.Size = new Size(224, 26);
             byNameToolStripMenuItem.Text = "By Name";
-            byNameToolStripMenuItem.Click += ByNameToolStripMenuItemClickEH;
+            byNameToolStripMenuItem.Click += TsmByNameClickEH;
             // 
             // byScoreToolStripMenuItem
             // 
             byScoreToolStripMenuItem.Name = "byScoreToolStripMenuItem";
             byScoreToolStripMenuItem.Size = new Size(224, 26);
             byScoreToolStripMenuItem.Text = "By Score";
-            byScoreToolStripMenuItem.Click += ByScoreToolStripMenuItemClickEH;
+            byScoreToolStripMenuItem.Click += TsmByScoreClickEH;
             // 
             // byDateToolStripMenuItem
             // 
             byDateToolStripMenuItem.Name = "byDateToolStripMenuItem";
             byDateToolStripMenuItem.Size = new Size(224, 26);
             byDateToolStripMenuItem.Text = "By Date";
-            byDateToolStripMenuItem.Click += ByDateToolStripMenuItemClickEH;
+            byDateToolStripMenuItem.Click += TsmByDateClickEH;
             // 
             // dgvScoreBoard
             // 
