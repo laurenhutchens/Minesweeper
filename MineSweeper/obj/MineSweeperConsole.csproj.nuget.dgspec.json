@@ -1,32 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeper\\MineSweeperConsole.csproj": {}
+    "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeper\\MineSweeperConsole.csproj": {}
   },
   "projects": {
-    "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeperClasses\\MineSweeperClasses.csproj": {
+    "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeperClasses\\MineSweeperClasses.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeperClasses\\MineSweeperClasses.csproj",
+        "projectUniqueName": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeperClasses\\MineSweeperClasses.csproj",
         "projectName": "MineSweeperClasses",
-        "projectPath": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeperClasses\\MineSweeperClasses.csproj",
-        "packagesPath": "C:\\Users\\majes\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeperClasses\\obj\\",
+        "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeperClasses\\MineSweeperClasses.csproj",
+        "packagesPath": "C:\\Users\\laurenhutchens\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeperClasses\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\majes\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\laurenhutchens\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,41 +67,40 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeper\\MineSweeperConsole.csproj": {
+    "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeper\\MineSweeperConsole.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeper\\MineSweeperConsole.csproj",
+        "projectUniqueName": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeper\\MineSweeperConsole.csproj",
         "projectName": "MineSweeperConsole",
-        "projectPath": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeper\\MineSweeperConsole.csproj",
-        "packagesPath": "C:\\Users\\majes\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeper\\obj\\",
+        "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeper\\MineSweeperConsole.csproj",
+        "packagesPath": "C:\\Users\\laurenhutchens\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\majes\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\laurenhutchens\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0-windows"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeperClasses\\MineSweeperClasses.csproj": {
-                "projectPath": "C:\\Users\\majes\\Source\\Repos\\Minesweepercheck1\\MineSweeperClasses\\MineSweeperClasses.csproj"
+              "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeperClasses\\MineSweeperClasses.csproj": {
+                "projectPath": "C:\\Users\\laurenhutchens\\OneDrive\\Academics\\current uni classes\\CST-250\\milestone\\Milestone 5 GameStat Class\\MineSweeperClasses\\MineSweeperClasses.csproj"
               }
             }
           }
@@ -140,7 +138,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
