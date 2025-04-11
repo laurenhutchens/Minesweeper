@@ -1,8 +1,8 @@
-﻿/*Arie Gerard and Lauren Hutches 
+﻿/* Arie Gerard and Lauren Hutches 
  * Cst-250
  * Minesweeper 
  * Bill Hughes
- *03/10/2025
+ * 04/11/2025
  */
 using MineSweeperClasses.BuisnessLogicLayer;
 using System;

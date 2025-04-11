@@ -1,8 +1,8 @@
-﻿/*Arie Gerard and Lauren Hutches 
+﻿/* Arie Gerard and Lauren Hutches 
  * Cst-250
  * Minesweeper 
  * Bill Hughes
- *03/10/2025
+ * 04/13/2025
  */
 
 using System;
