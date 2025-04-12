@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MinesweeperGUIAPP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19c6725c401e2ebbeee1ad8ab3b903186465e195")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c1462f9d5e2ef900191a1c229a54582228a2fbdc")]
 [assembly: System.Reflection.AssemblyProductAttribute("MinesweeperGUIAPP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MinesweeperGUIAPP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

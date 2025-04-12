@@ -63,14 +63,14 @@
             // 
             tsmSave.Name = "tsmSave";
             tsmSave.Size = new Size(224, 26);
-            tsmSave.Text = "Save";
+            tsmSave.Text = "Save Leaderboard";
             tsmSave.Click += TsmSaveClickEH;
             // 
             // tsmLoad
             // 
             tsmLoad.Name = "tsmLoad";
             tsmLoad.Size = new Size(224, 26);
-            tsmLoad.Text = "Load";
+            tsmLoad.Text = "Load Leaderboard";
             tsmLoad.Click += TsmLoadClickEH;
             // 
             // exitToolStripMenuItem
