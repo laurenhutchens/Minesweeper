@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace MinesweeperGUIAPP
+
 {
     public partial class FrmLeaderBoard : Form
     {
@@ -145,11 +146,17 @@ namespace MinesweeperGUIAPP
             bindingSource.ResetBindings(false);
         }
 
+
         /// <summary>
-        /// Event handler to save a file with game statistics
+        /// Method to get game data to save from the tsmSave
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private object GetGameDataToSave()
+        {
+            return statList;
+        }
+
         private void TsmSaveClickEH(object sender, EventArgs e)
         {
             // Open a Save File Dialog
@@ -162,27 +169,12 @@ namespace MinesweeperGUIAPP
                 {
                     string filePath = saveFileDialog.FileName;
                     var gameData = GetGameDataToSave();
-                    MineSweeperClasses.DataAccessLayer.MinesweeperDAOcs.tsmSave(gameData, filePath);
+                    MineSweeperClasses.DataAccessLayer.MinesweeperDAO.tsmSave(gameData, filePath);
                 }
             }
         }
 
 
-        /// <summary>
-        /// Method to get game data to save from the tsmSave
-        /// </summary>
-        /// <returns></returns>
-        /// <exception cref="NotImplementedException"></exception>
-        private object GetGameDataToSave()
-        {
-            return statList;
-        }
-
-        /// <summary>
-        /// Event handler to load a file with game statistics
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void TsmLoadClickEH(object sender, EventArgs e)
         {
             // Open an Open File Dialog
@@ -194,7 +186,7 @@ namespace MinesweeperGUIAPP
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    var loadedData = MineSweeperClasses.DataAccessLayer.MinesweeperDAOcs.tsmLoad<List<GameStat>>(filePath);
+                    var loadedData = MineSweeperClasses.DataAccessLayer.MinesweeperDAO.tsmLoad<List<GameStat>>(filePath);
 
                     if (loadedData != null)
                     {

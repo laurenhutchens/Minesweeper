@@ -17,6 +17,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MinesweeperGUIAPP
+
 {
     public partial class FrmPlay : Form
     {
