@@ -9,6 +9,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="PresentationLayer\FrmWin.cs" />
+    <Compile Remove="PresentationLayer\FrmWin.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="PresentationLayer\FrmWin.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MineSweeperClasses\MineSweeperClasses.csproj" />
   </ItemGroup>
 

@@ -10,8 +10,5 @@
     <Compile Update="PresentationLayer\FrmStart.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="PresentationLayer\FrmWin.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>

@@ -30,8 +30,8 @@
         {
             mnuOptions = new MenuStrip();
             toolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripMenuItem2 = new ToolStripMenuItem();
-            loadToolStripMenuItem = new ToolStripMenuItem();
+            tsmSave = new ToolStripMenuItem();
+            tsmLoad = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
             sortToolStripMenuItem = new ToolStripMenuItem();
             byNameToolStripMenuItem = new ToolStripMenuItem();
@@ -54,24 +54,24 @@
             // 
             // toolStripMenuItem1
             // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem2, loadToolStripMenuItem, exitToolStripMenuItem });
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { tsmSave, tsmLoad, exitToolStripMenuItem });
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(46, 24);
             toolStripMenuItem1.Text = "File";
             // 
-            // toolStripMenuItem2
+            // tsmSave
             // 
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            toolStripMenuItem2.Size = new Size(224, 26);
-            toolStripMenuItem2.Text = "Save";
-            toolStripMenuItem2.Click += TsmSaveClickEH;
+            tsmSave.Name = "tsmSave";
+            tsmSave.Size = new Size(224, 26);
+            tsmSave.Text = "Save";
+            tsmSave.Click += TsmSaveClickEH;
             // 
-            // loadToolStripMenuItem
+            // tsmLoad
             // 
-            loadToolStripMenuItem.Name = "loadToolStripMenuItem";
-            loadToolStripMenuItem.Size = new Size(224, 26);
-            loadToolStripMenuItem.Text = "Load";
-            loadToolStripMenuItem.Click += TsmLoadClickEH;
+            tsmLoad.Name = "tsmLoad";
+            tsmLoad.Size = new Size(224, 26);
+            tsmLoad.Text = "Load";
+            tsmLoad.Click += TsmLoadClickEH;
             // 
             // exitToolStripMenuItem
             // 
@@ -90,21 +90,21 @@
             // byNameToolStripMenuItem
             // 
             byNameToolStripMenuItem.Name = "byNameToolStripMenuItem";
-            byNameToolStripMenuItem.Size = new Size(224, 26);
+            byNameToolStripMenuItem.Size = new Size(152, 26);
             byNameToolStripMenuItem.Text = "By Name";
             byNameToolStripMenuItem.Click += TsmByNameClickEH;
             // 
             // byScoreToolStripMenuItem
             // 
             byScoreToolStripMenuItem.Name = "byScoreToolStripMenuItem";
-            byScoreToolStripMenuItem.Size = new Size(224, 26);
+            byScoreToolStripMenuItem.Size = new Size(152, 26);
             byScoreToolStripMenuItem.Text = "By Score";
             byScoreToolStripMenuItem.Click += TsmByScoreClickEH;
             // 
             // byDateToolStripMenuItem
             // 
             byDateToolStripMenuItem.Name = "byDateToolStripMenuItem";
-            byDateToolStripMenuItem.Size = new Size(224, 26);
+            byDateToolStripMenuItem.Size = new Size(152, 26);
             byDateToolStripMenuItem.Text = "By Date";
             byDateToolStripMenuItem.Click += TsmByDateClickEH;
             // 
@@ -138,8 +138,8 @@
 
         private MenuStrip mnuOptions;
         private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem toolStripMenuItem2;
-        private ToolStripMenuItem loadToolStripMenuItem;
+        private ToolStripMenuItem tsmSave;
+        private ToolStripMenuItem tsmLoad;
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem sortToolStripMenuItem;
         private ToolStripMenuItem byNameToolStripMenuItem;

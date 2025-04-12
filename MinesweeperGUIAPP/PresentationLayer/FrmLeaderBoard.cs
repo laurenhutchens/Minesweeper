@@ -100,16 +100,6 @@ namespace MinesweeperGUIAPP
                 });
             }
         }
-
-        /// <summary>
-        /// Event handler to load a file with game statistics
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TsmLoadClickEH(object sender, EventArgs e)
-        {
-            // method to load the file
-        }
         /// <summary>
         /// Event handler toe xit the application
         /// </summary>
@@ -155,9 +145,70 @@ namespace MinesweeperGUIAPP
             bindingSource.ResetBindings(false);
         }
 
+        /// <summary>
+        /// Event handler to save a file with game statistics
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TsmSaveClickEH(object sender, EventArgs e)
         {
-            // To save the file 
+            // Open a Save File Dialog
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
+                saveFileDialog.Title = "Save Leaderboard";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
+                    var gameData = GetGameDataToSave();
+                    MineSweeperClasses.DataAccessLayer.MinesweeperDAOcs.tsmSave(gameData, filePath);
+                }
+            }
         }
+
+
+        /// <summary>
+        /// Method to get game data to save from the tsmSave
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="NotImplementedException"></exception>
+        private object GetGameDataToSave()
+        {
+            return statList;
+        }
+
+        /// <summary>
+        /// Event handler to load a file with game statistics
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TsmLoadClickEH(object sender, EventArgs e)
+        {
+            // Open an Open File Dialog
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "JSON Files (*.json)|*.json|All Files (*.*)|*.*";
+                openFileDialog.Title = "Load Leaderboard";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    var loadedData = MineSweeperClasses.DataAccessLayer.MinesweeperDAOcs.tsmLoad<List<GameStat>>(filePath);
+
+                    if (loadedData != null)
+                    {
+                        statList = loadedData;
+                        bindingSource.DataSource = statList;
+                        bindingSource.ResetBindings(false);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to load leaderboard.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
     }
 }
