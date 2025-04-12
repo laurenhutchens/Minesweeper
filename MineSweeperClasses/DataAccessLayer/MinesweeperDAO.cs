@@ -6,7 +6,7 @@ namespace MineSweeperClasses.DataAccessLayer
 {
     public class MinesweeperDAO
     {
-        public static void tsmSave(object data, string filePath)
+        public static void TsmSave(object data, string filePath)
         {
             try
             {
@@ -20,7 +20,7 @@ namespace MineSweeperClasses.DataAccessLayer
             }
         }
 
-        public static T tsmLoad<T>(string filePath) where T : class
+        public static T TsmLoad<T>(string filePath) where T : class
         {
             try
             {

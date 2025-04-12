@@ -169,7 +169,12 @@ namespace MinesweeperGUIAPP
                 {
                     string filePath = saveFileDialog.FileName;
                     var gameData = GetGameDataToSave();
-                    MineSweeperClasses.DataAccessLayer.MinesweeperDAO.tsmSave(gameData, filePath);
+                    MineSweeperClasses.DataAccessLayer.MinesweeperDAO.TsmSave(gameData, filePath);
+                    MessageBox.Show("File saved!");
+                }
+                else
+                {
+                    MessageBox.Show("Save Failed");
                 }
             }
         }
@@ -186,13 +191,14 @@ namespace MinesweeperGUIAPP
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     string filePath = openFileDialog.FileName;
-                    var loadedData = MineSweeperClasses.DataAccessLayer.MinesweeperDAO.tsmLoad<List<GameStat>>(filePath);
+                    var loadedData = MineSweeperClasses.DataAccessLayer.MinesweeperDAO.TsmLoad<List<GameStat>>(filePath);
 
                     if (loadedData != null)
                     {
                         statList = loadedData;
                         bindingSource.DataSource = statList;
                         bindingSource.ResetBindings(false);
+                        MessageBox.Show("File loaded!");
                     }
                     else
                     {
