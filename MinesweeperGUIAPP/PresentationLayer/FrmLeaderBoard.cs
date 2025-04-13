@@ -108,11 +108,14 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void TsmLoadClickEH(object sender, EventArgs e)
         {
-            // Open an Open File Dialog
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
-                openFileDialog.Filter = "JSON Files (.json)|.json|All Files (.)|.";
+                openFileDialog.Filter = "JSON Files (.json)|*.json|All Files (*.*)|*.*";
                 openFileDialog.Title = "Load Leaderboard";
+
+                // Set a default directory dynamically
+                string defaultDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                openFileDialog.InitialDirectory = defaultDirectory;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -177,15 +180,16 @@ namespace MinesweeperGUIAPP
             statList.Sort((a, b) => a.Date.CompareTo(b.Date));
             bindingSource.ResetBindings(false);
         }
-
         private void TsmSaveClickEH(object sender, EventArgs e)
         {
-            // To save the file
-            // // Open a Save File Dialog
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                saveFileDialog.Filter = "JSON Files (.json)|.json|All Files (.)|.";
+                saveFileDialog.Filter = "JSON Files (.json)|*.json|All Files (*.*)|*.*";
                 saveFileDialog.Title = "Save Leaderboard";
+
+                // Set a default directory dynamically
+                string defaultDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                saveFileDialog.InitialDirectory = defaultDirectory;
 
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
@@ -200,7 +204,6 @@ namespace MinesweeperGUIAPP
                 }
             }
         }
-
         private object GetGameDataToSave()
         {
             return statList;
