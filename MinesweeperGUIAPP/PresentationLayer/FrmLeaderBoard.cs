@@ -101,9 +101,6 @@ namespace MinesweeperGUIAPP
                 });
             }
         }
-<<<<<<< HEAD
-=======
-
         /// <summary>
         /// Event handler to load a file with game statistics
         /// </summary>
@@ -139,7 +136,6 @@ namespace MinesweeperGUIAPP
                 }
             }
         }
->>>>>>> a6af47b419ab4330c29fa78aaf2c2c8992f6c93d
         /// <summary>
         /// Event handler toe xit the application
         /// </summary>
@@ -230,13 +226,10 @@ namespace MinesweeperGUIAPP
                     MessageBox.Show("Save Failed");
                 }
             }
-<<<<<<< HEAD
-=======
         }
         private object GetGameDataToSave()
         {
             return statList;
->>>>>>> a6af47b419ab4330c29fa78aaf2c2c8992f6c93d
         }
 
 
