@@ -4,6 +4,7 @@
  * Bill Hughes
  *03/10/2025
  */
+
 using MineSweeperClasses.BuisnessLogicLayer;
 using System;
 using System.Collections.Generic;
@@ -62,13 +63,14 @@ namespace MinesweeperGUIAPP
             {
                 dgvScoreBoard.AutoGenerateColumns = false;
 
+                //Add ID
                 dgvScoreBoard.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     HeaderText = "ID",
                     DataPropertyName = "Id",
                     ReadOnly = true
                 });
-
+                //Add Name
                 dgvScoreBoard.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Name",
@@ -76,6 +78,7 @@ namespace MinesweeperGUIAPP
                     ReadOnly = true
                 });
 
+                //Add Score
                 dgvScoreBoard.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Score",
@@ -83,6 +86,7 @@ namespace MinesweeperGUIAPP
                     ReadOnly = true
                 });
 
+                //Add Date
                 dgvScoreBoard.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Date",
@@ -91,6 +95,7 @@ namespace MinesweeperGUIAPP
                     DefaultCellStyle = { Format = "MM/dd/yyyy" }
                 });
 
+                //Add GameTime
                 dgvScoreBoard.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     HeaderText = "Game Time",
