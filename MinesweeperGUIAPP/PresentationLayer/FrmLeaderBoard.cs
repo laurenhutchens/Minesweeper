@@ -108,7 +108,30 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void TsmLoadClickEH(object sender, EventArgs e)
         {
-            // method to load the file
+            // Open an Open File Dialog
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "JSON Files (.json)|.json|All Files (.)|.";
+                openFileDialog.Title = "Load Leaderboard";
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    var loadedData = MineSweeperClasses.DataAccessLayer.MinesweeperDAO.TsmLoad<List<GameStat>>(filePath);
+
+                    if (loadedData != null)
+                    {
+                        statList = loadedData;
+                        bindingSource.DataSource = statList;
+                        bindingSource.ResetBindings(false);
+                        MessageBox.Show("File loaded!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Failed to load leaderboard.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
         /// <summary>
         /// Event handler toe xit the application
@@ -157,7 +180,30 @@ namespace MinesweeperGUIAPP
 
         private void TsmSaveClickEH(object sender, EventArgs e)
         {
-            // To save the file 
+            // To save the file
+            // // Open a Save File Dialog
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "JSON Files (.json)|.json|All Files (.)|.";
+                saveFileDialog.Title = "Save Leaderboard";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = saveFileDialog.FileName;
+                    var gameData = GetGameDataToSave();
+                    MineSweeperClasses.DataAccessLayer.MinesweeperDAO.TsmSave(gameData, filePath);
+                    MessageBox.Show("File saved!");
+                }
+                else
+                {
+                    MessageBox.Show("Save Failed");
+                }
+            }
+        }
+
+        private object GetGameDataToSave()
+        {
+            return statList;
         }
     }
 }
