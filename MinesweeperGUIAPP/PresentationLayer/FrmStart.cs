@@ -195,57 +195,63 @@ namespace MinesweeperGUIAPP
         }
 
         /// <summary>
-        /// Method to check the game status
+        /// Checks the current game status and handles winning or losing the game.
         /// </summary>
         private void CheckGameStatus()
         {
+            //Sets the gamestatus to the determined status 
             var gameStatus = boardModel.DetermineGameStatus();
-
+            //logic to determine if its won or not, if it is it resets and shows the win form 
             if (gameStatus == BoardModel.GameStatus.Won)
             {
                 MessageBox.Show("Congratulations, You Won!");
-                // Optionally, disable further game input here
 
-                // Show the winning form for data encapsulation
-                int score = int.Parse(lblScore.Text); // Parse the score if needed
-
-                TimeSpan gameTime;
-
-                // Parse the game time and handle invalid formats gracefully
-                if (TimeSpan.TryParse(lblGameTime.Text, out gameTime))
+                if (int.TryParse(lblScore.Text, out int score))
                 {
-                    FrmWin frmWin = new FrmWin(score, gameTime);
-                    frmWin.Show();
+                    if (TimeSpan.TryParse(lblGameTime.Text, out TimeSpan gameTime))
+                    {
+                        FrmWin frmWin = new FrmWin(score, gameTime);
+                        frmWin.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid game time format. Cannot display results.", "Error");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid game time format. Cannot display results.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid score format. Cannot display results.", "Error");
                 }
 
                 ResetGame();
             }
+            //if lost for testing purposes still shows the win 
             else if (gameStatus == BoardModel.GameStatus.Lost)
             {
                 MessageBox.Show("Game Over! You hit a bomb.");
-                // Optionally, reveal all bombs and disable further game input
-                int score = int.Parse(lblScore.Text);
-                TimeSpan gameTime;
 
-                // Attempt to parse lblGameTime.Text as TimeSpan
-                if (TimeSpan.TryParse(lblGameTime.Text, out gameTime))
+                if (int.TryParse(lblScore.Text, out int score))
                 {
-                    tmrGameTime.Stop();
-                    FrmWin frmWin = new FrmWin(score, gameTime);
-                    frmWin.Show();
+                    if (TimeSpan.TryParse(lblGameTime.Text, out TimeSpan gameTime))
+                    {
+                        tmrGameTime.Stop();
+                        FrmWin frmWin = new FrmWin(score, gameTime);
+                        frmWin.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid game time format. Cannot display results.", "Error");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid game time format. Cannot display results.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Invalid score format. Cannot display results.", "Error");
                 }
 
                 ResetGame();
             }
         }
+
 
         /// <summary>
         /// Button for showing a bomb location
