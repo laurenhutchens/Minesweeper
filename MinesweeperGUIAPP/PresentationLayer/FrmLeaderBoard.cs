@@ -180,6 +180,11 @@ namespace MinesweeperGUIAPP
             statList.Sort((a, b) => a.Date.CompareTo(b.Date));
             bindingSource.ResetBindings(false);
         }
+        /// <summary>
+        /// Tsm to save 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TsmSaveClickEH(object sender, EventArgs e)
         {
             using (SaveFileDialog saveFileDialog = new SaveFileDialog())
@@ -204,6 +209,10 @@ namespace MinesweeperGUIAPP
                 }
             }
         }
+        /// <summary>
+        /// Method To Get Game Data and save it. 
+        /// </summary>
+        /// <returns></returns>
         private object GetGameDataToSave()
         {
             return statList;
