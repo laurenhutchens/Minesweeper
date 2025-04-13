@@ -276,15 +276,7 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void BtnResetGameClickEH(object sender, EventArgs e)
         {
-            secondsElapsed = 0;
-            lblGameTime.Text = "00:00:00";
-
-            foreach (var button in btnBoard)
-            {
-                this.Controls.Remove(button); // Remove buttons from the form
-            }
-            score = 0;
-            lblScore.Text = score.ToString();
+            ResetGame();
         }
         //Put floodfill into the GameLogic
         /// <summary>
