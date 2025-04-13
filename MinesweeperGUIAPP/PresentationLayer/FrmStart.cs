@@ -152,6 +152,7 @@ namespace MinesweeperGUIAPP
         /// </summary>
         private void UpdateBoardGUI()
         {
+            //Logic to loop through the board and update the board. 
             for (int row = 0; row < boardModel.Size; row++)
             {
                 for (int col = 0; col < boardModel.Size; col++)
@@ -163,6 +164,7 @@ namespace MinesweeperGUIAPP
                     {
                         if (cell.IsBomb)
                         {
+                            //Set the images to the cell status
                             cellButton.Text = "B";
                             cellButton.BackgroundImage = Image.FromFile(Path.Combine(basePath, "Skull.png"));
                         }
@@ -329,7 +331,7 @@ namespace MinesweeperGUIAPP
         /// <param name="sender"></param>
         /// <param name="e"></param>
 
-        private void TmrGameTime_Tick(object sender, EventArgs e)
+        private void TmrGameTimeTickEH(object sender, EventArgs e)
         {
             {
                 secondsElapsed++;
@@ -384,14 +386,14 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void BtnStartGameClickEH(object sender, EventArgs e)
         {
-            tmrGameTime.Tick += new EventHandler(TmrGameTime_Tick);
+            tmrGameTime.Tick += new EventHandler(TmrGameTimeTickEH);
             score = 0;
             secondsElapsed = 0;
             tmrGameTime.Start();
 
             try
             {
-                // Safely convert values and handle invalid input
+                // Safely convert values and handle invalid nput
                 int size = Convert.ToInt32(SizeText);
                 int difficulty = Convert.ToInt32(DifficultyText);
 

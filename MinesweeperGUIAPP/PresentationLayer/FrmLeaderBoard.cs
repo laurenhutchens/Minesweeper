@@ -18,6 +18,12 @@ namespace MinesweeperGUIAPP
         private List<GameStat> statList = new List<GameStat>();
         private BindingSource bindingSource = new BindingSource();
 
+        /// <summary>
+        /// Passes specific perameters for game logic. 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="score"></param>
+        /// <param name="gameTime"></param>
         public FrmLeaderBoard(string name, int score, TimeSpan gameTime)
         {
             InitializeComponent();
