@@ -1,4 +1,4 @@
-/*Arie Gerard and Lauren Hutches 
+﻿/*Arie Gerard and Lauren Hutches 
  * Cst-250
  * Minesweeper 
  * Bill Hughes
@@ -20,9 +20,14 @@ namespace MinesweeperGUIAPP
         private Button[,] btnBoard;
         private int score;
         public string finalScore;
-
-
-
+        //For Load In Animation
+        private PictureBox pictureBox;
+        private const int DecreaseStep = 3;
+        //for load in effect 
+        private List<PictureBox> overlayBlocks = new List<PictureBox>();
+        private int currentRevealIndex = 0;
+        private const int blockSize = 40; // adjust for granularity
+        private const int revealSpeed = 1; // ms
 
         //Getter and setters for the lbl to transfer data from the secondary form to the main form 
         public String DifficultyText
@@ -36,10 +41,18 @@ namespace MinesweeperGUIAPP
             get { return lblSize.Text; }
             set { lblSize.Text = value; }
         }
-        
+
         public FrmStart()
         {
+
             InitializeComponent();
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.TransparencyKey = Color.Black;
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint, true);
+            this.UpdateStyles();
+            tmrLoadIn.Interval = 10;
+
+
         }
 
         string basePath = Path.Combine(Application.StartupPath, "Images");
@@ -336,7 +349,6 @@ namespace MinesweeperGUIAPP
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-
         private void TmrGameTimeTickEH(object sender, EventArgs e)
         {
             {
@@ -346,7 +358,6 @@ namespace MinesweeperGUIAPP
                 lblScore.Text = score.ToString();
             }
         }
-
         /// <summary>
         /// Button for resetting the game 
         /// </summary>
@@ -370,8 +381,14 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void FrmStartLoadEH(object sender, EventArgs e)
         {
-            MessageBox.Show($"Size: {SizeText}, Difficulty: {DifficultyText}");
+            HideControls();
+            
+            this.FormBorderStyle = FormBorderStyle.None;
+            CreateOverlayGrid();
 
+            tmrLoadIn.Interval = revealSpeed;
+            tmrLoadIn.Tick += TmrLoadIn_Tick;
+            tmrLoadIn.Start();
             // Convert values to integers
             int size = int.TryParse(SizeText, out int s) ? s : 5;  // Default to 5 if conversion fails
             int difficulty = int.TryParse(DifficultyText, out int d) ? d : 3;  // Default to 3 if conversion fails
@@ -382,6 +399,7 @@ namespace MinesweeperGUIAPP
 
             // Initialize the board buttons
             InitializeBoardButtons(size);
+
             UpdateBoardGUI();
         }
 
@@ -432,9 +450,103 @@ namespace MinesweeperGUIAPP
         {
             // New Form to choose the difficulty
             FrmPlay frmPlay = new FrmPlay();
-            
+
             frmPlay.Show();
             frmPlay.FormClosed += (s, args) => this.Show();
         }
+
+        /// <summary>
+        /// TImer Tick for load in animation timing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TmrLoadIn_Tick(object sender, EventArgs e)
+        {
+
+            if (currentRevealIndex >= overlayBlocks.Count)
+            {
+                tmrLoadIn.Stop();
+                foreach (var b in overlayBlocks) 
+                {
+                    this.Controls.Remove(b);
+                    b.Dispose();
+                }
+                overlayBlocks.Clear();
+                RevealControls();
+                return;
+            }
+
+            var block = overlayBlocks[currentRevealIndex]; 
+            this.Controls.Remove(block);
+            block.Dispose();
+            currentRevealIndex++;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+        }
+
+
+        /// <summary>
+        /// Methos to reveal all the controls.
+        /// </summary>
+        public void RevealControls()
+        {
+            btnHint.Visible = true;
+            btnReset.Visible = true;
+            btnStartGame.Visible = true;
+            btnChooseDifficulty.Visible = true;
+            lblDifficulty.Visible = true;
+            label3.Visible = true;
+            label4.Visible = true;
+            lblScore.Visible = true;
+            lblSize.Visible = true;
+            lblGameTime.Visible = true;
+        }
+        /// <summary>
+        /// Method to hide the controls 
+        /// </summary>
+        public void HideControls()
+        {
+            btnHint.Visible = false;
+            btnReset.Visible = false;
+            btnStartGame.Visible = false;
+            btnChooseDifficulty.Visible = false;
+            lblDifficulty.Visible = false;
+            label3.Visible = false;
+            label4.Visible = false;
+            lblScore.Visible = false;
+            lblSize.Visible = false;
+            lblGameTime.Visible = false;
+
+
+        }
+
+        public void CreateOverlayGrid()
+        {
+            overlayBlocks.Clear();
+            //Find the Celing and width fojr the form for sizing
+            int cols = (int)Math.Ceiling((double)this.ClientSize.Width / blockSize);
+            int rows = (int)Math.Ceiling((double)this.ClientSize.Height / blockSize);
+
+            //for loop to loop through and display the blocks.
+            for (int y = 0; y < rows; y++)
+            {
+                for (int x = 0; x < cols; x++)
+                {
+                    PictureBox block = new PictureBox
+                    {
+                        Width = blockSize,
+                        Height = blockSize,
+                        BackColor = Color.Black,
+                        Location = new Point(x * blockSize, y * blockSize),
+                        Enabled = true // blocks interaction
+                    };
+                    block.BringToFront();
+                    overlayBlocks.Add(block);
+                    this.Controls.Add(block);
+                }
+            }
+
+            
+        }
+
     }
 }

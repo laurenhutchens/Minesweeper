@@ -41,6 +41,7 @@ namespace MinesweeperGUIAPP
             lblDifficulty = new Label();
             lblSize = new Label();
             btnHint = new Button();
+            tmrLoadIn = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // btnStartGame
@@ -143,6 +144,9 @@ namespace MinesweeperGUIAPP
             btnHint.UseVisualStyleBackColor = true;
             btnHint.Click += BtnHintClickEH;
             // 
+            // tmrLoadIn
+            // 
+            // 
             // FrmStart
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -160,6 +164,7 @@ namespace MinesweeperGUIAPP
             Controls.Add(btnStartGame);
             Name = "FrmStart";
             Text = "Minesweeper";
+            Load += FrmStartLoadEH;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -184,5 +189,6 @@ namespace MinesweeperGUIAPP
         private Label lblDifficulty;
         private Label lblSize;
         private Button btnHint;
+        private System.Windows.Forms.Timer tmrLoadIn;
     }
 }

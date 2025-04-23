@@ -4,6 +4,7 @@
  * Bill Hughes
  *03/10/2025
  */
+//Todo. make both the visable lables invsiable. whoops. 
 using MineSweeperClasses.Models;
 using static System.Formats.Asn1.AsnWriter;
 public class MinesweeperGameLogic

@@ -33,7 +33,7 @@ namespace MineSweeperClasses.BuisnessLogicLayer
         {
 
         }
-        // Optional ToString() override for debugging
+        //Override string for to text. 
         public override string ToString()
         {
             return $"ID: {Id}, Name: {Name}, Score: {Score}, Time: {GameTime}, Date: {Date}";
