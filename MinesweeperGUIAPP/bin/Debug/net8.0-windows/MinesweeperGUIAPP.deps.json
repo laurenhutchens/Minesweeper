@@ -8,9 +8,13 @@
     ".NETCoreApp,Version=v8.0": {
       "MinesweeperGUIAPP/1.0.0": {
         "dependencies": {
+<<<<<<< HEAD
           "MineSweeperClasses": "1.0.0",
           "Interop.WMPLib": "1.0.0.0",
           "AxInterop.WMPLib": "1.0.0.0"
+=======
+          "MineSweeperClasses": "1.0.0"
+>>>>>>> master
         },
         "runtime": {
           "MinesweeperGUIAPP.dll": {}
@@ -23,6 +27,7 @@
             "fileVersion": "1.0.0.0"
           }
         }
+<<<<<<< HEAD
       },
       "Interop.WMPLib/1.0.0.0": {
         "runtime": {
@@ -39,6 +44,8 @@
             "fileVersion": "1.0.0.0"
           }
         }
+=======
+>>>>>>> master
       }
     }
   },
@@ -52,6 +59,7 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+<<<<<<< HEAD
     },
     "Interop.WMPLib/1.0.0.0": {
       "type": "reference",
@@ -62,6 +70,8 @@
       "type": "reference",
       "serviceable": false,
       "sha512": ""
+=======
+>>>>>>> master
     }
   }
 }
