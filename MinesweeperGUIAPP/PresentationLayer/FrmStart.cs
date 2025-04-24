@@ -5,6 +5,7 @@
  * 03/10/2025
  */
 
+using AxWMPLib;
 using MineSweeperClasses.Models;
 using MinesweeperGUIAPP.PresentationLayer;
 using System.Diagnostics;
@@ -28,6 +29,9 @@ namespace MinesweeperGUIAPP
         private int currentRevealIndex = 0;
         private const int blockSize = 40; // adjust for granularity
         private const int revealSpeed = 1; // ms
+
+        
+
 
         //Getter and setters for the lbl to transfer data from the secondary form to the main form 
         public String DifficultyText
@@ -217,8 +221,8 @@ namespace MinesweeperGUIAPP
             //logic to determine if its won or not, if it is it resets and shows the win form 
             if (gameStatus == BoardModel.GameStatus.Won)
             {
+                PlaySound("Resources\\Win.mp3");
                 MessageBox.Show("Congratulations, You Won!");
-
                 if (int.TryParse(lblScore.Text, out int score))
                 {
                     if (TimeSpan.TryParse(lblGameTime.Text, out TimeSpan gameTime))
@@ -241,8 +245,9 @@ namespace MinesweeperGUIAPP
             //if lost for testing purposes still shows the win 
             else if (gameStatus == BoardModel.GameStatus.Lost)
             {
-                MessageBox.Show("Game Over! You hit a bomb.");
+                PlaySound("Resources\\Lose.mp3");
 
+                MessageBox.Show("Game Over! You hit a bomb.");
                 if (int.TryParse(lblScore.Text, out int score))
                 {
                     if (TimeSpan.TryParse(lblGameTime.Text, out TimeSpan gameTime))
@@ -382,7 +387,7 @@ namespace MinesweeperGUIAPP
         private void FrmStartLoadEH(object sender, EventArgs e)
         {
             HideControls();
-            
+
             this.FormBorderStyle = FormBorderStyle.None;
             CreateOverlayGrid();
 
@@ -410,6 +415,7 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void BtnStartGameClickEH(object sender, EventArgs e)
         {
+
             tmrGameTime.Tick += new EventHandler(TmrGameTimeTickEH);
             score = 0;
             secondsElapsed = 0;
@@ -442,7 +448,7 @@ namespace MinesweeperGUIAPP
 
 
         /// <summary>
-        /// Evnent handler to choose the difficulty of the game
+        /// Evnent handler to choose the difficulty of the game(
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -466,7 +472,7 @@ namespace MinesweeperGUIAPP
             if (currentRevealIndex >= overlayBlocks.Count)
             {
                 tmrLoadIn.Stop();
-                foreach (var b in overlayBlocks) 
+                foreach (var b in overlayBlocks)
                 {
                     this.Controls.Remove(b);
                     b.Dispose();
@@ -476,7 +482,7 @@ namespace MinesweeperGUIAPP
                 return;
             }
 
-            var block = overlayBlocks[currentRevealIndex]; 
+            var block = overlayBlocks[currentRevealIndex];
             this.Controls.Remove(block);
             block.Dispose();
             currentRevealIndex++;
@@ -516,7 +522,10 @@ namespace MinesweeperGUIAPP
 
 
         }
-
+        
+        /// <summary>
+        /// Create overlay grid to show illusion of building the UI
+        /// </summary>
         public void CreateOverlayGrid()
         {
             overlayBlocks.Clear();
@@ -543,8 +552,16 @@ namespace MinesweeperGUIAPP
                 }
             }
 
-            
-        }
 
+        }
+        /// <summary>
+        /// Method to play sound
+        /// </summary>
+        /// <param name="path"></param>
+        public void PlaySound(string path)
+        {
+            axWindowsMediaPlayer1.URL = path;
+            axWindowsMediaPlayer1.Ctlcontrols.play();
+        }
     }
 }

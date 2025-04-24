@@ -35,3 +35,10 @@ C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-wi
 C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.pdb
 C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.genruntimeconfig.cache
 C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\ref\MinesweeperGUIAPP.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\Interop.WMPLib.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\AxInterop.WMPLib.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.csproj.ResolveComReference.cache
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Interop.WMPLib.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\AxInterop.WMPLib.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Resources\Lose.mp3
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Resources\Win.mp3
