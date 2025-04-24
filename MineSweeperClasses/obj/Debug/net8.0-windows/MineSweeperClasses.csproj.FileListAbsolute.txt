@@ -10,3 +10,15 @@ C:\Users\majes\Source\Repos\Minesweeper123\MineSweeperClasses\obj\Debug\net8.0-w
 C:\Users\majes\Source\Repos\Minesweeper123\MineSweeperClasses\obj\Debug\net8.0-windows\refint\MineSweeperClasses.dll
 C:\Users\majes\Source\Repos\Minesweeper123\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.pdb
 C:\Users\majes\Source\Repos\Minesweeper123\MineSweeperClasses\obj\Debug\net8.0-windows\ref\MineSweeperClasses.dll
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\bin\Debug\net8.0-windows\MineSweeperClasses.deps.json
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\bin\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\bin\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.AssemblyInfoInputs.cache
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.AssemblyInfo.cs
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.csproj.CoreCompileInputs.cache
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.sourcelink.json
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\obj\Debug\net8.0-windows\refint\MineSweeperClasses.dll
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\obj\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\laurenhutchens\Source\Repos\Minesweeper22\MineSweeperClasses\obj\Debug\net8.0-windows\ref\MineSweeperClasses.dll
