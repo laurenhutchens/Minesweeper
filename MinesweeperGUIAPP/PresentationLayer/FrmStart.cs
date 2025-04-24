@@ -493,11 +493,9 @@ namespace MinesweeperGUIAPP
             btnReset.Visible = true;
             btnStartGame.Visible = true;
             btnChooseDifficulty.Visible = true;
-            lblDifficulty.Visible = true;
             label3.Visible = true;
             label4.Visible = true;
             lblScore.Visible = true;
-            lblSize.Visible = true;
             lblGameTime.Visible = true;
         }
         /// <summary>
