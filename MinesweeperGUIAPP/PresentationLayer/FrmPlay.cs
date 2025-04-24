@@ -1,73 +1,77 @@
-﻿/*Arie Gerard and Lauren Hutches 
- * Cst-250
- * Minesweeper 
- * Bill Hughes
- *03/10/2025
- */
+﻿/* Arie Gerard and Lauren Hutches 
+* Cst-250
+* Minesweeper 
+* Bill Hughes
+* 03/10/2025
+*/
 
 using MineSweeperClasses.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MinesweeperGUIAPP
 {
-
+    /// <summary>
+    /// FrmPlay allows the user to configure the game by selecting board size and difficulty.
+    /// These settings are passed back to FrmStart to initiate a new game.
+    /// </summary>
     public partial class FrmPlay : Form
     {
+        /// <summary>
+        /// Gets or sets the difficulty level as a string (communicates with FrmStart).
+        /// </summary>
         public string DifficultyLevel { get; set; }
+
+        /// <summary>
+        /// Default constructor for FrmPlay. Initializes components.
+        /// </summary>
         public FrmPlay()
         {
             InitializeComponent();
         }
+
         /// <summary>
-        /// To load the trbs and their minimun and max values. 
+        /// Sets the initial values for the size and difficulty trackbars.
+        /// Displays the difficulty level if set.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         public void FrmPlayLoadEH(object sender, EventArgs e)
         {
-            
+            // Show selected difficulty
             if (!string.IsNullOrEmpty(DifficultyLevel))
             {
                 MessageBox.Show("Difficulty: " + DifficultyLevel);
             }
-             // Set basic values for trbSize
-            trbSize.Minimum = 5; 
-            trbSize.Maximum = 25; 
-            trbSize.Value = 5; 
 
-            // Set basic values for trbDifficulty
-            trbDifficulty.Minimum = 1; 
-            trbDifficulty.Maximum = 3; 
-            trbDifficulty.Value = 1; 
+            // Set bounds for board size (5x5 to 25x25)
+            trbSize.Minimum = 5;
+            trbSize.Maximum = 25;
+            trbSize.Value = 5;
 
+            // Set bounds for difficulty (1 = easy, 3 = hard)
+            trbDifficulty.Minimum = 1;
+            trbDifficulty.Maximum = 3;
+            trbDifficulty.Value = 1;
         }
+
         /// <summary>
-        /// CLicke event to play and pass the data from teh secondary form to the main form. 
+        /// When Play button is clicked, the selected size and difficulty
+        /// are sent to FrmStart and the play configuration form is hidden.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void BtnPlayClickEH(object sender, EventArgs e)
         {
-            //grabbing the size from the difficulty 
-            
             int size = trbSize.Value;
             int difficulty = trbDifficulty.Value;
-            //using application to grab data from form start and send it to form start 
+
+            // Reference the main form and send data
             var frmstart = Application.OpenForms["FrmStart"] as FrmStart;
+            if (frmstart != null)
+            {
+                frmstart.SizeText = size.ToString();
+                frmstart.DifficultyText = difficulty.ToString();
+            }
 
-            frmstart.SizeText = size.ToString();
-            frmstart.DifficultyText = difficulty.ToString();
-
-            this.Hide();  // Hide the current form
+            // Hide this setup form
+            this.Hide();
         }
-      
     }
 }
