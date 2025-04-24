@@ -176,7 +176,7 @@ namespace MineSweeperGUI
                 if (cell.IsBomb)
                 {
                     btn.Text = "B";
-                    btn.BackColor = Color.Red;
+                    
                 }
                 else
                 {
