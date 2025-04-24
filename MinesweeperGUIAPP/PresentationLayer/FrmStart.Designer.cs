@@ -36,17 +36,16 @@ namespace MinesweeperGUIAPP
             lblGameTime = new Label();
             lblScore = new Label();
             btnChooseDifficulty = new Button();
-            hsbSize = new TrackBar();
-            hsbDifficulty = new TrackBar();
-            labelScore = new Label();
-            labelGameScore = new Label();
-            ((System.ComponentModel.ISupportInitialize)hsbSize).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)hsbDifficulty).BeginInit();
+            btnReset = new Button();
+            lblDifficulty = new Label();
+            lblSize = new Label();
+            btnHint = new Button();
+            tmrLoadIn = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
             // btnStartGame
             // 
-            btnStartGame.Location = new Point(656, 125);
+            btnStartGame.Location = new Point(645, 124);
             btnStartGame.Name = "btnStartGame";
             btnStartGame.Size = new Size(94, 29);
             btnStartGame.TabIndex = 5;
@@ -85,34 +84,56 @@ namespace MinesweeperGUIAPP
             // 
             // btnChooseDifficulty
             // 
-            btnChooseDifficulty.Location = new Point(656, 188);
+            btnChooseDifficulty.Location = new Point(626, 184);
             btnChooseDifficulty.Name = "btnChooseDifficulty";
-            btnChooseDifficulty.Size = new Size(94, 29);
+            btnChooseDifficulty.Size = new Size(130, 29);
             btnChooseDifficulty.TabIndex = 14;
             btnChooseDifficulty.Text = "Choose Difficulty";
             btnChooseDifficulty.UseVisualStyleBackColor = true;
             btnChooseDifficulty.Click += BtnChooseDifficultyClickEH;
             // 
-            // hsbSize
+            // btnReset
             // 
-            hsbSize.Location = new Point(626, 251);
-            hsbSize.Maximum = 20;
-            hsbSize.Minimum = 5;
-            hsbSize.Name = "hsbSize";
-            hsbSize.Size = new Size(130, 56);
-            hsbSize.SmallChange = 5;
-            hsbSize.TabIndex = 15;
-            hsbSize.Value = 5;
+            btnReset.Location = new Point(645, 247);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(94, 29);
+            btnReset.TabIndex = 17;
+            btnReset.Text = "Reset";
+            btnReset.UseVisualStyleBackColor = true;
+            btnReset.Click += BtnResetGameClickEH;
             // 
-            // hsbDifficulty
+            // lblDifficulty
             // 
-            hsbDifficulty.Location = new Point(626, 313);
-            hsbDifficulty.Maximum = 3;
-            hsbDifficulty.Minimum = 1;
-            hsbDifficulty.Name = "hsbDifficulty";
-            hsbDifficulty.Size = new Size(130, 56);
-            hsbDifficulty.TabIndex = 16;
-            hsbDifficulty.Value = 1;
+            lblDifficulty.AutoSize = true;
+            lblDifficulty.Location = new Point(661, 318);
+            lblDifficulty.Name = "lblDifficulty";
+            lblDifficulty.Size = new Size(50, 20);
+            lblDifficulty.TabIndex = 18;
+            lblDifficulty.Text = "label1";
+            lblDifficulty.Visible = false;
+            // 
+            // lblSize
+            // 
+            lblSize.AutoSize = true;
+            lblSize.Location = new Point(661, 350);
+            lblSize.Name = "lblSize";
+            lblSize.Size = new Size(50, 20);
+            lblSize.TabIndex = 19;
+            lblSize.Text = "label1";
+            lblSize.Visible = false;
+            // 
+            // btnHint
+            // 
+            btnHint.Location = new Point(645, 389);
+            btnHint.Name = "btnHint";
+            btnHint.Size = new Size(94, 29);
+            btnHint.TabIndex = 20;
+            btnHint.Text = "Hint";
+            btnHint.UseVisualStyleBackColor = true;
+            btnHint.Click += BtnHintClickEH;
+            // 
+            // tmrLoadIn
+            // 
             // 
             // labelScore
             // 
@@ -136,10 +157,10 @@ namespace MinesweeperGUIAPP
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(labelGameScore);
-            Controls.Add(labelScore);
-            Controls.Add(hsbDifficulty);
-            Controls.Add(hsbSize);
+            Controls.Add(btnHint);
+            Controls.Add(lblSize);
+            Controls.Add(lblDifficulty);
+            Controls.Add(btnReset);
             Controls.Add(btnChooseDifficulty);
             Controls.Add(lblScore);
             Controls.Add(lblGameTime);
@@ -147,9 +168,7 @@ namespace MinesweeperGUIAPP
             Controls.Add(btnStartGame);
             Name = "FrmStart";
             Text = "Minesweeper";
-            Load += FrmStart_Load;
-            ((System.ComponentModel.ISupportInitialize)hsbSize).EndInit();
-            ((System.ComponentModel.ISupportInitialize)hsbDifficulty).EndInit();
+            Load += FrmStartLoadEH;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -170,9 +189,10 @@ namespace MinesweeperGUIAPP
         private Label lblFrmStartScore;
         private Label lblScore;
         private Button btnChooseDifficulty;
-        private TrackBar hsbSize;
-        private TrackBar hsbDifficulty;
-        private Label labelScore;
-        private Label labelGameScore;
+        private Button btnReset;
+        private Label lblDifficulty;
+        private Label lblSize;
+        private Button btnHint;
+        private System.Windows.Forms.Timer tmrLoadIn;
     }
 }

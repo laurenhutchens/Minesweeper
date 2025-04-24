@@ -1,4 +1,10 @@
-﻿namespace MineSweeperClasses.Models
+﻿/*Arie Gerard and Lauren Hutches 
+ * Cst-250
+ * Minesweeper 
+ * Bill Hughes
+ *03/10/2025
+ */
+namespace MineSweeperClasses.Models
 {
     public class Cell
     {

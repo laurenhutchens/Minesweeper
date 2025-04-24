@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*Arie Gerard and Lauren Hutches 
+ * Cst-250
+ * Minesweeper 
+ * Bill Hughes
+ *03/10/2025
+ */
+using System;
 using System.Collections.Generic;
 
 namespace MineSweeperClasses.Models
@@ -12,13 +18,8 @@ namespace MineSweeperClasses.Models
         public int RewardsRemaining { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-
         public enum GameStatus { InProgress, Won, Lost }
-
         private readonly Random _random = new Random(); // Fixed typo here: removed space in _rand om
-
-        private readonly BoardModel boardModel;
-
         public Dictionary<string, int> AvailableRewards { get; private set; }
 
         /// <summary>
@@ -34,9 +35,6 @@ namespace MineSweeperClasses.Models
             InitializeCells();
             InitializeBoard();
         }
-
-     
-
         /// <summary>
         /// Method to initialize the cells
         /// </summary>
@@ -229,11 +227,6 @@ namespace MineSweeperClasses.Models
         }
 
         /// <summary>
-        /// Flood fill algorithm to reveal empty cells
-        /// </summary>
-       
-
-        /// <summary>
         /// Visit a cell and handle the game logic when revealing a cell
         /// </summary>
         public void VisitCell(int row, int col)
@@ -252,6 +245,10 @@ namespace MineSweeperClasses.Models
                 PrintAnswers(); // Reveal all bombs
             }
         }
+
+        /// <summary>
+        /// Method to print the answers 
+        /// </summary>
         public void PrintAnswers()
         {
             for (int row = 0; row < Size; row++)

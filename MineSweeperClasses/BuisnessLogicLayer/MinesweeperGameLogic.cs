@@ -1,4 +1,12 @@
-﻿using MineSweeperClasses.Models;
+﻿/*Arie Gerard and Lauren Hutches 
+ * Cst-250
+ * Minesweeper 
+ * Bill Hughes
+ *03/10/2025
+ */
+//Todo. make both the visable lables invsiable. whoops. 
+using MineSweeperClasses.Models;
+using static System.Formats.Asn1.AsnWriter;
 public class MinesweeperGameLogic
 {
     public BoardModel Board { get; private set; }
@@ -17,7 +25,6 @@ public class MinesweeperGameLogic
         // Initialize the game board
         InitializeBoard();
     }
-
     private void InitializeBoard()
     {
         // First, clear any previous setup on the board
@@ -29,7 +36,6 @@ public class MinesweeperGameLogic
                 Board.Cells[row, col] = new Cell(row, col);
             }
         }
-
         // Determine number of bombs based on difficulty
         int totalBombs = GetTotalBombsForDifficulty(difficulty);
 
@@ -39,7 +45,12 @@ public class MinesweeperGameLogic
         // After placing bombs, calculate neighboring bombs for each non-bomb cell
         CalculateNeighboringBombs();
     }
-
+    
+    /// <summary>
+    /// Gets the total bombs per difficulty. 
+    /// </summary>
+    /// <param name="difficulty"></param>
+    /// <returns></returns>
     private int GetTotalBombsForDifficulty(int difficulty)
     {
         // The number of bombs changes based on difficulty
@@ -52,6 +63,10 @@ public class MinesweeperGameLogic
         }
     }
 
+    /// <summary>
+    /// Method to place the bombs
+    /// </summary>
+    /// <param name="totalBombs"></param>
     private void PlaceBombs(int totalBombs)
     {
         int bombsPlaced = 0;
@@ -106,7 +121,7 @@ public class MinesweeperGameLogic
         // After each move, check if the game has been won
         if (CheckGameWin())
         {
-            // Game Win Logic here
+            //handled elsewhere for GUI 
         }
     }
 
@@ -211,7 +226,10 @@ public class MinesweeperGameLogic
     {
         return CheckGameWin() || Board.Cells.Cast<Cell>().Any(cell => cell.IsBomb && cell.IsVisited);
     }
-
+  
+    /// <summary>
+    /// Calculuate the number of neighboring bombs. 
+    /// </summary>
     private void CalculateNeighboringBombs()
     {
         // Iterate through each cell on the board
@@ -253,11 +271,43 @@ public class MinesweeperGameLogic
             }
         }
     }
-
-
+    /// <summary>
+    /// Method to return the board model 
+    /// </summary>
+    /// <returns></returns>
     public BoardModel GetBoardModel()
     {
         return Board;
     }
+    /// <summary>
+    /// Gets the coordinates of a random bomb from the board.
+    /// </summary>
+    /// <returns>A tuple containing the (row, column) coordinates of the bomb, or null if no bombs are found.</returns>
+    public (int, int)? GetRandomBombCoordinates()
+    {
+        // Create a list to store all bomb cells
+        List<(int, int)> bombCoordinates = new List<(int, int)>();
 
+        // Iterate through the board to find bomb cells
+        for (int row = 0; row < boardSize; row++)
+        {
+            for (int col = 0; col < boardSize; col++)
+            {
+                if (Board.Cells[row, col].IsBomb)
+                {
+                    bombCoordinates.Add((row, col));
+                }
+            }
+        }
+
+        // If there are no bombs, return null
+        if (bombCoordinates.Count == 0)
+        {
+            return null;
+        }
+
+        // Randomly select a bomb's coordinates from the list
+        int randomIndex = rand.Next(bombCoordinates.Count);
+        return bombCoordinates[randomIndex];
+    }
 }
