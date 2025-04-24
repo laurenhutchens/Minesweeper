@@ -30,6 +30,7 @@ namespace MinesweeperGUIAPP
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmStart));
             btnStartGame = new Button();
             tmrGameTime = new System.Windows.Forms.Timer(components);
             lblTime = new Label();
@@ -41,6 +42,8 @@ namespace MinesweeperGUIAPP
             lblSize = new Label();
             btnHint = new Button();
             tmrLoadIn = new System.Windows.Forms.Timer(components);
+            axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            ((System.ComponentModel.ISupportInitialize)axWindowsMediaPlayer1).BeginInit();
             SuspendLayout();
             // 
             // btnStartGame
@@ -132,8 +135,15 @@ namespace MinesweeperGUIAPP
             btnHint.UseVisualStyleBackColor = true;
             btnHint.Click += BtnHintClickEH;
             // 
-            // tmrLoadIn
+            // axWindowsMediaPlayer1
             // 
+            axWindowsMediaPlayer1.Enabled = true;
+            axWindowsMediaPlayer1.Location = new Point(85, 119);
+            axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            axWindowsMediaPlayer1.OcxState = (AxHost.State)resources.GetObject("axWindowsMediaPlayer1.OcxState");
+            axWindowsMediaPlayer1.Size = new Size(75, 157);
+            axWindowsMediaPlayer1.TabIndex = 21;
+            axWindowsMediaPlayer1.Visible = false;
             // 
             // labelScore
             // 
@@ -157,6 +167,7 @@ namespace MinesweeperGUIAPP
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(axWindowsMediaPlayer1);
             Controls.Add(btnHint);
             Controls.Add(lblSize);
             Controls.Add(lblDifficulty);
@@ -169,6 +180,7 @@ namespace MinesweeperGUIAPP
             Name = "FrmStart";
             Text = "Minesweeper";
             Load += FrmStartLoadEH;
+            ((System.ComponentModel.ISupportInitialize)axWindowsMediaPlayer1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -194,5 +206,6 @@ namespace MinesweeperGUIAPP
         private Label lblSize;
         private Button btnHint;
         private System.Windows.Forms.Timer tmrLoadIn;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }

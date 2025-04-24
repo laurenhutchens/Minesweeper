@@ -1,0 +1,44 @@
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Gold.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Number 1.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Number 2.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Number 3.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Number 4.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Number 5.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Number 6.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Number 7.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Number 8.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Skull.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Tile 1.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Tile 2.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Images\Tile Flat.png
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\MinesweeperGUIAPP.exe
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\MinesweeperGUIAPP.deps.json
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\MinesweeperGUIAPP.runtimeconfig.json
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\MinesweeperGUIAPP.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\MinesweeperGUIAPP.pdb
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\MineSweeperClasses.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\MineSweeperClasses.pdb
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.csproj.AssemblyReference.cache
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.FrmLeaderBoard.resources
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.FrmPlay.resources
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.FrmStart.resources
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.PresentationLayer.FrmWin.resources
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.csproj.GenerateResource.cache
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.AssemblyInfoInputs.cache
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.AssemblyInfo.cs
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.csproj.CoreCompileInputs.cache
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.sourcelink.json
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\Mineswee.EA5CFFDB.Up2Date
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\refint\MinesweeperGUIAPP.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.pdb
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.genruntimeconfig.cache
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\ref\MinesweeperGUIAPP.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\Interop.WMPLib.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\AxInterop.WMPLib.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\obj\Debug\net8.0-windows\MinesweeperGUIAPP.csproj.ResolveComReference.cache
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Interop.WMPLib.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\AxInterop.WMPLib.dll
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Resources\Lose.mp3
+C:\Users\majes\Source\Repos\Minesweeper123\MinesweeperGUIAPP\bin\Debug\net8.0-windows\Resources\Win.mp3

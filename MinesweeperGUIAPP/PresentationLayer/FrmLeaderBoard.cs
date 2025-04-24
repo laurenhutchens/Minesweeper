@@ -17,6 +17,7 @@ namespace MinesweeperGUIAPP
         // List to store game statistics
         private List<GameStat> statList = new List<GameStat>();
         private BindingSource bindingSource = new BindingSource();
+        private TimeSpan averageTime = new TimeSpan();
 
         /// <summary>
         /// Passes specific perameters for game logic. 
@@ -147,6 +148,7 @@ namespace MinesweeperGUIAPP
                 }
             }
         }
+
         /// <summary>
         /// Event handler toe xit the application
         /// </summary>
@@ -227,6 +229,28 @@ namespace MinesweeperGUIAPP
         private object GetGameDataToSave()
         {
             return statList;
+        }
+ 
+        /// <summary>
+        /// Button to calculate the average score and display it 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnCalculateAverageClickEH(object sender, EventArgs e)
+        {
+            double averageScore = GameStat.CalculateAverageScore(statList);
+            lblAverageScore.Text = $"Average Score: {averageScore:F2}";
+        }
+
+        /// <summary>
+        /// Button to calculate the average game time and display it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnCalculateAverageTimeClickEH(object sender, EventArgs e)
+        {
+            TimeSpan averageTime = GameStat.CalculateAverageGameTime(statList);
+            lblAverageTime.Text = $"Average Time: {averageTime:hh\\:mm\\:ss}";
         }
     }
 }
