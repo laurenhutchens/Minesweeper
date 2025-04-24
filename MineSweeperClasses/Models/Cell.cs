@@ -1,24 +1,38 @@
-﻿/*Arie Gerard and Lauren Hutches 
- * Cst-250
- * Minesweeper 
- * Bill Hughes
- *03/10/2025
- */
+﻿/*
+* Milestone 6: Game Extensions
+* Lauren Hutchens and Arie Gerard
+* Professor Hughes
+* CST-250
+* 4/27/2005
+*/
+
 namespace MineSweeperClasses.Models
 {
+    /// <summary>
+    /// Represents a single cell in the Minesweeper board.
+    /// Each cell can store position, whether it's a bomb or flagged, and its display state.
+    /// </summary>
     public class Cell
     {
-        // Properties for row, column, and various game states.
+        // Position of the cell in the grid
         public int Row { get; }
         public int Column { get; }
-        public bool IsVisited { get; set; }
-        public bool IsBomb { get; set; }
-        public bool IsFlagged { get; set; }
-        public int NumberOfBombNeighbors { get; set; }
-        public bool HasSpecialReward { get; set; }
+
+        // Game state flags
+        public bool IsVisited { get; set; }      // True if the player has revealed this cell
+        public bool IsBomb { get; set; }         // True if the cell contains a bomb
+        public bool IsFlagged { get; set; }      // True if the player has flagged this cell
+
+        // Game logic
+        public int NumberOfBombNeighbors { get; set; } // Number of adjacent cells that are bombs
+        public bool HasSpecialReward { get; set; }     // Indicates if the cell contains a special reward (e.g., hint)
+
+        // Display character (for console use or simplified output)
         public char DisplayChar { get; set; }
 
-        // Constructor to initialize the cell
+        /// <summary>
+        /// Initializes a new cell with default state, allowing optional bomb/reward pre-setting.
+        /// </summary>
         public Cell(int row, int column, bool isBomb = false, bool hasSpecialReward = false)
         {
             Row = row;
@@ -28,30 +42,34 @@ namespace MineSweeperClasses.Models
             IsVisited = false;
             IsFlagged = false;
             NumberOfBombNeighbors = 0;
-            DisplayChar = '#'; // Default hidden state
+            DisplayChar = '#'; // Default character when cell is hidden
         }
 
-        // Method to reveal the cell.
+        /// <summary>
+        /// Marks the cell as revealed and updates the DisplayChar.
+        /// </summary>
         public void Reveal()
         {
             IsVisited = true;
 
-            // Handle bomb display
             if (IsBomb)
             {
-                DisplayChar = 'B';
+                DisplayChar = 'B'; // Bomb
             }
             else if (NumberOfBombNeighbors > 0)
             {
-                DisplayChar = (char)(NumberOfBombNeighbors + '0');  // Convert number to char ('0'-'9')
+                DisplayChar = (char)(NumberOfBombNeighbors + '0'); // Display number of neighbors
             }
             else
             {
-                DisplayChar = '.';  // Empty cell
+                DisplayChar = '.'; // Empty cell
             }
         }
 
-        // Reset the cell for new game or restart
+        /// <summary>
+        /// Resets the cell to its initial hidden state.
+        /// Useful when restarting the game.
+        /// </summary>
         public void Reset()
         {
             IsVisited = false;

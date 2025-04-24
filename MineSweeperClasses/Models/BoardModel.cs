@@ -1,29 +1,43 @@
-﻿/*Arie Gerard and Lauren Hutches 
- * Cst-250
- * Minesweeper 
- * Bill Hughes
- *03/10/2025
- */
+﻿/*
+* Milestone 6: Game Extensions
+* Lauren Hutchens and Arie Gerard
+* Professor Hughes
+* CST-250
+* 4/27/2005
+*/
+
 using System;
 using System.Collections.Generic;
 
 namespace MineSweeperClasses.Models
 {
+    /// <summary>
+    /// Represents the state of the Minesweeper game board,
+    /// including cell layout, bomb and reward placement, and game logic like win/loss detection.
+    /// </summary>
     public class BoardModel
     {
-        // Getters and setters
+        // Board configuration
         public int Size { get; }
         public int Difficulty { get; }
         public Cell[,] Cells { get; private set; }
+
+        // Game metadata
         public int RewardsRemaining { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
+
+        // Game status options
         public enum GameStatus { InProgress, Won, Lost }
-        private readonly Random _random = new Random(); // Fixed typo here: removed space in _rand om
+
+        // Internal random generator
+        private readonly Random _random = new Random();
+
+        // Available rewards (e.g., hints)
         public Dictionary<string, int> AvailableRewards { get; private set; }
 
         /// <summary>
-        /// Parameterized constructor for the board, with the parameters of size and difficulty based on user input
+        /// Constructor to initialize a board model with size and difficulty.
         /// </summary>
         public BoardModel(int size, int difficulty)
         {
@@ -35,22 +49,19 @@ namespace MineSweeperClasses.Models
             InitializeCells();
             InitializeBoard();
         }
+
         /// <summary>
-        /// Method to initialize the cells
+        /// Initializes all cells in the grid with default state.
         /// </summary>
         private void InitializeCells()
         {
             for (int row = 0; row < Size; row++)
-            {
                 for (int col = 0; col < Size; col++)
-                {
                     Cells[row, col] = new Cell(row, col);
-                }
-            }
         }
 
         /// <summary>
-        /// Method to set up the board
+        /// Fully sets up the board with bombs, rewards, and neighbor counts.
         /// </summary>
         public void InitializeBoard()
         {
@@ -61,15 +72,12 @@ namespace MineSweeperClasses.Models
         }
 
         /// <summary>
-        /// Method for the user to choose reward
+        /// Uses a special reward if available (e.g., "Hint").
         /// </summary>
         public bool UseSpecialBonus(string rewardType)
         {
             if (!AvailableRewards.ContainsKey(rewardType) || AvailableRewards[rewardType] <= 0)
-            {
-                Console.WriteLine($"No {rewardType} rewards available.");
                 return false;
-            }
 
             switch (rewardType)
             {
@@ -77,45 +85,33 @@ namespace MineSweeperClasses.Models
                     ShowHint();
                     break;
                 default:
-                    Console.WriteLine("Invalid reward type.");
                     return false;
             }
 
-            AvailableRewards[rewardType]--;  // Decrement reward count
-            return true; // Reward used successfully!
+            AvailableRewards[rewardType]--;
+            return true;
         }
 
         /// <summary>
-        /// Method to show a hint (display bomb location randomly)
+        /// Displays a hint to the user by revealing a random bomb coordinate (console only).
         /// </summary>
         private void ShowHint()
         {
-            List<Tuple<int, int>> bombLocations = new List<Tuple<int, int>>();
+            List<Tuple<int, int>> bombLocations = new();
             for (int r = 0; r < Size; r++)
-            {
                 for (int c = 0; c < Size; c++)
-                {
                     if (Cells[r, c].IsBomb)
-                    {
-                        bombLocations.Add(new Tuple<int, int>(r, c));
-                    }
-                }
-            }
+                        bombLocations.Add(Tuple.Create(r, c));
 
             if (bombLocations.Count == 0)
-            {
-                Console.WriteLine("No bombs to reveal!");
                 return;
-            }
 
-            int randomIndex = _random.Next(bombLocations.Count);
-            Tuple<int, int> hintLocation = bombLocations[randomIndex];
-
+            var hintLocation = bombLocations[_random.Next(bombLocations.Count)];
             Console.WriteLine($"Hint: Bomb is at ({hintLocation.Item1 + 1}, {hintLocation.Item2 + 1})");
         }
 
         /// <summary>
-        /// Helper function to determine if a cell is within the board's bounds
+        /// Checks if a given cell coordinate is within bounds of the board.
         /// </summary>
         private bool IsCellOnBoard(int row, int col)
         {
@@ -123,21 +119,17 @@ namespace MineSweeperClasses.Models
         }
 
         /// <summary>
-        /// Calculate the number of bomb neighbors for each cell
+        /// Calculates number of bomb neighbors for each cell.
         /// </summary>
         private void CalculateNumberOfBombNeighbors()
         {
             for (int row = 0; row < Size; row++)
-            {
                 for (int col = 0; col < Size; col++)
-                {
                     Cells[row, col].NumberOfBombNeighbors = GetNumberOfBombNeighbors(row, col);
-                }
-            }
         }
 
         /// <summary>
-        /// Helper function to determine the number of bomb neighbors for a given cell
+        /// Gets the number of bombs surrounding a specific cell.
         /// </summary>
         private int GetNumberOfBombNeighbors(int row, int col)
         {
@@ -149,28 +141,25 @@ namespace MineSweeperClasses.Models
             {
                 int neighborRow = row + rowOffsets[i];
                 int neighborCol = col + colOffsets[i];
-
                 if (IsCellOnBoard(neighborRow, neighborCol) && Cells[neighborRow, neighborCol].IsBomb)
-                {
                     count++;
-                }
             }
+
             return count;
         }
 
         /// <summary>
-        /// Setup bombs on the board based on the difficulty level
+        /// Places bombs randomly based on difficulty level.
         /// </summary>
         private void SetupBombs(int difficulty)
         {
-            int numBombs;
-            switch (difficulty)
+            int numBombs = difficulty switch
             {
-                case 1: numBombs = (int)(Size * Size * 0.15f); break; // 15% bombs
-                case 2: numBombs = (int)(Size * Size * 0.25f); break; // 25% bombs
-                case 3: numBombs = (int)(Size * Size * 0.40f); break; // 40% bombs
-                default: numBombs = (int)(Size * Size * 0.25f); break; // Default to medium
-            }
+                1 => (int)(Size * Size * 0.15f),
+                2 => (int)(Size * Size * 0.25f),
+                3 => (int)(Size * Size * 0.40f),
+                _ => (int)(Size * Size * 0.25f)
+            };
 
             while (numBombs > 0)
             {
@@ -186,7 +175,7 @@ namespace MineSweeperClasses.Models
         }
 
         /// <summary>
-        /// Setup rewards for the board
+        /// Initializes available rewards for this board.
         /// </summary>
         private void SetupRewards()
         {
@@ -197,7 +186,7 @@ namespace MineSweeperClasses.Models
         }
 
         /// <summary>
-        /// Determine the current game status (In Progress, Won, Lost)
+        /// Determines the current state of the game (Won, Lost, In Progress).
         /// </summary>
         public GameStatus DetermineGameStatus()
         {
@@ -207,19 +196,12 @@ namespace MineSweeperClasses.Models
             {
                 for (int col = 0; col < Size; col++)
                 {
-                    Cell currentCell = Cells[row, col];
+                    var cell = Cells[row, col];
+                    if (cell.IsBomb && cell.IsVisited)
+                        return GameStatus.Lost;
 
-                    // If a bomb is visited, the game is lost.
-                    if (currentCell.IsBomb && currentCell.IsVisited)
-                    {
-                        return GameStatus.Lost; // Bomb visited, game lost.
-                    }
-
-                    // If a non-bomb cell is not revealed, the game is not won yet.
-                    if (!currentCell.IsBomb && !currentCell.IsVisited)
-                    {
-                        allNonBombCellsRevealed = false; // There are still non-bomb cells that are not revealed
-                    }
+                    if (!cell.IsBomb && !cell.IsVisited)
+                        allNonBombCellsRevealed = false;
                 }
             }
 
@@ -227,27 +209,24 @@ namespace MineSweeperClasses.Models
         }
 
         /// <summary>
-        /// Visit a cell and handle the game logic when revealing a cell
+        /// Marks a cell as visited and checks for bomb hits (console-based check).
         /// </summary>
         public void VisitCell(int row, int col)
         {
             if (!IsCellOnBoard(row, col) || Cells[row, col].IsVisited || Cells[row, col].IsFlagged)
-            {
-                Console.WriteLine("Invalid move: Cell is out of bounds, already visited, or flagged.");
                 return;
-            }
 
             Cells[row, col].IsVisited = true;
 
             if (Cells[row, col].IsBomb)
             {
                 Console.WriteLine("Game Over!! You hit a Bomb.");
-                PrintAnswers(); // Reveal all bombs
+                PrintAnswers();
             }
         }
 
         /// <summary>
-        /// Method to print the answers 
+        /// Prints the current state of the board in console format.
         /// </summary>
         public void PrintAnswers()
         {
@@ -256,13 +235,9 @@ namespace MineSweeperClasses.Models
                 for (int col = 0; col < Size; col++)
                 {
                     if (Cells[row, col].IsFlagged)
-                    {
                         Console.Write("F ");
-                    }
                     else
-                    {
                         Console.Write(Cells[row, col].IsBomb ? "B " : $"{Cells[row, col].NumberOfBombNeighbors} ");
-                    }
                 }
                 Console.WriteLine();
             }
