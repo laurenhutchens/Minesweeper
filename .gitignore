@@ -1,5 +1,1 @@
 .vs/ 
-bin/
-obj/
-
--e "bin/\nobj/" 
