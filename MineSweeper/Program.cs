@@ -10,7 +10,7 @@ class Program
     /// <param name="args"></param>
     static void Main(string[] args)
     {
-        Console.WriteLine("Welcome to Minesweeper!");]
+        Console.WriteLine("Welcome to Minesweeper!");
 
         // Checks to see if the size and difficulty are valid by calling the GetValid methods in MinesweeperGameLogic.
         int size = MinesweeperGameLogic.GetValidBoardSize();
