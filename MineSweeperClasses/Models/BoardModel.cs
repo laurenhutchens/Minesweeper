@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*Arie Gerard and Lauren Hutches 
+ * Cst-250
+ * Minesweeper 
+ * Bill Hughes
+ *03/10/2025
+ */
+using System;
 using System.Collections.Generic;
 
 namespace MineSweeperClasses.Models
@@ -12,10 +18,8 @@ namespace MineSweeperClasses.Models
         public int RewardsRemaining { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
-
         public enum GameStatus { InProgress, Won, Lost }
-
-        private readonly Random _random = new Random();
+        private readonly Random _random = new Random(); // Fixed typo here: removed space in _rand om
         public Dictionary<string, int> AvailableRewards { get; private set; }
 
         /// <summary>
@@ -31,7 +35,6 @@ namespace MineSweeperClasses.Models
             InitializeCells();
             InitializeBoard();
         }
-
         /// <summary>
         /// Method to initialize the cells
         /// </summary>
@@ -58,28 +61,6 @@ namespace MineSweeperClasses.Models
         }
 
         /// <summary>
-        /// Method to print the answers (used for revealing bombs and correct flags)
-        /// </summary>
-        public void PrintAnswers()
-        {
-            for (int row = 0; row < Size; row++)
-            {
-                for (int col = 0; col < Size; col++)
-                {
-                    if (Cells[row, col].IsFlagged)
-                    {
-                        Console.Write("F ");
-                    }
-                    else
-                    {
-                        Console.Write(Cells[row, col].IsBomb ? "B " : $"{Cells[row, col].NumberOfBombNeighbors} ");
-                    }
-                }
-                Console.WriteLine();
-            }
-        }
-
-        /// <summary>
         /// Method for the user to choose reward
         /// </summary>
         public bool UseSpecialBonus(string rewardType)
@@ -99,6 +80,7 @@ namespace MineSweeperClasses.Models
                     Console.WriteLine("Invalid reward type.");
                     return false;
             }
+
             AvailableRewards[rewardType]--;  // Decrement reward count
             return true; // Reward used successfully!
         }
@@ -227,41 +209,21 @@ namespace MineSweeperClasses.Models
                 {
                     Cell currentCell = Cells[row, col];
 
+                    // If a bomb is visited, the game is lost.
                     if (currentCell.IsBomb && currentCell.IsVisited)
                     {
-                        return GameStatus.Lost; // Bomb visited - game lost
+                        return GameStatus.Lost; // Bomb visited, game lost.
                     }
 
+                    // If a non-bomb cell is not revealed, the game is not won yet.
                     if (!currentCell.IsBomb && !currentCell.IsVisited)
                     {
-                        allNonBombCellsRevealed = false; // Unvisited non-bomb cell found
+                        allNonBombCellsRevealed = false; // There are still non-bomb cells that are not revealed
                     }
                 }
             }
 
             return allNonBombCellsRevealed ? GameStatus.Won : GameStatus.InProgress;
-        }
-
-        /// <summary>
-        /// Flood fill algorithm to reveal empty cells
-        /// </summary>
-        public static void FloodFill(BoardModel board, int x, int y)
-        {
-            if (x < 0 || x >= board.Size || y < 0 || y >= board.Size || board.Cells[x, y].IsVisited || board.Cells[x, y].IsBomb)
-            {
-                return;
-            }
-            board.Cells[x, y].DisplayChar = '.'; // Mark as visited
-            board.Cells[x, y].IsVisited = true;
-
-            if (board.Cells[x, y].NumberOfBombNeighbors == 0)
-            {
-                // Recursively visit neighboring cells
-                FloodFill(board, x + 1, y); // Down
-                FloodFill(board, x - 1, y); // Up
-                FloodFill(board, x, y + 1); // Right
-                FloodFill(board, x, y - 1); // Left
-            }
         }
 
         /// <summary>
@@ -284,7 +246,26 @@ namespace MineSweeperClasses.Models
             }
         }
 
-    
-
+        /// <summary>
+        /// Method to print the answers 
+        /// </summary>
+        public void PrintAnswers()
+        {
+            for (int row = 0; row < Size; row++)
+            {
+                for (int col = 0; col < Size; col++)
+                {
+                    if (Cells[row, col].IsFlagged)
+                    {
+                        Console.Write("F ");
+                    }
+                    else
+                    {
+                        Console.Write(Cells[row, col].IsBomb ? "B " : $"{Cells[row, col].NumberOfBombNeighbors} ");
+                    }
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }

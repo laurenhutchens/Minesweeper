@@ -28,11 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             btnRestartGame = new Button();
+=======
+            components = new System.ComponentModel.Container();
+            btnStartGame = new Button();
+            btnReset = new Button();
+>>>>>>> mdevarie
             label1 = new Label();
             lblScoreAmount = new Label();
             lblStartTime = new Label();
             lblTimer = new Label();
+<<<<<<< HEAD
+=======
+            hsbDifficulty = new HScrollBar();
+            hsbSize = new HScrollBar();
+            label2 = new Label();
+            label3 = new Label();
+            tmr = new System.Windows.Forms.Timer(components);
+>>>>>>> mdevarie
             SuspendLayout();
             // 
             // btnRestartGame
@@ -107,5 +121,13 @@
         private Label lblScoreAmount;
         private Label lblStartTime;
         private Label lblTimer;
+<<<<<<< HEAD
+=======
+        private HScrollBar hsbDifficulty;
+        private HScrollBar hsbSize;
+        private Label label2;
+        private Label label3;
+        private System.Windows.Forms.Timer tmr;
+>>>>>>> mdevarie
     }
 }

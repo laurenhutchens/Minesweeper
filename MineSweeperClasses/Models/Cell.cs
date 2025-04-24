@@ -1,23 +1,14 @@
-﻿/*
-*Milestone 2: Interactive Playable Version
-*Lauren Hutchens and Arie Gerard
-*2/9/2025
-*Professor Hughes
-*CST-250
-*/
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/*Arie Gerard and Lauren Hutches 
+ * Cst-250
+ * Minesweeper 
+ * Bill Hughes
+ *03/10/2025
+ */
 namespace MineSweeperClasses.Models
 {
     public class Cell
     {
-        // Declaring properties
+        // Properties for row, column, and various game states.
         public int Row { get; }
         public int Column { get; }
         public bool IsVisited { get; set; }
@@ -25,9 +16,9 @@ namespace MineSweeperClasses.Models
         public bool IsFlagged { get; set; }
         public int NumberOfBombNeighbors { get; set; }
         public bool HasSpecialReward { get; set; }
-        public char DisplayChar { get; set; } // Character representation of the cell
+        public char DisplayChar { get; set; }
 
-        // Constructor
+        // Constructor to initialize the cell
         public Cell(int row, int column, bool isBomb = false, bool hasSpecialReward = false)
         {
             Row = row;
@@ -37,33 +28,35 @@ namespace MineSweeperClasses.Models
             IsVisited = false;
             IsFlagged = false;
             NumberOfBombNeighbors = 0;
-
-            // Initialize display character
-            DisplayChar = '#'; // Hidden by default
+            DisplayChar = '#'; // Default hidden state
         }
 
-        // Method to update the display character when revealed
+        // Method to reveal the cell.
         public void Reveal()
         {
             IsVisited = true;
 
-            // For bombs, set the display character to 'B'
+            // Handle bomb display
             if (IsBomb)
             {
                 DisplayChar = 'B';
             }
-            // If there are bomb neighbors, show the number of neighbors
             else if (NumberOfBombNeighbors > 0)
             {
-                DisplayChar = (char)(NumberOfBombNeighbors + '0');  // Convert to char ('0'-'9')
+                DisplayChar = (char)(NumberOfBombNeighbors + '0');  // Convert number to char ('0'-'9')
             }
-            // If there are no bomb neighbors, set the display to '.'
             else
             {
-                DisplayChar = '.';  // Empty cell should be represented by '.'
+                DisplayChar = '.';  // Empty cell
             }
         }
 
-
+        // Reset the cell for new game or restart
+        public void Reset()
+        {
+            IsVisited = false;
+            IsFlagged = false;
+            DisplayChar = '#';
+        }
     }
 }
