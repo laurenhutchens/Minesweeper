@@ -42,6 +42,8 @@
             dgvScoreBoard = new DataGridView();
             lblAverageScore = new Label();
             btnCalculateAverageScore = new Button();
+            lblAverageTime = new Label();
+            btnCalculateAverage = new Button();
             mnuOptions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvScoreBoard).BeginInit();
             SuspendLayout();
@@ -134,17 +136,38 @@
             // 
             btnCalculateAverageScore.Location = new Point(527, 85);
             btnCalculateAverageScore.Name = "btnCalculateAverageScore";
-            btnCalculateAverageScore.Size = new Size(168, 29);
+            btnCalculateAverageScore.Size = new Size(225, 29);
             btnCalculateAverageScore.TabIndex = 3;
-            btnCalculateAverageScore.Text = "Calculate Average";
+            btnCalculateAverageScore.Text = "Calculate Average Score";
             btnCalculateAverageScore.UseVisualStyleBackColor = true;
             btnCalculateAverageScore.Click += BtnCalculateAverageClickEH;
+            // 
+            // lblAverageTime
+            // 
+            lblAverageTime.AutoSize = true;
+            lblAverageTime.Location = new Point(527, 167);
+            lblAverageTime.Name = "lblAverageTime";
+            lblAverageTime.Size = new Size(104, 20);
+            lblAverageTime.TabIndex = 4;
+            lblAverageTime.Text = "Average Time:";
+            // 
+            // btnCalculateAverage
+            // 
+            btnCalculateAverage.Location = new Point(527, 211);
+            btnCalculateAverage.Name = "btnCalculateAverage";
+            btnCalculateAverage.Size = new Size(225, 29);
+            btnCalculateAverage.TabIndex = 5;
+            btnCalculateAverage.Text = "Calculate Average Score";
+            btnCalculateAverage.UseVisualStyleBackColor = true;
+            btnCalculateAverage.Click += BtnCalculateAverageTimeClickEH;
             // 
             // FrmLeaderBoard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCalculateAverage);
+            Controls.Add(lblAverageTime);
             Controls.Add(btnCalculateAverageScore);
             Controls.Add(lblAverageScore);
             Controls.Add(dgvScoreBoard);
@@ -173,5 +196,7 @@
         private DataGridView dgvScoreBoard;
         private Label lblAverageScore;
         private Button btnCalculateAverageScore;
+        private Label lblAverageTime;
+        private Button btnCalculateAverage;
     }
 }

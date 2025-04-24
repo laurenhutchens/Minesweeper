@@ -415,18 +415,16 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void BtnStartGameClickEH(object sender, EventArgs e)
         {
-
             tmrGameTime.Tick += new EventHandler(TmrGameTimeTickEH);
-            score = 0;
-            secondsElapsed = 0;
-            tmrGameTime.Start();
 
             try
             {
                 // Safely convert values and handle invalid nput
                 int size = Convert.ToInt32(SizeText);
                 int difficulty = Convert.ToInt32(DifficultyText);
-
+                score = 0;
+                secondsElapsed = 0;
+                tmrGameTime.Start();
                 gameLogic = new MinesweeperGameLogic(size, difficulty);
                 boardModel = gameLogic.GetBoardModel();
                 InitializeBoardButtons(size);

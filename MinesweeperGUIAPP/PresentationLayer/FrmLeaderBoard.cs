@@ -17,6 +17,7 @@ namespace MinesweeperGUIAPP
         // List to store game statistics
         private List<GameStat> statList = new List<GameStat>();
         private BindingSource bindingSource = new BindingSource();
+        private TimeSpan averageTime = new TimeSpan();
 
         /// <summary>
         /// Passes specific perameters for game logic. 
@@ -147,6 +148,7 @@ namespace MinesweeperGUIAPP
                 }
             }
         }
+
         /// <summary>
         /// Event handler toe xit the application
         /// </summary>
@@ -228,25 +230,7 @@ namespace MinesweeperGUIAPP
         {
             return statList;
         }
-        /// <summary>
-        /// Calculates the average score of all game stats.
-        /// </summary>
-        /// <returns>The average score as a double.</returns>
-        private double CalculateAverageScore()
-        {
-            if (statList == null || statList.Count == 0)
-                return 0;
-
-            double totalScore = 0;
-
-            foreach (var stat in statList)
-            {
-                totalScore += stat.Score;
-            }
-
-            return totalScore / statList.Count;
-        }
-
+ 
         /// <summary>
         /// Button to calculate the average score and display it 
         /// </summary>
@@ -254,8 +238,19 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void BtnCalculateAverageClickEH(object sender, EventArgs e)
         {
-            lblAverageScore.Text = $"Average Score: {CalculateAverageScore():F2}";
+            double averageScore = GameStat.CalculateAverageScore(statList);
+            lblAverageScore.Text = $"Average Score: {averageScore:F2}";
+        }
 
+        /// <summary>
+        /// Button to calculate the average game time and display it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnCalculateAverageTimeClickEH(object sender, EventArgs e)
+        {
+            TimeSpan averageTime = GameStat.CalculateAverageGameTime(statList);
+            lblAverageTime.Text = $"Average Time: {averageTime:hh\\:mm\\:ss}";
         }
     }
 }
