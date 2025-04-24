@@ -228,5 +228,34 @@ namespace MinesweeperGUIAPP
         {
             return statList;
         }
+        /// <summary>
+        /// Calculates the average score of all game stats.
+        /// </summary>
+        /// <returns>The average score as a double.</returns>
+        private double CalculateAverageScore()
+        {
+            if (statList == null || statList.Count == 0)
+                return 0;
+
+            double totalScore = 0;
+
+            foreach (var stat in statList)
+            {
+                totalScore += stat.Score;
+            }
+
+            return totalScore / statList.Count;
+        }
+
+        /// <summary>
+        /// Button to calculate the average score and display it 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnCalculateAverageClickEH(object sender, EventArgs e)
+        {
+            lblAverageScore.Text = $"Average Score: {CalculateAverageScore():F2}";
+
+        }
     }
 }

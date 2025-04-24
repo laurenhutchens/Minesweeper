@@ -310,4 +310,5 @@ public class MinesweeperGameLogic
         int randomIndex = rand.Next(bombCoordinates.Count);
         return bombCoordinates[randomIndex];
     }
+
 }
