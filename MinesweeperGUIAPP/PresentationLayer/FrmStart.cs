@@ -3,6 +3,9 @@
  * Minesweeper 
  * Bill Hughes
  *03/10/2025
+ *
+ *https://www.electroniclinic.com/creating-mp3-player-using-windows-media-player-in-c-sharp/ > For Music Player
+ *https://stackoverflow.com/questions/28680675/moving-a-picture-box-in-timer-c-sharp-winforms > For load in animation
  */
 using AxWMPLib;
 using MineSweeperClasses.Models;
@@ -20,11 +23,9 @@ namespace MinesweeperGUIAPP
         private Button[,] btnBoard;
         private int score;
         public string finalScore;
-        //For Load In Animation
-        private PictureBox pictureBox;
-        private const int DecreaseStep = 3;
         //for load in effect 
         private List<PictureBox> overlayBlocks = new List<PictureBox>();
+        //Cuurent reveal index for indexing through the dipslay grid
         private int currentRevealIndex = 0;
         private const int blockSize = 40; // adjust for granularity
         private const int revealSpeed = 1; // ms
@@ -391,7 +392,7 @@ namespace MinesweeperGUIAPP
             CreateOverlayGrid();
 
             tmrLoadIn.Interval = revealSpeed;
-            tmrLoadIn.Tick += TmrLoadIn_Tick;
+            tmrLoadIn.Tick += TmrLoadInTickEH;
             tmrLoadIn.Start();
             // Convert values to integers
             int size = int.TryParse(SizeText, out int s) ? s : 5;  // Default to 5 if conversion fails
@@ -459,30 +460,45 @@ namespace MinesweeperGUIAPP
         }
 
         /// <summary>
-        /// TImer Tick for load in animation timing
+        /// Event handler for the timer tick during the load-in animation.
+        /// Reveals one block at a time from the overlay and stops when all blocks are cleared.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void TmrLoadIn_Tick(object sender, EventArgs e)
+        private void TmrLoadInTickEH(object sender, EventArgs e)
         {
-
+            // Check if all overlay blocks have been revealed
             if (currentRevealIndex >= overlayBlocks.Count)
             {
+                // Stop the timer as the animation is complete
                 tmrLoadIn.Stop();
+
+                // Remove and dispose of all overlay blocks from the form
                 foreach (var b in overlayBlocks)
                 {
                     this.Controls.Remove(b);
                     b.Dispose();
                 }
+
+                // Clear the list of overlay blocks
                 overlayBlocks.Clear();
+
+                // Reveal the actual form controls now that animation is done
                 RevealControls();
+
+                // Exit the method early since there's nothing more to process
                 return;
             }
 
+            // Get the current block to be revealed
             var block = overlayBlocks[currentRevealIndex];
+
+            // Remove the block from the form and dispose it
             this.Controls.Remove(block);
             block.Dispose();
+
+            // Move to the next block for the next timer tick
             currentRevealIndex++;
+
+            // Set form border style to Sizable, allowing resizing now that animation is progressing
             this.FormBorderStyle = FormBorderStyle.Sizable;
         }
 
@@ -519,38 +535,44 @@ namespace MinesweeperGUIAPP
 
 
         }
-        
+
         /// <summary>
-        /// Create overlay grid to show illusion of building the UI
+        /// Creates an overlay grid of black blocks to give the illusion of the UI being "built in" with an animation.
         /// </summary>
         public void CreateOverlayGrid()
         {
+            // Clear any existing overlay blocks to prepare for a fresh grid
             overlayBlocks.Clear();
-            //Find the Celing and width fojr the form for sizing
+
+            // Calculate the number of columns and rows based on the form's client size and block size
             int cols = (int)Math.Ceiling((double)this.ClientSize.Width / blockSize);
             int rows = (int)Math.Ceiling((double)this.ClientSize.Height / blockSize);
 
-            //for loop to loop through and display the blocks.
+            // Loop through each row and column to create and position overlay blocks
             for (int y = 0; y < rows; y++)
             {
                 for (int x = 0; x < cols; x++)
                 {
+                    // Create a new PictureBox representing a single overlay block
                     PictureBox block = new PictureBox
                     {
                         Width = blockSize,
                         Height = blockSize,
-                        BackColor = Color.Black,
+                        BackColor = Color.Black, // Set the block color to black for the "build-in" effect
                         Location = new Point(x * blockSize, y * blockSize),
-                        Enabled = true // blocks interaction
+                        Enabled = true // Keep enabled in case of future interaction (optional)
                     };
+
+                    // Bring the block to the front to overlay everything else
                     block.BringToFront();
+
+                    // Add the block to the overlay list and to the form's controls
                     overlayBlocks.Add(block);
                     this.Controls.Add(block);
                 }
             }
-
-
         }
+
         /// <summary>
         /// Method to play sound
         /// </summary>

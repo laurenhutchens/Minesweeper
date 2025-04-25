@@ -38,17 +38,25 @@ namespace MineSweeperClasses.BuisnessLogicLayer
         {
             return $"ID: {Id}, Name: {Name}, Score: {Score}, Time: {GameTime}, Date: {Date}";
         }
-
-        // Static Method to Calculate Average Score from a List of GameStats
+        /// <summary>
+        /// Method to calculate the average score
+        /// </summary>
+        /// <param name="stats"></param>
+        /// <returns></returns>
         public static double CalculateAverageScore(List<GameStat> stats)
         {
+            //check if null
             if (stats == null || stats.Count == 0)
                 return 0;
-
+            //calculate and return
             double totalScore = stats.Sum(stat => stat.Score);
             return totalScore / stats.Count;
         }
-        // Static Method to Calculate Average Game Time from a List of GameStats
+        /// <summary>
+        /// Method to calculate the average game time
+        /// </summary>
+        /// <param name="stats"></param>
+        /// <returns></returns>
         public static TimeSpan CalculateAverageGameTime(List<GameStat> stats)
         {
             if (stats == null || stats.Count == 0)
