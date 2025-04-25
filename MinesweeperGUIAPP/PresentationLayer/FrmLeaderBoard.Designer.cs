@@ -1,4 +1,5 @@
-﻿namespace MinesweeperGUIAPP
+﻿
+namespace MinesweeperGUIAPP
 {
     partial class FrmLeaderBoard
     {
