@@ -158,7 +158,7 @@ namespace MinesweeperGUIAPP
             btnCalculateAverage.Name = "btnCalculateAverage";
             btnCalculateAverage.Size = new Size(225, 29);
             btnCalculateAverage.TabIndex = 5;
-            btnCalculateAverage.Text = "Calculate Average Score";
+            btnCalculateAverage.Text = "Calculate Average Time";
             btnCalculateAverage.UseVisualStyleBackColor = true;
             btnCalculateAverage.Click += BtnCalculateAverageTimeClickEH;
             // 
