@@ -245,9 +245,11 @@ namespace MinesweeperGUIAPP
             //if lost for testing purposes still shows the win 
             else if (gameStatus == BoardModel.GameStatus.Lost)
             {
+                //Play the sound when the player loses
                 PlaySound("Resources\\Lose.mp3");
 
                 MessageBox.Show("Game Over! You hit a bomb.");
+
                 if (int.TryParse(lblScore.Text, out int score))
                 {
                     if (TimeSpan.TryParse(lblGameTime.Text, out TimeSpan gameTime))
