@@ -33,11 +33,13 @@ namespace MineSweeperClasses.BuisnessLogicLayer
         {
 
         }
+
         //Override string for to text. 
         public override string ToString()
         {
             return $"ID: {Id}, Name: {Name}, Score: {Score}, Time: {GameTime}, Date: {Date}";
         }
+
         /// <summary>
         /// Method to calculate the average score
         /// </summary>
@@ -52,19 +54,23 @@ namespace MineSweeperClasses.BuisnessLogicLayer
             double totalScore = stats.Sum(stat => stat.Score);
             return totalScore / stats.Count;
         }
+
         /// <summary>
-        /// Method to calculate the average game time
+        /// Calculates the average game time from a list of game statistics.
         /// </summary>
-        /// <param name="stats"></param>
-        /// <returns></returns>
+        /// <param name="stats">A list of GameStat objects containing individual game times.</param>
+        /// <returns>The average game duration as a TimeSpan. Returns TimeSpan.Zero if the list is null or empty.</returns>
         public static TimeSpan CalculateAverageGameTime(List<GameStat> stats)
         {
+            // Return zero if the input list is null or contains no elements
             if (stats == null || stats.Count == 0)
                 return TimeSpan.Zero;
 
+            // Sum all GameTime ticks from the stats and create a new TimeSpan from the total
             TimeSpan totalGameTime = new TimeSpan(stats.Sum(stat => stat.GameTime.Ticks));
+
+            // Calculate the average by dividing the total ticks by the number of games
             return TimeSpan.FromTicks(totalGameTime.Ticks / stats.Count);
         }
-
     }
 }

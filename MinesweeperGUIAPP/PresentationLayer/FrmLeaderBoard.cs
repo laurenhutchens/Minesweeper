@@ -238,6 +238,7 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void BtnCalculateAverageClickEH(object sender, EventArgs e)
         {
+            //calculate the average score from the gamestat class using the stalist. 
             double averageScore = GameStat.CalculateAverageScore(statList);
             lblAverageScore.Text = $"Average Score: {averageScore:F2}";
         }
@@ -248,7 +249,8 @@ namespace MinesweeperGUIAPP
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnCalculateAverageTimeClickEH(object sender, EventArgs e)
-        {
+        {   
+            //Calculate the average time using the gamestat logic using the statlist. 
             TimeSpan averageTime = GameStat.CalculateAverageGameTime(statList);
             lblAverageTime.Text = $"Average Time: {averageTime:hh\\:mm\\:ss}";
         }

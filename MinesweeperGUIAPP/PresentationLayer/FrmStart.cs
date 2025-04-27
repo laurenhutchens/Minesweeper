@@ -211,69 +211,7 @@ namespace MinesweeperGUIAPP
             Refresh();
         }
 
-        /// <summary>
-        /// Checks the current game status and handles winning or losing the game.
-        /// </summary>
-        private void CheckGameStatus()
-        {
-            //Sets the gamestatus to the determined status 
-            var gameStatus = boardModel.DetermineGameStatus();
-            //logic to determine if its won or not, if it is it resets and shows the win form 
-            if (gameStatus == BoardModel.GameStatus.Won)
-            {
-                PlaySound("Resources\\Win.mp3");
-                MessageBox.Show("Congratulations, You Won!");
-                if (int.TryParse(lblScore.Text, out int score))
-                {
-                    if (TimeSpan.TryParse(lblGameTime.Text, out TimeSpan gameTime))
-                    {
-                        FrmWin frmWin = new FrmWin(score, gameTime);
-                        frmWin.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid game time format. Cannot display results.", "Error");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Invalid score format. Cannot display results.", "Error");
-                }
-
-                ResetGame();
-            }
-            //if lost for testing purposes still shows the win 
-            else if (gameStatus == BoardModel.GameStatus.Lost)
-            {
-                //Play the sound when the player loses
-                PlaySound("Resources\\Lose.mp3");
-
-                MessageBox.Show("Game Over! You hit a bomb.");
-
-                if (int.TryParse(lblScore.Text, out int score))
-                {
-                    if (TimeSpan.TryParse(lblGameTime.Text, out TimeSpan gameTime))
-                    {
-                        tmrGameTime.Stop();
-                        FrmWin frmWin = new FrmWin(score, gameTime);
-                        frmWin.Show();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid game time format. Cannot display results.", "Error");
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Invalid score format. Cannot display results.", "Error");
-                }
-
-                ResetGame();
-            }
-        }
-
-
-        /// <summary>
+       /// <summary>
         /// Button for showing a bomb location
         /// </summary>
         /// <param name="sender"></param>
@@ -417,31 +355,47 @@ namespace MinesweeperGUIAPP
         /// <param name="e"></param>
         private void BtnStartGameClickEH(object sender, EventArgs e)
         {
+            // Attach the timer tick event to update the game time every tick
             tmrGameTime.Tick += new EventHandler(TmrGameTimeTickEH);
 
             try
             {
-                // Safely convert values and handle invalid nput
+                // Safely attempt to parse the user input for size and difficulty
                 int size = Convert.ToInt32(SizeText);
                 int difficulty = Convert.ToInt32(DifficultyText);
+
+                // Reset game stats
                 score = 0;
                 secondsElapsed = 0;
+
+                // Start the timer for tracking game time
                 tmrGameTime.Start();
+
+                // Initialize the game logic with the selected size and difficulty
                 gameLogic = new MinesweeperGameLogic(size, difficulty);
+
+                // Get the initial board model from the game logic
                 boardModel = gameLogic.GetBoardModel();
+
+                // Create the button grid for the Minesweeper board
                 InitializeBoardButtons(size);
+
+                // Refresh the GUI to display the new board
                 UpdateBoardGUI();
             }
             catch (FormatException)
             {
+                // Handle invalid input (e.g., user entered non-numeric text)
                 MessageBox.Show("Please Select Difficulty first.", "Input Error");
             }
             catch (OverflowException)
             {
+                // Handle input that is too large to fit in an int
                 MessageBox.Show("Please Select Difficulty first.", "Input Error");
             }
             catch (Exception ex)
             {
+                // Catch any other unexpected errors and display the message
                 MessageBox.Show($"An unexpected error occurred: {ex.Message}", "Error");
             }
         }
@@ -562,7 +516,7 @@ namespace MinesweeperGUIAPP
                         Height = blockSize,
                         BackColor = Color.Black, // Set the block color to black for the "build-in" effect
                         Location = new Point(x * blockSize, y * blockSize),
-                        Enabled = true // Keep enabled in case of future interaction (optional)
+                        Enabled = true 
                     };
 
                     // Bring the block to the front to overlay everything else
@@ -581,8 +535,68 @@ namespace MinesweeperGUIAPP
         /// <param name="path"></param>
         public void PlaySound(string path)
         {
+            //Reference the url path nested inside the reasource folder 
             axWindowsMediaPlayer1.URL = path;
+            //Use that path to play a sound
             axWindowsMediaPlayer1.Ctlcontrols.play();
+        }
+        /// <summary>
+        /// Checks the current game status and handles winning or losing the game.
+        /// </summary>
+        private void CheckGameStatus()
+        {
+            //Sets the gamestatus to the determined status 
+            var gameStatus = boardModel.DetermineGameStatus();
+            //logic to determine if its won or not, if it is it resets and shows the win form 
+            if (gameStatus == BoardModel.GameStatus.Won)
+            {
+                PlaySound("Resources\\Win.mp3");
+                MessageBox.Show("Congratulations, You Won!");
+                if (int.TryParse(lblScore.Text, out int score))
+                {
+                    if (TimeSpan.TryParse(lblGameTime.Text, out TimeSpan gameTime))
+                    {
+                        FrmWin frmWin = new FrmWin(score, gameTime);
+                        frmWin.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid game time format. Cannot display results.", "Error");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid score format. Cannot display results.", "Error");
+                }
+
+                ResetGame();
+            }
+            //if lost for testing purposes still shows the win 
+            else if (gameStatus == BoardModel.GameStatus.Lost)
+            {
+                //Play the sound when the player loses
+                PlaySound("Resources\\Lose.mp3");
+
+                MessageBox.Show("Game Over! You hit a bomb.");
+
+                if (int.TryParse(lblScore.Text, out int score))
+                {
+                    if (TimeSpan.TryParse(lblGameTime.Text, out TimeSpan gameTime))
+                    {
+                        tmrGameTime.Stop();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid game time format. Cannot display results.", "Error");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid score format. Cannot display results.", "Error");
+                }
+
+                ResetGame();
+            }
         }
     }
 }
